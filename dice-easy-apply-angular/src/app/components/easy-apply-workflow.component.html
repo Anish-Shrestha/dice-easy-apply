@@ -37,6 +37,10 @@
   <div *ngIf="showSettings" class="settings-panel">
     <h3>Settings</h3>
     <div class="settings-form">
+      <div class="settings-user-info">
+        <span class="settings-user-label">Logged in as:</span>
+        <span class="settings-user-email">{{ userEmail }}</span>
+      </div>
       <label for="dice-search-term-input">Dice Search Text (Pills):</label>
       <div class="dice-search-pills-wrap">
         <div class="dice-search-pill-list">
@@ -61,7 +65,6 @@
       <div class="button-group">
         <button (click)="saveSettings()" class="btn-primary">Save Settings</button>
         <button (click)="toggleSettings()" class="btn-secondary">Cancel</button>
-        <button (click)="clearAllData()" class="btn-danger">Clear All Data</button>
       </div>
     </div>
   </div>
@@ -117,8 +120,8 @@
             </span>
           </div>
           <button type="button" class="fact-chip score-chip-trigger" (click)="openDescriptionModal()" title="Open job description">
-            <span class="chip-label">Score</span>
-            <span class="chip-value">{{ currentJob.score || 0 }}</span>
+            <span class="chip-label">Description</span>
+            <span class="chip-value">View</span>
           </button>
           <div class="fact-chip"><span class="chip-label">Work</span><span class="chip-value">{{ currentJob.workType || 'Unknown' }}</span></div>
           <div class="fact-chip"><span class="chip-label">Salary</span><span class="chip-value">{{ currentJob.salary || 'Not specified' }}</span></div>
@@ -317,7 +320,6 @@
               <span class="job-list-status" [class.pending]="getJobStatusLabel(job) === 'To Apply'" [class.applied]="getJobStatusLabel(job) === 'Applied'" [class.skipped]="getJobStatusLabel(job) === 'Skipped'">
                 {{ getJobStatusLabel(job) }}
               </span>
-              <span class="job-list-score">Score {{ job.score || 0 }}</span>
             </div>
           </button>
 

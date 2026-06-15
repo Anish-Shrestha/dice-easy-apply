@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
 
 @Component({
@@ -8,6 +9,29 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
   title = 'Dice Easy Apply Workflow';
+  showUserMenu = false;
 
-  constructor(public auth: AuthService) { }
+  constructor(public auth: AuthService, private router: Router) { }
+
+  toggleUserMenu(): void {
+    this.showUserMenu = !this.showUserMenu;
+  }
+
+  closeUserMenu(): void {
+    this.showUserMenu = false;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event): void {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.user-menu')) {
+      this.showUserMenu = false;
+    }
+  }
+
+  onLogout(): void {
+    this.showUserMenu = false;
+    this.auth.logout();
+    this.router.navigate(['/login']);
+  }
 }

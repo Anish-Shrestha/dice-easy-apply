@@ -34,7 +34,7 @@ module.exports = async function (context, req) {
 
     const token = req.headers['x-auth-token'] || '';
     const user = token ? await getUserByToken(token) : null;
-    const result = await updateJobFields(link, fields);
+    const result = await updateJobFields(link, fields, user?.email);
     await logAudit(user?.email || 'anonymous', 'job_fields_update', `Fields: ${Object.keys(fields).join(',')} | Link: ${link.slice(0, 80)}`);
     context.res = {
       status: 200,

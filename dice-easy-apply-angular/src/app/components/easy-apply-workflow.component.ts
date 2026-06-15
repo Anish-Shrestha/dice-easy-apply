@@ -4,6 +4,7 @@ import { takeUntil } from 'rxjs/operators';
 import { JobService } from '../services/job.service';
 import { DiceApiService } from '../services/dice-api.service';
 import { CoverLetterService } from '../services/cover-letter.service';
+import { AuthService } from '../services/auth.service';
 import { Job, JobDecision } from '../models/job.model';
 
 @Component({
@@ -53,10 +54,15 @@ export class EasyApplyWorkflowComponent implements OnInit, OnDestroy {
 
   private destroy$ = new Subject<void>();
 
+  get userEmail(): string {
+    return this.authService.userEmail;
+  }
+
   constructor(
     private jobService: JobService,
     private diceApi: DiceApiService,
-    private coverLetterService: CoverLetterService
+    private coverLetterService: CoverLetterService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {

@@ -27,7 +27,7 @@ module.exports = async function (context, req) {
       return;
     }
 
-    const result = await updateJobStatus(link, status);
+    const result = await updateJobStatus(link, status, user?.email);
     await logAudit(user?.email || 'anonymous', 'job_status_update', `Status: ${status} | Link: ${link.slice(0, 80)}`);
     context.res = {
       status: 200,

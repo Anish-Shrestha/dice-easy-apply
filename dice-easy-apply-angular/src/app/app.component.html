@@ -1,19 +1,49 @@
-<div class="app-shell">
-  <header class="top-nav" *ngIf="auth.isAuthenticated">
-    <div class="brand">
+<div class="app-shell" *ngIf="auth.isAuthenticated; else loginView">
+  <!-- Side Menu -->
+  <aside class="side-menu">
+    <div class="side-brand">
       <h1>Dice Easy Apply</h1>
-      <p>Workflow + tracker grid</p>
     </div>
-
-    <nav class="nav-links" aria-label="Primary">
-      <a routerLink="/workflow" routerLinkActive="active-link">Workflow</a>
-      <a routerLink="/jobs" routerLinkActive="active-link">Jobs Grid</a>
-      <a routerLink="/admin" routerLinkActive="active-link" *ngIf="auth.isAdmin">🛡️ Admin</a>
-      <a routerLink="/settings" routerLinkActive="active-link">⚙️ Settings</a>
+    <nav class="side-nav">
+      <a routerLink="/workflow" routerLinkActive="active-link">
+        <span class="nav-icon">🚀</span> Workflow
+      </a>
+      <a routerLink="/jobs" routerLinkActive="active-link">
+        <span class="nav-icon">📋</span> Jobs Grid
+      </a>
+      <a routerLink="/admin" routerLinkActive="active-link" *ngIf="auth.isAdmin">
+        <span class="nav-icon">🛡️</span> Admin
+      </a>
     </nav>
-  </header>
+  </aside>
 
-  <main class="page-content">
-    <router-outlet></router-outlet>
-  </main>
+  <!-- Main Area -->
+  <div class="main-area">
+    <!-- Top Bar -->
+    <header class="top-bar">
+      <div class="top-bar-spacer"></div>
+      <div class="user-menu" (click)="toggleUserMenu()" (clickOutside)="closeUserMenu()">
+        <button class="user-icon-btn" [title]="auth.userEmail">
+          <span class="user-avatar">{{ auth.userEmail.charAt(0).toUpperCase() }}</span>
+        </button>
+        <div class="user-dropdown" *ngIf="showUserMenu">
+          <div class="user-dropdown-header">
+            <span class="user-dropdown-email">{{ auth.userEmail }}</span>
+            <span class="user-dropdown-role">{{ auth.userRole }}</span>
+          </div>
+          <div class="user-dropdown-divider"></div>
+          <a class="user-dropdown-item" routerLink="/settings" (click)="closeUserMenu()">⚙️ Settings</a>
+          <button class="user-dropdown-item logout-item" (click)="onLogout()">🚪 Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
 </div>
+
+<ng-template #loginView>
+  <router-outlet></router-outlet>
+</ng-template>

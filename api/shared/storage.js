@@ -106,15 +106,17 @@ function entityToJob(entity) {
   };
 }
 
-async function getAllJobs() {
+async function getAllJobs(userEmail) {
   const client = getTableClient();
+  const partition = userEmail ? `user_${userEmail.toLowerCase().trim()}` : 'jobs';
+
   if (!client) {
-    return [...inMemoryStore];
+    return inMemoryStore.filter(j => (j.partitionKey || 'jobs') === partition);
   }
 
   await ensureTable();
   const jobs = [];
-  const entities = client.listEntities({ queryOptions: { filter: "PartitionKey eq 'jobs'" } });
+  const entities = client.listEntities({ queryOptions: { filter: `PartitionKey eq '${partition}'` } });
   for await (const entity of entities) {
     jobs.push(entityToJob(entity));
   }
@@ -128,12 +130,13 @@ async function getAllJobs() {
   return jobs;
 }
 
-async function updateJobStatus(link, newStatus) {
+async function updateJobStatus(link, newStatus, userEmail) {
   const client = getTableClient();
   const now = new Date().toISOString().replace('T', ' ').replace(/\.\d+Z$/, '');
+  const partition = userEmail ? `user_${userEmail.toLowerCase().trim()}` : 'jobs';
 
   if (!client) {
-    const job = inMemoryStore.find(j => j.link === link);
+    const job = inMemoryStore.find(j => j.link === link && (j.partitionKey || 'jobs') === partition);
     if (!job) throw new Error(`Link not found: ${link}`);
     job.status = newStatus;
     job.dateUpdated = now;
@@ -144,7 +147,7 @@ async function updateJobStatus(link, newStatus) {
   const linkHash = Buffer.from(link).toString('base64url').slice(0, 100);
 
   try {
-    const entity = await client.getEntity('jobs', linkHash);
+    const entity = await client.getEntity(partition, linkHash);
     entity.status = newStatus;
     entity.dateUpdated = now;
     await client.updateEntity(entity, 'Merge');
@@ -154,11 +157,13 @@ async function updateJobStatus(link, newStatus) {
   }
 }
 
-async function importJobs(jobs) {
+async function importJobs(jobs, userEmail) {
   const client = getTableClient();
+  const partition = userEmail ? `user_${userEmail.toLowerCase().trim()}` : 'jobs';
 
   if (!client) {
-    inMemoryStore = jobs.map(j => ({ ...j }));
+    const imported = jobs.map(j => ({ ...j, partitionKey: partition }));
+    inMemoryStore.push(...imported);
     return { imported: jobs.length };
   }
 
@@ -166,7 +171,9 @@ async function importJobs(jobs) {
   let imported = 0;
   for (const job of jobs) {
     try {
-      await client.upsertEntity(jobToEntity(job), 'Merge');
+      const entity = jobToEntity(job);
+      entity.partitionKey = partition;
+      await client.upsertEntity(entity, 'Merge');
       imported++;
     } catch (err) {
       console.error('Import error for:', job.link, err.message);
@@ -175,12 +182,13 @@ async function importJobs(jobs) {
   return { imported };
 }
 
-async function enrichJobRole(link, role) {
+async function enrichJobRole(link, role, userEmail) {
   const client = getTableClient();
   const now = new Date().toISOString().replace('T', ' ').replace(/\.\d+Z$/, '');
+  const partition = userEmail ? `user_${userEmail.toLowerCase().trim()}` : 'jobs';
 
   if (!client) {
-    const job = inMemoryStore.find(j => j.link === link);
+    const job = inMemoryStore.find(j => j.link === link && (j.partitionKey || 'jobs') === partition);
     if (!job) throw new Error(`Link not found: ${link}`);
     if (job.role) return { updated: false, role: job.role, reason: 'role_already_present' };
     job.role = role;
@@ -192,7 +200,7 @@ async function enrichJobRole(link, role) {
   const linkHash = Buffer.from(link).toString('base64url').slice(0, 100);
 
   try {
-    const entity = await client.getEntity('jobs', linkHash);
+    const entity = await client.getEntity(partition, linkHash);
     if (entity.role) return { updated: false, role: entity.role, reason: 'role_already_present' };
     entity.role = role;
     entity.dateUpdated = now;
@@ -203,12 +211,13 @@ async function enrichJobRole(link, role) {
   }
 }
 
-async function updateJobFields(link, fields) {
+async function updateJobFields(link, fields, userEmail) {
   const client = getTableClient();
   const now = new Date().toISOString().replace('T', ' ').replace(/\.\d+Z$/, '');
+  const partition = userEmail ? `user_${userEmail.toLowerCase().trim()}` : 'jobs';
 
   if (!client) {
-    const job = inMemoryStore.find(j => j.link === link);
+    const job = inMemoryStore.find(j => j.link === link && (j.partitionKey || 'jobs') === partition);
     if (!job) throw new Error(`Link not found: ${link}`);
     for (const [k, v] of Object.entries(fields)) {
       if (v !== undefined) job[k] = v;
@@ -221,7 +230,7 @@ async function updateJobFields(link, fields) {
   const linkHash = Buffer.from(link).toString('base64url').slice(0, 100);
 
   try {
-    const entity = await client.getEntity('jobs', linkHash);
+    const entity = await client.getEntity(partition, linkHash);
     for (const [k, v] of Object.entries(fields)) {
       if (v !== undefined) entity[k] = v;
     }

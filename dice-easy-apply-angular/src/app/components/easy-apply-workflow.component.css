@@ -162,6 +162,26 @@
   gap: 15px;
 }
 
+.settings-user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #e0e7ff;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.settings-user-label {
+  color: #475569;
+  font-weight: 500;
+}
+
+.settings-user-email {
+  color: #1e3a8a;
+  font-weight: 700;
+}
+
 .settings-form label {
   font-weight: 600;
   color: #333;

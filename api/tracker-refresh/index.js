@@ -1,4 +1,4 @@
-const { getAllJobs, importJobs, getSearchTerms } = require('../shared/storage');
+const { getAllJobs, importJobs, getSearchTerms, getUserByToken } = require('../shared/storage');
 
 const DEFAULT_SEARCH_TERMS = [
   'firmware embedded engineer',
@@ -127,6 +127,8 @@ async function fetchSearchPage(url) {
 
 module.exports = async function (context, req) {
   try {
+    const token = req.headers['x-auth-token'] || '';
+    const user = token ? await getUserByToken(token) : null;
     const body = req.body || {};
     const maxPages = Math.min(Math.max(body.maxSearchPages || 3, 1), 10);
     const searchTerms = Array.isArray(body.searchTexts) && body.searchTexts.length > 0
@@ -142,7 +144,7 @@ module.exports = async function (context, req) {
     }
 
     // Get existing job links to deduplicate
-    const existingJobs = await getAllJobs();
+    const existingJobs = await getAllJobs(user?.email);
     const existingLinks = new Set(existingJobs.map(j => j.link));
 
     const employmentTypes = ['FULLTIME', 'CONTRACT', 'THIRD_PARTY'];
@@ -179,7 +181,7 @@ module.exports = async function (context, req) {
     // Import new jobs to storage
     let imported = 0;
     if (newJobs.length > 0) {
-      const result = await importJobs(newJobs);
+      const result = await importJobs(newJobs, user?.email);
       imported = result.imported;
     }
 

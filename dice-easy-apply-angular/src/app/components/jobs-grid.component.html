@@ -60,11 +60,6 @@
       </select>
     </div>
 
-    <div class="filter-group">
-      <label for="minScore">Min Score</label>
-      <input id="minScore" type="number" [(ngModel)]="minScore" (input)="onFilterChange()" min="0" max="100" />
-    </div>
-
     <div class="filter-group clear-group">
       <button class="clear-btn" (click)="clearFilters()">Clear Filters</button>
     </div>
@@ -81,9 +76,7 @@
           <th (click)="onSort('company')">Company {{ getSortLabel('company') }}</th>
           <th (click)="onSort('location')">Location {{ getSortLabel('location') }}</th>
           <th (click)="onSort('workType')">Work Type {{ getSortLabel('workType') }}</th>
-          <th (click)="onSort('score')">Score {{ getSortLabel('score') }}</th>
           <th>Salary</th>
-          <th>Summary</th>
           <th (click)="onSort('dateUpdated')">Updated {{ getSortLabel('dateUpdated') }}</th>
           <th>Link</th>
         </tr>
@@ -97,9 +90,7 @@
           <td>{{ job.company || 'Company Not Available' }}</td>
           <td>{{ job.location || 'Location Not Available' }}</td>
           <td>{{ job.workType || 'Unknown' }}</td>
-          <td class="score-cell">{{ job.score || 0 }}</td>
           <td>{{ job.salary || 'N/A' }}</td>
-          <td class="summary-cell">{{ job.summary || 'N/A' }}</td>
           <td>{{ job.dateUpdated || job.dateAdded || 'N/A' }}</td>
           <td>
             <a *ngIf="job.link" [href]="job.link" target="_blank" rel="noopener">Open</a>

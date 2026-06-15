@@ -1,8 +1,10 @@
-const { getAllJobs } = require('../shared/storage');
+const { getAllJobs, getUserByToken } = require('../shared/storage');
 
 module.exports = async function (context, req) {
   try {
-    const jobs = await getAllJobs();
+    const token = req.headers['x-auth-token'] || '';
+    const user = token ? await getUserByToken(token) : null;
+    const jobs = await getAllJobs(user?.email);
     context.res = {
       status: 200,
       headers: { 'Content-Type': 'application/json' },

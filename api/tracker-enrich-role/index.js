@@ -1,4 +1,4 @@
-const { enrichJobRole } = require('../shared/storage');
+const { enrichJobRole, getUserByToken } = require('../shared/storage');
 
 function normalizeJobTitle(title) {
   return String(title || '')
@@ -49,6 +49,8 @@ async function fetchJobTitle(link) {
 
 module.exports = async function (context, req) {
   try {
+    const token = req.headers['x-auth-token'] || '';
+    const user = token ? await getUserByToken(token) : null;
     const body = req.body || {};
     const link = (body.link || '').trim();
 
@@ -71,7 +73,7 @@ module.exports = async function (context, req) {
       return;
     }
 
-    const result = await enrichJobRole(link, title);
+    const result = await enrichJobRole(link, title, user?.email);
     context.res = {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
