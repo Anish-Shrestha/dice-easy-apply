@@ -109,6 +109,9 @@
 
 .clear-group {
   justify-content: flex-end;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
 }
 
 .clear-btn {
@@ -118,6 +121,26 @@
   padding: 10px 12px;
   font-size: 13px;
   align-self: flex-end;
+}
+
+.refresh-btn-sm {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.refresh-btn-sm:hover {
+  background: #1d4ed8;
+}
+
+.refresh-btn-sm:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .table-meta {

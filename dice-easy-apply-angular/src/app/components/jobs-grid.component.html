@@ -4,9 +4,6 @@
       <div class="label">Total</div>
       <div class="value">{{ stats.total }}</div>
     </div>
-    <button class="refresh-btn" (click)="refreshFromTracker()" [disabled]="isLoading">
-      {{ isLoading ? 'Refreshing...' : 'Refresh' }}
-    </button>
     <div class="stat-card to-apply">
       <div class="label">To Apply</div>
       <div class="value">{{ stats.toApply }}</div>
@@ -55,6 +52,9 @@
 
     <div class="filter-group clear-group">
       <button class="clear-btn" (click)="clearFilters()">Clear Filters</button>
+      <button class="refresh-btn-sm" (click)="refreshFromTracker()" [disabled]="isLoading">
+        {{ isLoading ? '⟳' : '⟳ Refresh' }}
+      </button>
     </div>
   </div>
 
