@@ -1,0 +1,13 @@
+June 13, 2026
+
+Dear SRS Consulting Inc. Hiring Team,
+
+I am writing to express my strong interest in the Senior C++ / Embedded Software Engineer position in Redmond, Washington, as advertised on Dice. With 15 years of dedicated experience in embedded firmware and IoT development, my expertise in designing, developing, and maintaining robust software solutions for complex systems and devices aligns perfectly with your requirements. I am confident that my background makes me an exceptional candidate for this role.
+
+My comprehensive skill set includes strong proficiency in modern C++ standards (C++11/14/17 and later) and C programming, applied across various embedded architectures, including ARM Cortex-M. I have extensive hands-on experience with FreeRTOS and other RTOS environments, encompassing low-level programming, board bring-up, and developing intricate device drivers for interfaces like UART, SPI, and I2C. Furthermore, I excel in system integration, debugging, and performance tuning, which are critical for troubleshooting complex software and hardware interaction issues.
+
+I am particularly drawn to SRS Consulting Inc.'s focus on innovative embedded solutions. My proven ability to contribute to all phases of the software development lifecycle, coupled with my strong problem-solving and communication skills, would be a significant asset to your team. I am open to relocation to Redmond, Washington, and eager to discuss how my qualifications can benefit your organization. Thank you for your time and consideration.
+
+Sincerely,
+
+MANISH MAN SHRESTHA

@@ -1,0 +1,13 @@
+June 13, 2026
+
+Dear SSV Technologies Hiring Team,
+
+I am writing to express my keen interest in the Senior Principal Engineer, Software/Firmware position at SSV Technologies Inc., as advertised on Dice. With 15 years of dedicated experience in embedded firmware architecture, design, and implementation, I am confident that my deep expertise in C/C++ firmware development and robust embedded systems aligns perfectly with the demands of this role. My background is rooted in delivering high-performance, reliable firmware solutions across various complex platforms.
+
+My professional journey has equipped me with extensive hands-on experience in critical areas highlighted in your job description. I possess deep proficiency in **bootloader design**, advanced **firmware upgrade mechanisms** (including hitless and in-service capabilities), and efficient flash management. I have a strong background working with **SoC-based embedded platforms** like ARM Cortex-M and ESP32, bringing up boards from alpha to GA release, and meticulously debugging across hardware/firmware boundaries. While my direct experience isn't specifically in coherent optical module firmware, my proven ability to architect and implement complex firmware for critical systems makes me exceptionally well-suited to contribute effectively to your optical module and CPO initiatives.
+
+My career reflects a consistent ability to own and deliver programs end-to-end, ensuring stability, security (including advanced cryptographic implementations), and optimal performance. I am adept with modern development workflows, including CI/CD and tools like GitLab. I am open to relocating to Addison, TX, and am eager to leverage my senior-level firmware engineering skills to drive innovation at SSV Technologies Inc. I am enthusiastic about discussing how my qualifications and passion for embedded systems can contribute to your team's success.
+
+Sincerely,
+
+MANISH MAN SHRESTHA

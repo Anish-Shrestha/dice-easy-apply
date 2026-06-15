@@ -1,0 +1,17 @@
+June 13, 2026
+
+Hiring Team
+Ledgent Technology
+Santa Clara, CA
+
+Dear Ledgent Technology Hiring Team,
+
+I am writing to express my strong interest in the Senior Principal Engineer, Software/Firmware position in Santa Clara, California, as advertised on Dice. With 15 years of dedicated experience in embedded software and firmware development, I am eager to contribute my expertise to your innovative projects. I am open to relocating to Santa Clara to fully immerse myself in this exciting opportunity.
+
+My career has been focused on designing and implementing robust firmware for SoC-based embedded platforms, leveraging C/C++ development with RTOS such as FreeRTOS. I have a proven track record in critical areas including bootloader design, robust firmware upgrade mechanisms, and comprehensive board bring-up, coupled with strong hardware/firmware debugging skills. I am adept at owning and delivering programs end-to-end, from initial concept through production support. I am particularly eager to apply my comprehensive skill set, including my background in secure embedded systems, to the challenges of advancing your coherent optical module firmware and SoC-based embedded initiatives.
+
+My skills align precisely with the demands of this role, and I am confident in my ability to make significant contributions to your team. I am particularly excited by Ledgent Technology's work in cutting-edge optical solutions and am enthusiastic about the prospect of bringing my extensive embedded systems background to your projects. Thank you for your time and consideration. I look forward to discussing how my qualifications can benefit Ledgent Technology.
+
+Sincerely,
+
+MANISH MAN SHRESTHA

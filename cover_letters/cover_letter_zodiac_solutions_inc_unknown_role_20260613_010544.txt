@@ -1,0 +1,19 @@
+June 13, 2026
+
+Hiring Manager
+Zodiac Solutions Inc.
+Redmond, WA
+
+Subject: Application for Embedded Tester Position – MANISH MAN SHRESTHA
+
+Dear Hiring Manager,
+
+I am writing with great enthusiasm to apply for the Embedded Tester position at Zodiac Solutions Inc. in Tucson, AZ, as advertised on Dice.com. With 15 years of comprehensive experience in firmware and embedded systems development, coupled with a deep understanding of device drivers and system integration, I am confident my expertise in embedded FW driver development and test automation aligns perfectly with your requirements. I am open to relocating to Tucson, AZ for this role.
+
+My extensive background in embedded firmware, particularly with **C/C++**, and hands-on experience in **PC to controller embedded FW driver development** (UART/SPI/I2C/RS-485/Modbus) is a direct match for your core qualifications. This deep understanding of firmware architecture and hardware-software interaction is critical for **developing and maintaining robust embedded FW test automation environments**. I am proficient in leveraging this knowledge to ensure the reliability and performance of drivers and DLLs, which are integral to your test infrastructure built with C++, C#, and Java.
+
+I am eager to contribute my strong technical skills and problem-solving abilities to Zodiac Solutions Inc. and help ensure the highest quality of your embedded products. Thank you for considering my application. I look forward to discussing how my experience can benefit your team and am available for an interview at your earliest convenience.
+
+Sincerely,
+
+MANISH MAN SHRESTHA

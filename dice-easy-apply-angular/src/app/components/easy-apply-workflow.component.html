@@ -1,0 +1,420 @@
+<div class="workflow-container">
+  <!-- Header -->
+  <div class="header">
+    <div class="header-content">
+      <div class="title-group">
+        <h1>Dice Easy Apply Workflow</h1>
+        <p class="subtitle">Tracker-driven queue for To Apply jobs</p>
+      </div>
+      <div
+        class="stats"
+      >
+        <div class="stat-item stats-trigger" title="Show all jobs" role="button" tabindex="0" (click)="openJobListModal('all')" (keydown)="onStatItemKeyDown($event, 'all')">
+          <span class="stat-label">Total:</span>
+          <span class="stat-value">{{ jobStats.total }}</span>
+        </div>
+        <div class="stat-item stats-trigger" title="Show pending jobs" role="button" tabindex="0" (click)="openJobListModal('pending')" (keydown)="onStatItemKeyDown($event, 'pending')">
+          <span class="stat-label">Pending:</span>
+          <span class="stat-value pending">{{ jobStats.pending }}</span>
+        </div>
+        <div class="stat-item stats-trigger" title="Show applied jobs" role="button" tabindex="0" (click)="openJobListModal('applied')" (keydown)="onStatItemKeyDown($event, 'applied')">
+          <span class="stat-label">Applied:</span>
+          <span class="stat-value applied">{{ jobStats.applied }}</span>
+        </div>
+        <div class="stat-item stats-trigger" title="Show skipped jobs" role="button" tabindex="0" (click)="openJobListModal('skipped')" (keydown)="onStatItemKeyDown($event, 'skipped')">
+          <span class="stat-label">Skipped:</span>
+          <span class="stat-value skipped">{{ jobStats.skipped }}</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="refresh-btn" (click)="refreshTracker()" [disabled]="isLoading">Refresh Tracker</button>
+        <button class="settings-btn" (click)="toggleSettings()">Settings</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings Panel -->
+  <div *ngIf="showSettings" class="settings-panel">
+    <h3>Settings</h3>
+    <div class="settings-form">
+      <label for="gemini-key">Google Gemini API Key:</label>
+      <input
+        id="gemini-key"
+        type="password"
+        [(ngModel)]="geminiApiKey"
+        placeholder="Enter your Gemini API key"
+        class="input-field"
+      />
+
+      <label for="dice-search-term-input">Dice Search Text (Pills):</label>
+      <div class="dice-search-pills-wrap">
+        <div class="dice-search-pill-list">
+          <span class="dice-search-pill" *ngFor="let term of diceSearchTerms">
+            <span>{{ term }}</span>
+            <button type="button" class="dice-pill-remove" (click)="removeDiceSearchTerm(term)" aria-label="Remove search term">✕</button>
+          </span>
+        </div>
+        <div class="dice-search-pill-input-row">
+          <input
+            id="dice-search-term-input"
+            type="text"
+            [(ngModel)]="diceSearchTermInput"
+            (keydown)="onDiceSearchTermKeydown($event)"
+            placeholder="Add search text and press Enter"
+            class="input-field"
+          />
+          <button type="button" class="btn-secondary" (click)="addDiceSearchTerm()">Add</button>
+        </div>
+        <p class="settings-hint">Refresh Tracker builds Dice URLs for each pill and scans all pages for Easy Apply jobs.</p>
+      </div>
+      <div class="button-group">
+        <button (click)="saveGeminiApiKey()" class="btn-primary">Save Settings</button>
+        <button (click)="toggleSettings()" class="btn-secondary">Cancel</button>
+        <button (click)="clearAllData()" class="btn-danger">Clear All Data</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content" *ngIf="!showSettings">
+    <div *ngIf="showToast" class="decision-toast" [class.error]="toastType === 'error'" [class.success]="toastType === 'success'">
+      {{ toastMessage }}
+    </div>
+
+    <div *ngIf="!currentJob" class="no-jobs">
+      <p>✅ No pending jobs to process. Great work!</p>
+      <button (click)="loadJobs()" class="btn-primary">Load New Jobs</button>
+    </div>
+
+    <div *ngIf="currentJob" class="job-workflow">
+      <!-- Job Details -->
+      <div class="job-card">
+        <div class="job-header">
+          <div class="job-title-row">
+            <h2>
+              <a
+                *ngIf="currentJob.link; else plainJobTitle"
+                [href]="currentJob.link"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="job-title-link"
+                [class.fallback-title]="!currentJob.role"
+              >
+                {{ currentJob.role || 'Role Not Available' }}
+              </a>
+              <ng-template #plainJobTitle>
+                <span [class.fallback-title]="!currentJob.role">{{ currentJob.role || 'Role Not Available' }}</span>
+              </ng-template>
+            </h2>
+          </div>
+          <div class="job-meta">
+            <span class="company">{{ currentJob.company || 'Company Not Available' }}</span>
+            <span class="location">{{ currentJob.location || 'Location Not Available' }}</span>
+          </div>
+        </div>
+
+        <div class="quick-facts">
+          <div class="fact-chip">
+            <span class="chip-label">Status</span>
+            <span
+              class="chip-value"
+              [class.pending]="getJobStatusLabel(currentJob) === 'To Apply' || getJobStatusLabel(currentJob) === 'Pending'"
+              [class.applied]="getJobStatusLabel(currentJob) === 'Applied'"
+              [class.skipped]="getJobStatusLabel(currentJob) === 'Skipped'"
+            >
+              {{ (getJobStatusLabel(currentJob) === 'To Apply' || getJobStatusLabel(currentJob) === 'Pending') ? 'Pending' : getJobStatusLabel(currentJob) }}
+            </span>
+          </div>
+          <button type="button" class="fact-chip score-chip-trigger" (click)="openDescriptionModal()" title="Open job description">
+            <span class="chip-label">Score</span>
+            <span class="chip-value">{{ currentJob.score || 0 }}</span>
+          </button>
+          <div class="fact-chip"><span class="chip-label">Work</span><span class="chip-value">{{ currentJob.workType || 'Unknown' }}</span></div>
+          <div class="fact-chip"><span class="chip-label">Salary</span><span class="chip-value">{{ currentJob.salary || 'Not specified' }}</span></div>
+        </div>
+
+        <div class="job-card-note">
+          <label for="job-note">Optional Note:</label>
+          <textarea
+            id="job-note"
+            [(ngModel)]="jobNoteInput"
+            (input)="autoResizeNote($event)"
+            placeholder="Add note for this job"
+            rows="2"
+            class="input-field"
+          ></textarea>
+          <div class="job-note-actions">
+            <button class="btn-secondary btn-small save-note-btn" (click)="saveOptionalNote()">Save Note</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Workflow Steps -->
+      <div class="workflow-steps">
+        <div class="workflow-title-row">
+          <h3>Quick Apply Flow</h3>
+          <button
+            type="button"
+            class="easy-apply-badge easy-apply-badge-btn"
+            aria-label="Open Easy Apply job on Dice"
+            (click)="onEasyApplyClick()"
+          >
+            Easy Apply
+          </button>
+        </div>
+
+        <!-- Step 1: Cover Letter -->
+        <div class="step cover-letter-step">
+          <div class="cover-letter-header-row">
+            <h4>Step 1: Cover Letter</h4>
+            <div class="cover-letter-tools">
+              <button
+                (click)="selectCoverLetterMode('AI')"
+                class="icon-tool-btn"
+                [disabled]="isLoading"
+                title="Generate AI cover letter"
+                aria-label="Generate AI cover letter"
+              >
+                🤖
+              </button>
+              <button
+                (click)="selectCoverLetterMode('Template')"
+                class="icon-tool-btn"
+                [disabled]="isLoading"
+                title="Generate template cover letter"
+                aria-label="Generate template cover letter"
+              >
+                📄
+              </button>
+            </div>
+          </div>
+
+          <div *ngIf="isLoading" class="loading">⏳ Generating cover letter...</div>
+
+          <div class="cover-letter-preview-box">
+            <div
+              class="cover-letter-preview"
+              [textContent]="generatedCoverLetter || 'No cover letter generated yet.'"
+            ></div>
+          </div>
+        </div>
+
+        <!-- Step 2: Decision -->
+        <div class="step decision-step">
+          <h4>Step 2: Make Decision</h4>
+
+          <div class="decision-meta">
+            <div class="meta-item job-meta-row">
+              <span class="meta-label">Job:</span>
+              <span class="job-link-actions">
+                <button *ngIf="currentJob" class="job-desc-trigger" (click)="openDescriptionModal()">
+                  {{ (currentJob.role || 'Role Not Available') + ' @ ' + (currentJob.company || 'Company Not Available') }}
+                </button>
+              </span>
+              <span *ngIf="!currentJob?.link" class="meta-none">N/A</span>
+            </div>
+            <div class="meta-item" *ngIf="savedCoverLetterPath">
+                <span class="meta-label">Letter:</span>
+                <span class="meta-file" [title]="savedCoverLetterPath">{{ getCoverLetterDisplayName(savedCoverLetterPath) }}</span>
+            </div>
+            <div class="meta-item" *ngIf="generatedCoverLetter && !savedCoverLetterPath">
+              <span class="meta-label">Letter:</span>
+              <span class="meta-file meta-unsaved">Saving...</span>
+            </div>
+            <div class="meta-item" *ngIf="!generatedCoverLetter">
+              <span class="meta-label">Letter:</span>
+              <span class="meta-none">Not generated</span>
+            </div>
+          </div>
+
+          <div class="decision-buttons decision-bar">
+            <button (click)="recordDecision('Applied')" class="btn-applied" [disabled]="isSavingDecision || isLoading">
+              {{ isSavingDecision ? 'Saving...' : '✅ Applied' }}
+            </button>
+            <button (click)="recordDecision('Skipped')" class="btn-skipped" [disabled]="isSavingDecision || isLoading">
+              {{ isSavingDecision ? 'Saving...' : '❌ Skipped' }}
+            </button>
+            <button (click)="recordDecision('Pending')" class="btn-secondary" [disabled]="isSavingDecision || isLoading">
+              {{ isSavingDecision ? 'Saving...' : '⏸️ Pending' }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-panel">
+        <div class="chat-header">
+          <h3>Gemini Job Chat</h3>
+          <p>Uses this job description + your resume context</p>
+          <button class="btn-secondary btn-small match-resume-btn" (click)="askResumeMatch()" [disabled]="isChatLoading || isLoading || !currentJob">
+            Match Resume
+          </button>
+        </div>
+
+        <div class="chat-messages">
+          <div *ngFor="let msg of chatMessages" class="chat-message" [class.user]="msg.role === 'user'" [class.assistant]="msg.role === 'assistant'">
+            <div class="chat-role">{{ msg.role === 'user' ? 'You' : 'Gemini' }}</div>
+            <div class="chat-text" [textContent]="msg.text"></div>
+          </div>
+          <div *ngIf="isChatLoading" class="chat-message assistant">
+            <div class="chat-role">Gemini</div>
+            <div class="chat-text">Thinking...</div>
+          </div>
+        </div>
+
+        <div class="chat-input-row">
+          <textarea
+            [(ngModel)]="chatInput"
+            [disabled]="isChatLoading || isLoading"
+            (keydown.enter)="onChatEnter($event)"
+            rows="3"
+            class="chat-input"
+            placeholder="Ask about fit, keywords, interview prep, likely questions..."
+          ></textarea>
+          <button class="btn-primary chat-send-btn" (click)="sendChatMessage()" [disabled]="isChatLoading || isLoading || !chatInput.trim()">
+            {{ isChatLoading ? 'Sending...' : 'Send' }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="showDescriptionModal" class="description-modal-overlay" (click)="closeDescriptionModal()">
+      <div class="description-modal" role="dialog" aria-modal="true" aria-label="Job Description" (click)="$event.stopPropagation()">
+        <div class="description-modal-header">
+          <h3>Job Description</h3>
+          <button class="modal-close-btn" (click)="closeDescriptionModal()">✕</button>
+        </div>
+        <div class="description-modal-content" [textContent]="jobDescription || 'Job description not available'" ></div>
+      </div>
+    </div>
+
+    <div *ngIf="showJobListModal" class="description-modal-overlay" (click)="closeJobListModal()">
+      <div class="job-list-modal" role="dialog" aria-modal="true" aria-label="Job List" (click)="$event.stopPropagation()">
+        <div class="description-modal-header">
+          <h3>{{ jobListFilterTitle === 'All Jobs' ? 'All Jobs' : (jobListFilterTitle + ' Jobs') }} ({{ visibleJobsForModal.length }})</h3>
+          <button class="modal-close-btn" (click)="closeJobListModal()">✕</button>
+        </div>
+
+        <div class="job-list-toolbar">
+          <input
+            type="text"
+            class="input-field job-list-search"
+            [(ngModel)]="jobListSearch"
+            placeholder="Search by role, company, location"
+          />
+        </div>
+
+        <div class="job-list-body">
+          <button
+            *ngFor="let job of visibleJobsForModal"
+            type="button"
+            class="job-list-item"
+            (click)="selectJobFromModal(job)"
+          >
+            <div class="job-list-item-main">
+              <div class="job-list-role">{{ job.role || 'Role Not Available' }}</div>
+              <div class="job-list-company">{{ job.company || 'Company Not Available' }}</div>
+              <div class="job-list-location">{{ job.location || 'Location Not Available' }}</div>
+            </div>
+            <div class="job-list-item-side">
+              <span class="job-list-status" [class.pending]="getJobStatusLabel(job) === 'To Apply'" [class.applied]="getJobStatusLabel(job) === 'Applied'" [class.skipped]="getJobStatusLabel(job) === 'Skipped'">
+                {{ getJobStatusLabel(job) }}
+              </span>
+              <span class="job-list-score">Score {{ job.score || 0 }}</span>
+            </div>
+          </button>
+
+          <div *ngIf="!visibleJobsForModal.length" class="job-list-empty">
+            No jobs found for this search.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="showSkipReasonModal" class="description-modal-overlay" (click)="closeSkipReasonModal()">
+      <div class="skip-modal" role="dialog" aria-modal="true" aria-label="Skip Reason" (click)="$event.stopPropagation()">
+        <div class="description-modal-header">
+          <h3>Select Skip Reason</h3>
+          <button class="modal-close-btn" (click)="closeSkipReasonModal()">✕</button>
+        </div>
+        <div class="skip-modal-content">
+          <label for="skip-reason-modal">Reason:</label>
+          <select id="skip-reason-modal" [(ngModel)]="skipReason" class="input-field">
+            <option value="">Select a reason...</option>
+            <option value="clearance">Security clearance required</option>
+            <option value="citizenship">US citizenship required</option>
+            <option value="low-salary">Low salary</option>
+            <option value="onsite">Onsite only</option>
+            <option value="bad-fit">Bad fit</option>
+            <option value="other">Other</option>
+          </select>
+
+          <div class="skip-modal-actions">
+            <button class="btn-secondary" (click)="closeSkipReasonModal()">Cancel</button>
+            <button class="btn-skipped" (click)="confirmSkipDecision()">Save Skipped</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div *ngIf="showRefreshStatusModal" class="description-modal-overlay" (click)="closeRefreshStatusModal()">
+    <div class="refresh-status-modal" role="dialog" aria-modal="true" aria-label="Refresh Tracker Status" (click)="$event.stopPropagation()">
+      <div class="description-modal-header">
+        <h3>Refresh Tracker Status</h3>
+        <button class="modal-close-btn" (click)="closeRefreshStatusModal()">✕</button>
+      </div>
+
+      <div class="refresh-status-content">
+        <div *ngIf="refreshTrackerPhase === 'running'" class="refresh-status-running">
+          <p class="refresh-status-title">Refreshing from Dice...</p>
+          <div class="refresh-loading-sign" role="status" aria-live="polite">
+            <span class="refresh-spinner" aria-hidden="true"></span>
+            <span>Loading. Please wait...</span>
+          </div>
+          <div class="refresh-pill-progress" *ngIf="refreshTrackerExecutionPills.length">
+            <p class="refresh-pill-label">Currently executing pill</p>
+            <div class="refresh-current-pill">{{ refreshTrackerCurrentPill || 'Preparing search terms...' }}</div>
+            <p class="refresh-pill-counter" *ngIf="refreshTrackerCurrentPillIndex >= 0">
+              Pill {{ refreshTrackerCurrentPillIndex + 1 }} of {{ refreshTrackerExecutionPills.length }}
+            </p>
+            <div class="refresh-pill-list">
+              <span
+                class="refresh-pill-chip"
+                *ngFor="let pill of refreshTrackerExecutionPills; let i = index"
+                [class.active]="i === refreshTrackerCurrentPillIndex"
+              >
+                {{ pill }}
+              </span>
+            </div>
+          </div>
+          <ul class="refresh-status-list">
+            <li>Scraping Easy Apply jobs from Dice.</li>
+            <li>Checking tracker for existing links.</li>
+          </ul>
+        </div>
+
+        <div *ngIf="refreshTrackerPhase === 'success'" class="refresh-status-success">
+          <p class="refresh-status-title">Final status</p>
+          <p>1. Direct API test succeeded:</p>
+          <ul class="refresh-summary-list">
+            <li>refreshed: {{ refreshTrackerResult?.refreshed }}</li>
+            <li>newLeads: {{ refreshTrackerResult?.newLeads }}</li>
+            <li>total: {{ refreshTrackerResult?.total }}</li>
+          </ul>
+        </div>
+
+        <div *ngIf="refreshTrackerPhase === 'error'" class="refresh-status-error">
+          <p class="refresh-status-title">Final status</p>
+          <p>Direct API test failed.</p>
+          <p class="refresh-error-text">{{ refreshTrackerError }}</p>
+        </div>
+
+        <details *ngIf="refreshTrackerLog.length" class="refresh-log-block">
+          <summary>Refresh log</summary>
+          <div class="refresh-log-lines" *ngFor="let line of refreshTrackerLog">{{ line }}</div>
+        </details>
+      </div>
+    </div>
+  </div>
+</div>

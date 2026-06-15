@@ -1,0 +1,180 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "Dice Home" [ref=e5] [cursor=pointer]:
+          - /url: https://www.dice.com
+          - img "Dice Logo" [ref=e7]
+        - button "Toggle menu" [ref=e11] [cursor=pointer]:
+          - img [ref=e12]
+    - generic [ref=e19]:
+      - generic [ref=e22]:
+        - img "Dice Logo" [ref=e24]
+        - heading "Make your next move" [level=2] [ref=e27]
+        - heading "Create an account or sign in" [level=2] [ref=e28]
+      - generic [ref=e29]:
+        - generic [ref=e30]:
+          - generic [ref=e32]:
+            - generic [ref=e34]: Email address
+            - textbox "Email address" [active] [ref=e35]:
+              - /placeholder: name@yourdomain.com
+          - button "Continue with email" [ref=e36] [cursor=pointer]:
+            - generic [ref=e37]: Continue with email
+        - generic [ref=e40]:
+          - button "Continue with Google" [ref=e41] [cursor=pointer]:
+            - generic [ref=e42]:
+              - img [ref=e43]
+              - text: Continue with Google
+          - button "Continue with Apple" [ref=e48] [cursor=pointer]:
+            - generic [ref=e49]:
+              - img [ref=e50]
+              - text: Continue with Apple
+      - paragraph [ref=e52]:
+        - text: By continuing, you are agreeing to Dice's
+        - link "Privacy Policy" [ref=e53] [cursor=pointer]:
+          - /url: /about/privacy-policy
+        - text: ","
+        - link "Terms of Use" [ref=e54] [cursor=pointer]:
+          - /url: /about/terms-and-conditions
+        - text: ", and to receive emails from Dice."
+    - contentinfo [ref=e55]:
+      - generic [ref=e57]:
+        - link "Dice Home" [ref=e58] [cursor=pointer]:
+          - /url: https://www.dice.com
+          - img "Dice Logo" [ref=e60]
+        - navigation "Social media" [ref=e63]:
+          - list [ref=e64]:
+            - listitem [ref=e65]:
+              - link "LinkedIn" [ref=e66] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/dice
+                - img [ref=e67]
+            - listitem [ref=e69]:
+              - link "YouTube" [ref=e70] [cursor=pointer]:
+                - /url: https://www.youtube.com/Dice
+                - img [ref=e71]
+            - listitem [ref=e73]:
+              - link "Instagram" [ref=e74] [cursor=pointer]:
+                - /url: https://www.instagram.com/dicedotcom
+                - img [ref=e75]
+            - listitem [ref=e78]:
+              - link "TikTok" [ref=e79] [cursor=pointer]:
+                - /url: https://www.tiktok.com/@dicetechjobs
+                - img [ref=e80]
+      - generic [ref=e83]:
+        - navigation "Technology Professionals" [ref=e85]:
+          - heading "Technology Professionals" [level=2] [ref=e86]
+          - list [ref=e87]:
+            - listitem [ref=e88]:
+              - link "Search for Jobs" [ref=e89] [cursor=pointer]:
+                - /url: https://www.dice.com/jobs
+            - listitem [ref=e90]:
+              - link "Jobs Directory" [ref=e91] [cursor=pointer]:
+                - /url: https://www.dice.com/jobs/browse-jobs
+            - listitem [ref=e92]:
+              - link "Search for Companies" [ref=e93] [cursor=pointer]:
+                - /url: https://www.dice.com/companies
+            - listitem [ref=e94]:
+              - link "Company Directory" [ref=e95] [cursor=pointer]:
+                - /url: https://www.dice.com/company-profile/browse
+            - listitem [ref=e96]:
+              - link "Career Advice" [ref=e97] [cursor=pointer]:
+                - /url: https://www.dice.com/career-advice
+        - navigation "Employers and Recruiters" [ref=e99]:
+          - heading "Employers and Recruiters" [level=2] [ref=e100]
+          - list [ref=e101]:
+            - listitem [ref=e102]:
+              - link "Post Jobs" [ref=e103] [cursor=pointer]:
+                - /url: https://www.dice.com/hiring/post-jobs
+            - listitem [ref=e104]:
+              - link "Find Candidates" [ref=e105] [cursor=pointer]:
+                - /url: https://www.dice.com/hiring/find-candidates
+            - listitem [ref=e106]:
+              - link "Build Employer Brand" [ref=e107] [cursor=pointer]:
+                - /url: https://www.dice.com/hiring/employer-brand
+            - listitem [ref=e108]:
+              - link "Explore Talent Solutions" [ref=e109] [cursor=pointer]:
+                - /url: https://www.dice.com/hiring/talent-solutions
+            - listitem [ref=e110]:
+              - link "View Integrations" [ref=e111] [cursor=pointer]:
+                - /url: https://www.dice.com/hiring/integrations
+            - listitem [ref=e112]:
+              - link "Recruiting Advice" [ref=e113] [cursor=pointer]:
+                - /url: https://www.dice.com/hiring/recruitment
+            - listitem [ref=e114]:
+              - link "Hiring Resources" [ref=e115] [cursor=pointer]:
+                - /url: https://www.dice.com/hiring/employer-resources
+        - navigation "Company Information" [ref=e117]:
+          - heading "Company Information" [level=2] [ref=e118]
+          - list [ref=e119]:
+            - listitem [ref=e120]:
+              - link "About Us" [ref=e121] [cursor=pointer]:
+                - /url: https://dhigroupinc.com
+            - listitem [ref=e122]:
+              - link "Media" [ref=e123] [cursor=pointer]:
+                - /url: https://www.dice.com/media
+            - listitem [ref=e124]:
+              - link "Work at Dice" [ref=e125] [cursor=pointer]:
+                - /url: https://dhigroupinc.com/careers/default.aspx
+        - generic [ref=e126]:
+          - navigation "Contact Us" [ref=e127]:
+            - heading "Contact Us" [level=2] [ref=e128]
+            - list [ref=e129]:
+              - listitem [ref=e130]:
+                - link "Request a Demo" [ref=e131] [cursor=pointer]:
+                  - /url: https://www.dice.com/hiring/demo
+          - navigation "Support" [ref=e132]:
+            - heading "Support" [level=2] [ref=e133]
+            - list [ref=e134]:
+              - listitem [ref=e135]:
+                - link "Knowledge Center" [ref=e136] [cursor=pointer]:
+                  - /url: https://www.dice.com/support
+              - listitem [ref=e137]:
+                - link "Privacy & Trust Center" [ref=e138] [cursor=pointer]:
+                  - /url: https://www.dice.com/privacy-center
+              - listitem [ref=e139]:
+                - link "Contact Support" [ref=e140] [cursor=pointer]:
+                  - /url: https://www.dice.com/about/contact-us
+      - generic [ref=e143]:
+        - heading "Get the Dice app." [level=2] [ref=e144]
+        - paragraph [ref=e145]: Unlock your tech potential.
+        - list [ref=e146]:
+          - listitem [ref=e147]:
+            - link "Download on the Apple App Store" [ref=e148] [cursor=pointer]:
+              - /url: https://apps.apple.com/app/id794201100
+              - img "Apple App Store" [ref=e149]
+          - listitem [ref=e160]:
+            - link "Get it on Google Play" [ref=e161] [cursor=pointer]:
+              - /url: https://play.google.com/store/apps/details?id=com.dice.app.jobs&referrer=trackingcode%3DDI_OS_UN_MA_UP&utm_campaign%3DDice%2520Universal%2520Header%2520and%2520Footer&utm_source%3DDice&utm_medium%3DOnsite&utm_content%3DUniversal&utm_term%3DUnpaid
+              - img "Google Play" [ref=e162]
+      - generic [ref=e175]:
+        - paragraph [ref=e177]:
+          - text: Copyright © 1990 - 2026 Dice. All Rights Reserved.
+          - link "Dice" [ref=e178] [cursor=pointer]:
+            - /url: https://www.dice.com
+          - text: is a
+          - link "DHI" [ref=e179] [cursor=pointer]:
+            - /url: https://dhigroupinc.com
+          - text: service.
+        - navigation "Legal and policies" [ref=e180]:
+          - list [ref=e181]:
+            - listitem [ref=e182]:
+              - link "Terms & Conditions" [ref=e183] [cursor=pointer]:
+                - /url: https://www.dice.com/about/terms-and-conditions
+              - text: "|"
+            - listitem [ref=e184]:
+              - link "Privacy Policy" [ref=e185] [cursor=pointer]:
+                - /url: https://www.dice.com/about/privacy-policy
+              - text: "|"
+            - listitem [ref=e186]:
+              - link "End User License Agreement" [ref=e187] [cursor=pointer]:
+                - /url: https://www.dice.com/about/eula
+              - text: "|"
+            - listitem [ref=e188]:
+              - link "Do Not Sell or Share My Personal Information" [ref=e189] [cursor=pointer]:
+                - /url: https://www.dice.com/about/ccpa#ccpa-form-anchor
+  - alert [ref=e190]
+  - button "Feedback" [ref=e191] [cursor=pointer]:
+    - iframe [ref=e192]:
+      - img [ref=f15e2] [cursor=pointer]
+  - iframe [ref=e193]:
+    

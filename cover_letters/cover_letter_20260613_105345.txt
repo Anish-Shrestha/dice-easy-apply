@@ -1,0 +1,13 @@
+June 13, 2026
+
+Dear Hiring Manager,
+
+I am writing to express my keen interest in the Firmware Engineer position at PamTen Inc in Dallas, TX, as advertised on Dice. With 15 years of dedicated experience as a Firmware & Embedded Systems Engineer and an ongoing Ph.D. in Agricultural & Biosystems Engineering, I am confident that my robust skill set and proven track record are precisely what you are seeking. I am actively pursuing new challenges and am open to relocating to Dallas for this opportunity.
+
+My extensive background directly aligns with your crucial requirement for "PC to controller embedded FW driver development." I possess deep proficiency in C/C++, coupled with hands-on expertise in board bring-up, real-time operating systems like FreeRTOS, and critical device drivers including UART, SPI, I2C, RS-485, and Modbus. This practical engineering mastery, combined with my academic pursuit, uniquely positions me to contribute significantly to your embedded FW test automation environments and the development of universal DLLs and drivers.
+
+I am particularly excited by the prospect of applying my skills in a dynamic environment like PamTen Inc, where I can leverage my experience with advanced security protocols and my proactive problem-solving mindset. Thank you for considering my application. I have attached my resume for your review and welcome the opportunity to discuss how my qualifications can benefit your team.
+
+Sincerely,
+
+MANISH MAN SHRESTHA

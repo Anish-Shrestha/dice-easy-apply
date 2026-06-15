@@ -1,0 +1,15 @@
+June 13, 2026
+
+Dear Vaco by Highspring Hiring Team,
+
+I am writing to express my enthusiastic interest in the Firmware Engineer position at Vaco by Highspring in Boca Raton, FL. With 15 years of dedicated experience in firmware and embedded systems development, I am confident my expertise perfectly aligns with the advanced technical requirements of this role. I am open to relocating to Boca Raton and am eager to contribute to your team.
+
+My career has been centered on designing and implementing robust firmware solutions across various platforms, including ARM Cortex-M, ESP32, and PIC microcontrollers. I possess deep proficiency in C/C++, FreeRTOS, and other RTOS environments, coupled with extensive experience in board bring-up, device driver development, and critical communication protocols such as UART, SPI, I2C, RS-485, and Modbus. My background also includes advanced security implementations like TLS, AES, and even post-quantum cryptography, which I believe would be a valuable asset to your projects.
+
+I am particularly keen to leverage my comprehensive background in embedded systems and IoT development to drive innovation at Vaco by Highspring. My proven track record in delivering high-quality, secure, and efficient firmware solutions makes me a strong candidate to immediately impact your engineering initiatives. I am eager to discuss how my skills and passion for firmware engineering can benefit your team.
+
+Thank you for your time and consideration. I look forward to the opportunity to learn more about this role and discuss my qualifications in detail.
+
+Sincerely,
+
+MANISH MAN SHRESTHA

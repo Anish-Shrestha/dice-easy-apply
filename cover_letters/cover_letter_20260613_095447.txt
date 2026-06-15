@@ -1,0 +1,15 @@
+June 13, 2026
+
+Dear Hiring Team,
+
+It appears there might be a discrepancy between the job title and company you provided ('Senior Product Security Engineer - Healthcare' at 'Central Business Solutions') and the detailed job description, which outlines a **Senior Embedded Systems Engineer** role focused on safety-critical aerospace systems. For the purpose of this cover letter, I will proceed by tailoring my application to the comprehensive requirements outlined in the provided job description for a Senior Embedded Systems Engineer specializing in complex, real-time aerospace controls. I am genuinely excited by the prospect of contributing to your innovative approach to designing and scaling aircraft, leveraging my 15 years of experience in embedded firmware and IoT development.
+
+My deep proficiency in **Embedded C/C++** and extensive experience with real-time operating systems such as **FreeRTOS** position me perfectly to architect supervisory layers and deterministic frameworks for safety-critical systems. I have a proven track record in **board bring-up**, device driver development, and designing complex state machines for multi-subsystem coordination, directly aligning with your needs for mission and supervisory logic. While my core expertise lies in various communication protocols like UART, SPI, I2C, RS-485, and Modbus, I am adept at rapidly acquiring proficiency in new interface architectures such as CAN or ARINC, crucial for aerospace buses. My ongoing Ph.D. studies further hone my analytical rigor and problem-solving capabilities essential for high-stakes environments.
+
+I am particularly drawn to your "builder-first" culture and the opportunity to lead technical integration and complex debugging across hardware, firmware, and system boundaries. My comprehensive background in robust embedded systems development, complemented by my experience in security protocols (TLS, AES), uniquely prepares me to ensure system robustness. I am eager to relocate to Burlington, MA, and contribute to a team that moves fast and thinks big.
+
+Thank you for considering my application. I am confident that my skills and dedication make me an ideal candidate for this challenging role and look forward to discussing my qualifications further.
+
+Sincerely,
+
+MANISH MAN SHRESTHA

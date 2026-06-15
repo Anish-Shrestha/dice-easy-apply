@@ -1,0 +1,134 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^python3 -c \"\ntry:\n    import pdfplumber\n    with pdfplumber\\.open\\(r'c:\\\\Users\\\\ashrestha\\\\OneDrive - Alliant Insurance Services, Inc\\\\Documents\\\\Manish\\\\final\\\\resume\\.pdf'\\) as pdf:\n        text = ''\n        for page in pdf\\.pages:\n            text \\+= page\\.extract_text\\(\\) or ''\n    print\\(text\\[:5000\\]\\)\nexcept ImportError:\n    print\\('pdfplumber not installed'\\)\n    try:\n        import PyPDF2\n        with open\\(r'c:\\\\Users\\\\ashrestha\\\\OneDrive - Alliant Insurance Services, Inc\\\\Documents\\\\Manish\\\\final\\\\resume\\.pdf', 'rb'\\) as f:\n            reader = PyPDF2\\.PdfReader\\(f\\)\n            text = ''\n            for page in reader\\.pages:\n                text \\+= page\\.extract_text\\(\\) or ''\n        print\\(text\\[:5000\\]\\)\n    except ImportError:\n        print\\('PyPDF2 not installed either'\\)\n\" 2>&1$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "Get-Command": true,
+        "where.exe": true,
+        "/^py -c \"\ntry:\n    import pdfplumber\n    with pdfplumber\\.open\\(r'c:\\\\Users\\\\ashrestha\\\\OneDrive - Alliant Insurance Services, Inc\\\\Documents\\\\Manish\\\\final\\\\resume\\.pdf'\\) as pdf:\n        text = ''\n        for page in pdf\\.pages:\n            text \\+= page\\.extract_text\\(\\) or ''\n    print\\(text\\[:6000\\]\\)\nexcept ImportError:\n    print\\('pdfplumber not installed'\\)\n    try:\n        import PyPDF2\n        with open\\(r'c:\\\\Users\\\\ashrestha\\\\OneDrive - Alliant Insurance Services, Inc\\\\Documents\\\\Manish\\\\final\\\\resume\\.pdf', 'rb'\\) as f:\n            reader = PyPDF2\\.PdfReader\\(f\\)\n            text = ''\n            for page in reader\\.pages:\n                text \\+= page\\.extract_text\\(\\) or ''\n        print\\(text\\[:6000\\]\\)\n    except ImportError:\n        print\\('PyPDF2 not installed either'\\)\n\" 2>&1$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^py -m pip install pdfplumber -q 2>&1; py -c \"\nimport pdfplumber\nwith pdfplumber\\.open\\(r'c:\\\\Users\\\\ashrestha\\\\OneDrive - Alliant Insurance Services, Inc\\\\Documents\\\\Manish\\\\final\\\\resume\\.pdf'\\) as pdf:\n    text = ''\n    for page in pdf\\.pages:\n        text \\+= page\\.extract_text\\(\\) or ''\nprint\\(text\\[:7000\\]\\)\n\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "New-Item": true,
+        "Out-Null": true,
+        "Move-Item": true,
+        "/^Set-Location \"C:\\\\Users\\\\ashrestha\\\\OneDrive - Alliant Insurance Services, Inc\\\\Documents\\\\Manish\\\\final\"; \\.\\\\dice_workflow\\.ps1 -Action ListEasyApply$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^Set-Location \"C:\\\\Users\\\\ashrestha\\\\OneDrive - Alliant Insurance Services, Inc\\\\Documents\\\\Manish\\\\final\"; \\.\\\\dice_workflow\\.ps1 -Action ListManualApply$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^Set-Location \"C:\\\\Users\\\\ashrestha\\\\OneDrive - Alliant Insurance Services, Inc\\\\Documents\\\\Manish\\\\final\"; \\.\\\\dice_workflow\\.ps1 -Action UpdateStatus -Status Skipped -Company \"TEST_COMPANY\" -Role \"TEST_ROLE\" -Location \"TEST_LOCATION\" -Link \"https://www\\.dice\\.com/job-detail/test\" -Notes \"TEST_SKIP_ENTRY\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^\\$path = \"C:\\\\Users\\\\ashrestha\\\\OneDrive - Alliant Insurance Services, Inc\\\\Documents\\\\Manish\\\\final\\\\job_search\\\\job_application_tracker\\.xlsx\"; \\$excel = New-Object -ComObject Excel\\.Application; \\$excel\\.Visible=\\$false; \\$excel\\.DisplayAlerts=\\$false; \\$wb=\\$excel\\.Workbooks\\.Open\\(\\$path\\); \\$ws=\\$wb\\.Worksheets\\.Item\\(1\\); \\$xlUp=-4162; \\$last=\\$ws\\.Cells\\(\\$ws\\.Rows\\.Count,1\\)\\.End\\(\\$xlUp\\)\\.Row; for\\(\\$r=\\$last; \\$r -ge 2; \\$r--\\)\\{ if\\(\\[string\\]\\$ws\\.Cells\\.Item\\(\\$r,2\\)\\.Text -eq \"TEST_COMPANY\" -and \\[string\\]\\$ws\\.Cells\\.Item\\(\\$r,3\\)\\.Text -eq \"TEST_ROLE\"\\)\\{ \\$ws\\.Rows\\.Item\\(\\$r\\)\\.Delete\\(\\) \\} \\}; \\$wb\\.Save\\(\\); \\$wb\\.Close\\(\\$true\\); \\$excel\\.Quit\\(\\); \\[void\\]\\[System\\.Runtime\\.InteropServices\\.Marshal\\]::ReleaseComObject\\(\\$ws\\); \\[void\\]\\[System\\.Runtime\\.InteropServices\\.Marshal\\]::ReleaseComObject\\(\\$wb\\); \\[void\\]\\[System\\.Runtime\\.InteropServices\\.Marshal\\]::ReleaseComObject\\(\\$excel\\); \\[GC\\]::Collect\\(\\); \\[GC\\]::WaitForPendingFinalizers\\(\\); Write-Host \"Removed test row from tracker\\.\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^Set-Location \"C:\\\\Users\\\\ashrestha\\\\OneDrive - Alliant Insurance Services, Inc\\\\Documents\\\\Manish\\\\final\"; \\.\\\\dice_workflow\\.ps1 -Action UpdateStatus -Status Skipped -Company \"TEST_COMPANY\" -Role \"TEST_ROLE\" -Location \"TEST_LOCATION\" -Link \"https://www\\.dice\\.com/job-detail/test\" -Notes \"TEST_SKIP_ENTRY\" -NoCoverLetterPrompt$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        ".\\dice_workflow.ps1": true,
+        "Test-Path": true,
+        "/^Set-Location \"C:\\\\Users\\\\ashrestha\\\\OneDrive - Alliant Insurance Services, Inc\\\\Documents\\\\Manish\\\\final\"; \\$word=\\$null; \\$doc=\\$null; try \\{ \\$word = New-Object -ComObject Word\\.Application; \\$word\\.Visible=\\$false; \\$word\\.DisplayAlerts=0; \\$doc=\\$word\\.Documents\\.Add\\(\\); \\$doc\\.Content\\.Text = \"Test cover letter export\"; \\$docPath = \"C:\\\\Users\\\\ashrestha\\\\OneDrive - Alliant Insurance Services, Inc\\\\Documents\\\\Manish\\\\final\\\\cover_letters\\\\_test_export\\.docx\"; \\$pdfPath = \"C:\\\\Users\\\\ashrestha\\\\OneDrive - Alliant Insurance Services, Inc\\\\Documents\\\\Manish\\\\final\\\\cover_letters\\\\_test_export\\.pdf\"; try \\{ \\$doc\\.SaveAs2\\(\\$docPath,16\\) \\} catch \\{ \\$doc\\.SaveAs\\(\\$docPath,16\\) \\}; \\$doc\\.ExportAsFixedFormat\\(\\$pdfPath,17\\); if\\(\\(Test-Path \\$docPath\\) -and \\(Test-Path \\$pdfPath\\)\\)\\{ \"OK\" \\} else \\{ \"FAILED\" \\} \\} finally \\{ if\\(\\$doc -ne \\$null\\)\\{ \\$doc\\.Close\\(\\$false\\) \\}; if\\(\\$word -ne \\$null\\)\\{ \\$word\\.Quit\\(\\) \\}; if\\(\\$doc -ne \\$null\\)\\{ \\[void\\]\\[System\\.Runtime\\.InteropServices\\.Marshal\\]::ReleaseComObject\\(\\$doc\\) \\}; if\\(\\$word -ne \\$null\\)\\{ \\[void\\]\\[System\\.Runtime\\.InteropServices\\.Marshal\\]::ReleaseComObject\\(\\$word\\) \\}; \\[GC\\]::Collect\\(\\); \\[GC\\]::WaitForPendingFinalizers\\(\\) \\}$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^Set-Location \"C:\\\\Users\\\\ashrestha\\\\OneDrive - Alliant Insurance Services, Inc\\\\Documents\\\\Manish\\\\final\"; \\$content = Get-Content -Raw -Path \"\\.\\\\job_search\\\\leads\\\\job_leads\\.md\"; \\$rows = \\(\\$content -split \"`r\\?`n\"\\) \\| Where-Object \\{ \\$_ -match '\\^\\\\\\|' -and \\$_ -match '\\\\\\[Apply\\\\\\]\\\\\\(https://www\\\\\\.dice\\\\\\.com/job-detail/' -and \\$_ -match 'To Apply' \\}; if\\(-not \\$rows -or \\$rows\\.Count -eq 0\\)\\{ throw \"No pending Dice jobs found in leads file\\.\" \\}; \\$row = \\$rows\\[0\\]; \\$parts = \\$row\\.Split\\('\\|'\\) \\| ForEach-Object \\{ \\$_\\.Trim\\(\\) \\}; \\$role = \\$parts\\[2\\]; \\$company = \\$parts\\[3\\]; \\$location = \\$parts\\[4\\]; \\$link = \\[regex\\]::Match\\(\\$row,'https://www\\\\\\.dice\\\\\\.com/job-detail/\\[A-Za-z0-9\\\\-\\]\\+'\\)\\.Value; if\\(\\[string\\]::IsNullOrWhiteSpace\\(\\$link\\)\\)\\{ throw \"Could not parse job link from pending row\\.\" \\}; Write-Output \"Applying A to: \\$company \\| \\$role \\| \\$location \\| \\$link\"; \\.\\\\dice_workflow\\.ps1 -Action UpdateStatus -Status Applied -Company \\$company -Role \\$role -Location \\$location -Link \\$link -Notes \"Applied \\(captured from A response\\)\\.\" -NoCoverLetterPrompt$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^Set-Location \"C:\\\\Users\\\\ashrestha\\\\OneDrive - Alliant Insurance Services, Inc\\\\Documents\\\\Manish\\\\final\"; \\.\\\\dice_workflow_easy_apply\\.ps1 -Action Start$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^Set-Location \"C:\\\\Users\\\\ashrestha\\\\OneDrive - Alliant Insurance Services, Inc\\\\Documents\\\\Manish\\\\final\"; \\.\\\\dice_workflow_easy_apply\\.ps1 -Action UpdateStatus -Status Applied -Company \"Motion Recruitment\" -Role \"Senior Embedded Engineer / Linux, IoT\" -Location \"Irvine, CA \\(Onsite\\)\" -Link \"https://www\\.dice\\.com/job-detail/63beeb5e-03ca-4e28-86b1-5b2361d37d16\" -Notes \"Applied \\(corrected after optional-note mis-entry\\)\\.\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        ".\\dice_workflow_easy_apply.ps1": true,
+        "/^Set-Location \"C:\\\\Users\\\\ashrestha\\\\OneDrive - Alliant Insurance Services, Inc\\\\Documents\\\\Manish\\\\final\"; \\$state = Get-Content -Path \"\\.\\\\job_search\\\\config\\\\dice_search_state\\.md\"; \\$pending = @\\(\\); foreach\\(\\$line in \\$state\\)\\{ if\\(\\$line -match 'https://www\\\\\\.dice\\\\\\.com/job-detail/\\[A-Za-z0-9\\\\-\\]\\+' -and \\$line -match 'To Apply'\\)\\{ \\$link=\\[regex\\]::Match\\(\\$line,'https://www\\\\\\.dice\\\\\\.com/job-detail/\\[A-Za-z0-9\\\\-\\]\\+'\\)\\.Value; \\$pending \\+= \\$link \\} \\}; \\$pending = \\$pending \\| Select-Object -Unique; if\\(-not \\$pending -or \\$pending\\.Count -eq 0\\)\\{ throw 'No pending Dice links found in dice_search_state\\.md' \\}; \\$target = \\$pending\\[0\\]; Write-Output \"NEXT_PENDING_LINK=\\$target\"; \\$lead = \\(Get-Content -Path \"\\.\\\\job_search\\\\leads\\\\job_leads\\.md\"\\) \\| Where-Object \\{ \\$_ -match \\[regex\\]::Escape\\(\\$target\\) \\} \\| Select-Object -First 1; if\\(-not \\$lead\\)\\{ throw \"Could not find lead row for \\$target\" \\}; \\$parts = \\$lead\\.Split\\('\\|'\\) \\| ForEach-Object \\{ \\$_\\.Trim\\(\\) \\}; \\$role=\\$parts\\[2\\]; \\$company=\\$parts\\[3\\]; \\$location=\\$parts\\[4\\]; Write-Output \"ROW=\\$company \\| \\$role \\| \\$location\"; \\.\\\\dice_workflow_easy_apply\\.ps1 -Action UpdateStatus -Status Applied -Company \\$company -Role \\$role -Location \\$location -Link \\$target -Notes \"Applied \\(captured from user response\\)\\.\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^Set-Location \"C:\\\\Users\\\\ashrestha\\\\OneDrive - Alliant Insurance Services, Inc\\\\Documents\\\\Manish\\\\final\"; Write-Host \"=== APPLIED/SKIPPED \\(link status registry\\) ===\"; if\\(Test-Path \"job_search\\\\tracker\\\\easy_apply_link_status\\.csv\"\\)\\{ Import-Csv \"job_search\\\\tracker\\\\easy_apply_link_status\\.csv\" \\| Format-Table Date,Status,Company,Role -AutoSize \\} else \\{ \"No registry yet\\.\" \\}; Write-Host \"\"; Write-Host \"=== ALL LEADS \\(job_leads\\.md\\) ===\"; Get-Content \"job_search\\\\leads\\\\job_leads\\.md\" \\| Where-Object \\{ \\$_ -match \"dice\\.com/job-detail\" \\}$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "New-Object": true,
+        "ForEach-Object": true,
+        ".": true,
+        "Invoke-GoogleAICoverLetter": true,
+        "npm install": true,
+        "/^azd provision --no-prompt$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^azd env set AZURE_LOCATION \"centralus\" ; azd provision --no-prompt$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^azd env set AZURE_LOCATION \"eastus2\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^azd env list-defaults$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^azd env get-values \\| Select-String \"AZURE_LOCATION\\|AZURE_ENV_NAME\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^az group list -o table \\| Select-String \"rg-dice\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^azd down --force$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^azd deploy --no-prompt$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^npm cache clean --force$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^cd \"C:\\\\Users\\\\ashrestha\\\\OneDrive - Alliant Insurance Services, Inc\\\\Documents\\\\Manish\\\\final\\\\dice-easy-apply-angular\" ; npm run build 2>&1 \\| tail -20$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^\\$rg = \"rg-dice-prod\"; \\$name = \"swa-jk7laromye55a\"; az staticwebapp secrets list --name \\$name --resource-group \\$rg --query \"properties\\.apiKey\" -o tsv$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^\\$token = az account get-access-token --query accessToken -o tsv; Write-Output \"Token acquired: \\$\\(\\$token\\.Substring\\(0,20\\)\\)\\.\\.\\.\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^cd \"C:\\\\Users\\\\ashrestha\\\\OneDrive - Alliant Insurance Services, Inc\\\\Documents\\\\Manish\\\\final\" ; git remote -v 2>&1 ; Write-Output \"Git not initialized\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^cd \"C:\\\\Users\\\\ashrestha\\\\OneDrive - Alliant Insurance Services, Inc\\\\Documents\\\\Manish\\\\final\" ; azd show$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^cd \"C:\\\\Users\\\\ashrestha\\\\OneDrive - Alliant Insurance Services, Inc\\\\Documents\\\\Manish\\\\final\" ; \\.\\\\deploy-to-swa\\.ps1$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    },
+    "angular.enable-strict-mode-prompt": false
+}

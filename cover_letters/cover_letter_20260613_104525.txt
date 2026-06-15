@@ -1,0 +1,17 @@
+June 13, 2026
+
+Hiring Team
+TekisHub Consulting Services
+Seattle, WA
+
+Dear TekisHub Consulting Services Hiring Team,
+
+I am writing to express my enthusiastic interest in the Firmware Engineer-UEFI position, as advertised on Dice. With 15 years of dedicated experience in embedded firmware and IoT development, I am confident that my robust background in designing, developing, and optimizing embedded software solutions aligns perfectly with your requirements for a Senior C++ / Embedded Software Engineer. My extensive expertise in low-level programming and system-level debugging makes me an ideal candidate to contribute to your complex systems and devices.
+
+My technical proficiencies directly address the core needs of this role. I possess strong proficiency in C/C++ (including modern C++ standards), coupled with significant experience across various embedded Linux and RTOS environments, notably FreeRTOS. I have a proven track record in board bring-up, developing device drivers, and working with critical hardware interfaces such as UART, SPI, and I2C on ARM-based systems. My career has involved tackling intricate software and hardware interaction issues, performing rigorous system integration, and optimizing performance, all skills crucial for this position.
+
+I am eager to leverage my deep understanding of embedded architectures and my problem-solving capabilities to contribute to TekisHub Consulting Services. I am readily open to relocating to Seattle and am excited by the prospect of collaborating with your hardware, firmware, and cross-functional engineering teams. Thank you for your time and consideration; I look forward to discussing how my expertise can drive success for your projects.
+
+Sincerely,
+
+MANISH MAN SHRESTHA

@@ -1,0 +1,19 @@
+June 13, 2026
+
+Hiring Team
+Asterism IT Solutions
+Los Angeles, California
+
+Dear Hiring Team,
+
+I am writing to express my enthusiastic interest in the Embedded Software Engineer – Munition System position at Asterism IT Solutions, as advertised on Dice. With over 15 years of dedicated experience in embedded firmware and IoT development, I am eager to leverage my expertise to contribute to your mission of revolutionizing aerospace. Your focus on combining start-up agility with aerospace expertise resonates deeply with my background in architecting complex real-time systems and driving innovation.
+
+My extensive background aligns closely with the technical leadership required for this role, particularly in developing the "brain" of safety-critical systems. I possess deep proficiency in Embedded C/C++ and have vast experience with real-time operating systems (RTOS) like FreeRTOS across various microcontrollers, including ARM Cortex-M, ESP32, PIC, and 8051 architectures. This foundation enables me to design robust embedded software architectures with an emphasis on deterministic execution, crucial for managing supervisory layers and complex state machines. My skills in board bring-up and device driver development also directly support the cross-functional lead responsibilities in hardware integration and lab validation.
+
+While my resume highlights expertise in protocols like UART, SPI, I2C, and RS-485, I am adept at quickly mastering new interface architectures and am confident in my ability to apply my foundational knowledge to specialized aerospace buses. I am a proven technical leader passionate about developing resilient, high-performance systems and am particularly drawn to your commitment to a builder-first culture. I am confident that my experience and drive make me an ideal candidate to contribute to your advanced munition system development.
+
+Thank you for considering my application. I am open to relocation to Los Angeles and am available for an interview at your earliest convenience to discuss how my skills and experience can directly benefit Asterism IT Solutions.
+
+Sincerely,
+
+MANISH MAN SHRESTHA

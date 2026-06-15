@@ -1,0 +1,13 @@
+June 13, 2026
+
+Dear Toyota Material Handling North America Hiring Team,
+
+I am writing with great enthusiasm to express my interest in the Telematics Software Engineer position, as advertised on Dice. With 15 years of dedicated experience in embedded firmware and IoT development, coupled with my ongoing Ph.D. studies, I am confident my deep technical expertise and systems-level thinking align perfectly with your requirements for architecting and integrating advanced telematics solutions for industrial vehicle platforms.
+
+My background directly addresses the need for a highly capable engineer to define how hardware subsystems interact with embedded firmware and cloud systems. I possess extensive experience in C/C++, FreeRTOS, and RTOS environments, leading board bring-up and developing robust device drivers for various communication protocols including UART, SPI, I2C, RS-485, and Modbus. My expertise in building secure IoT devices, integrating complex sensing technologies, and strong troubleshooting skills are directly applicable to driving the development and validation of key telematics features in rugged, real-world environments, connecting vehicle data from edge to cloud.
+
+Toyota Material Handling's commitment to innovation and its foundational principles of "respect for people" and "continuous improvement" resonate strongly with my professional values. I am eager to contribute my hands-on skills and collaborative spirit to your team in Greene, NY, and am open to relocation. Thank you for considering my application; I look forward to discussing how my experience can benefit Toyota Material Handling North America.
+
+Sincerely,
+
+MANISH MAN SHRESTHA

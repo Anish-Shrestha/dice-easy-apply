@@ -1,0 +1,112 @@
+<div class="grid-page-container">
+  <div class="grid-header">
+    <div>
+      <h2>Jobs Grid View</h2>
+      <p>Complete tracker status table with sorting and filters</p>
+    </div>
+    <button class="refresh-btn" (click)="refreshFromTracker()" [disabled]="isLoading">
+      {{ isLoading ? 'Refreshing...' : 'Refresh from Tracker' }}
+    </button>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card total">
+      <div class="label">Total</div>
+      <div class="value">{{ stats.total }}</div>
+    </div>
+    <div class="stat-card to-apply">
+      <div class="label">To Apply</div>
+      <div class="value">{{ stats.toApply }}</div>
+    </div>
+    <div class="stat-card applied">
+      <div class="label">Applied</div>
+      <div class="value">{{ stats.applied }}</div>
+    </div>
+    <div class="stat-card skipped">
+      <div class="label">Skipped</div>
+      <div class="value">{{ stats.skipped }}</div>
+    </div>
+    <div class="stat-card pending">
+      <div class="label">Pending</div>
+      <div class="value">{{ stats.pending }}</div>
+    </div>
+  </div>
+
+  <div class="filters-panel">
+    <div class="filter-group search-group">
+      <label for="search">Search</label>
+      <input id="search" type="text" [(ngModel)]="searchText" (input)="onFilterChange()" placeholder="Role, company, location, summary, link" />
+    </div>
+
+    <div class="filter-group">
+      <label for="status">Status</label>
+      <select id="status" [(ngModel)]="selectedStatus" (change)="onFilterChange()">
+        <option value="All">All</option>
+        <option value="To Apply">To Apply</option>
+        <option value="Applied">Applied</option>
+        <option value="Skipped">Skipped</option>
+        <option value="Pending">Pending</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="workType">Work Type</label>
+      <select id="workType" [(ngModel)]="selectedWorkType" (change)="onFilterChange()">
+        <option value="All">All</option>
+        <option value="Remote">Remote</option>
+        <option value="Hybrid">Hybrid</option>
+        <option value="Onsite">Onsite</option>
+        <option value="Unknown">Unknown</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="minScore">Min Score</label>
+      <input id="minScore" type="number" [(ngModel)]="minScore" (input)="onFilterChange()" min="0" max="100" />
+    </div>
+
+    <div class="filter-group clear-group">
+      <button class="clear-btn" (click)="clearFilters()">Clear Filters</button>
+    </div>
+  </div>
+
+  <div class="table-meta">Showing {{ filteredJobs.length }} of {{ jobs.length }} jobs</div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th (click)="onSort('status')">Status {{ getSortLabel('status') }}</th>
+          <th (click)="onSort('role')">Role {{ getSortLabel('role') }}</th>
+          <th (click)="onSort('company')">Company {{ getSortLabel('company') }}</th>
+          <th (click)="onSort('location')">Location {{ getSortLabel('location') }}</th>
+          <th (click)="onSort('workType')">Work Type {{ getSortLabel('workType') }}</th>
+          <th (click)="onSort('score')">Score {{ getSortLabel('score') }}</th>
+          <th>Salary</th>
+          <th>Summary</th>
+          <th (click)="onSort('dateUpdated')">Updated {{ getSortLabel('dateUpdated') }}</th>
+          <th>Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let job of filteredJobs; trackBy: trackByLink" (click)="loadInWorkflow(job)" class="clickable-row">
+          <td>
+            <span class="status-pill" [ngClass]="getStatusClass(job.status)">{{ job.status || 'To Apply' }}</span>
+          </td>
+          <td>{{ job.role || 'Role Not Available' }}</td>
+          <td>{{ job.company || 'Company Not Available' }}</td>
+          <td>{{ job.location || 'Location Not Available' }}</td>
+          <td>{{ job.workType || 'Unknown' }}</td>
+          <td class="score-cell">{{ job.score || 0 }}</td>
+          <td>{{ job.salary || 'N/A' }}</td>
+          <td class="summary-cell">{{ job.summary || 'N/A' }}</td>
+          <td>{{ job.dateUpdated || job.dateAdded || 'N/A' }}</td>
+          <td>
+            <a *ngIf="job.link" [href]="job.link" target="_blank" rel="noopener">Open</a>
+            <span *ngIf="!job.link">N/A</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

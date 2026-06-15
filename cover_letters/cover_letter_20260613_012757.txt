@@ -1,0 +1,16 @@
+June 13, 2026
+
+Dear Hiring Manager,
+
+I am writing to express my strong interest in the  position at Motion Recruitment Partners, LLC, located in Arlington, Virginia. With 15 years of experience in firmware and embedded systems development, including extensive expertise in ARM Cortex-M, ESP32, and real-time operating systems, I am confident in my ability to contribute meaningfully to your team.
+
+Throughout my career, I have demonstrated proficiency in C/C++, device drivers, board bring-up, and communication protocols including UART, SPI, I2C, and Modbus/RS-485. My experience with FreeRTOS and RTOS development, combined with my background in embedded security (TLS, AES, ChaCha20-Poly1305), positions me well for this role. I have led end-to-end firmware work from architecture and implementation through validation and field deployment, ensuring reliability and performance on resource-constrained platforms.
+
+I am particularly drawn to this opportunity because it aligns with my technical strengths and professional goals. I thrive in collaborative environments and am committed to delivering production-ready embedded solutions that meet the highest standards of quality and security.
+
+I would welcome the opportunity to discuss how my experience and skills can contribute to your organization's success. Thank you for considering my application.
+
+Sincerely,
+MANISH MAN SHRESTHA
+mshrestha789@gmail.com
++1-605-592-4473

@@ -1,0 +1,11 @@
+name: dice-easy-apply
+metadata:
+  template: custom-angular-static-web-app
+infra:
+  provider: bicep
+  path: infra
+services:
+  web:
+    project: dice-easy-apply-angular
+    language: js
+    host: staticwebapp

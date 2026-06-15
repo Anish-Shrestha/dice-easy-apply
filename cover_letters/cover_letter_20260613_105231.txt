@@ -1,0 +1,15 @@
+June 13, 2026
+
+Dear Reveille Technologies Hiring Team,
+
+I am writing to enthusiastically recommend Manish Man Shrestha for the Embedded Developer - Senior Principal Engineer, Software/Firmware position in Redmond, WA. With 15 years of dedicated experience in embedded firmware and IoT development, Manish is a highly accomplished engineer whose foundational skills and leadership capabilities align perfectly with the demands of this senior role. His proven track record in intricate embedded systems makes him an exceptional candidate for your team.
+
+Manish possesses deep expertise in **C/C++ firmware development**, a critical requirement for this position. His extensive background spans various **SoC-based embedded platforms**, including ARM Cortex-M, ESP32, PIC, and 8051, demonstrating his ability to architect and implement robust solutions across diverse hardware. He excels in essential areas such as board bring-up, device driver development, and securing embedded systems with advanced cryptographic protocols. This comprehensive skill set ensures he is well-equipped to manage complex projects from alpha bring-up through to GA release, including architecting resilient **firmware upgrade mechanisms** and robust bootloader designs.
+
+Manish is eager to leverage his architectural and implementation expertise within a challenging environment. His extensive experience in end-to-end program delivery, combined with his strong problem-solving and debugging skills, positions him as an ideal leader to contribute significantly to your coherent optical module firmware initiatives. I am confident that his profound understanding of embedded systems will quickly translate into substantial contributions for Reveille Technologies.
+
+Thank you for considering Manish Man Shrestha. I look forward to discussing his qualifications further.
+
+Sincerely,
+
+MANISH MAN SHRESTHA

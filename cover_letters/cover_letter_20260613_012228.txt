@@ -1,0 +1,19 @@
+June 13, 2026
+
+Motion Recruitment Partners, LLC
+[Hiring Manager Name/Title, if known, otherwise general]
+[Company Address, if known]
+
+Dear Hiring Team,
+
+I am writing to express my enthusiastic interest in the highly specialized cybersecurity role focusing on next-generation hardware and firmware security within your client firm, as advertised on Dice. With 15 years of dedicated experience in embedded firmware and IoT development, coupled with my current Ph.D. research, I possess a deep foundational understanding of low-level systems that aligns perfectly with the unique challenges of this position.
+
+My expertise in C/C++, ARM Cortex-M microcontrollers, and low-level system development, including board bring-up and device drivers, provides a robust platform for the required hands-on reverse engineering of embedded hardware and firmware. While my direct experience in offensive security is evolving, my background in implementing secure protocols like TLS, AES, and post-quantum cryptography demonstrates a profound understanding of security vulnerabilities and the mechanisms to protect against them. I am eager to apply my assembly language development experience and systems knowledge to vulnerability research and exploitation techniques.
+
+The opportunity to tackle "genuinely unsolved problems" that directly impact national and commercial security infrastructure is incredibly compelling. I am confident in my ability to thrive in an autonomous research environment, lead projects, and collaborate with a specialized team, contributing significantly to both technical advancements and new tooling development. I am fully prepared to obtain a US security clearance and am excited about the prospect of bringing my unique skill set and passion for advanced research to your client.
+
+Thank you for considering my application. I look forward to discussing how my experience and passion can contribute to your team's groundbreaking work.
+
+Sincerely,
+
+MANISH MAN SHRESTHA

@@ -1,0 +1,1104 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - banner [ref=e4]:
+        - generic [ref=e5]:
+          - link "Dice Home" [ref=e6] [cursor=pointer]:
+            - /url: /home-feed
+            - img "Dice Logo" [ref=e8]
+          - navigation "Main navigation" [ref=e11]:
+            - link "Job Search" [ref=e13] [cursor=pointer]:
+              - /url: https://www.dice.com/jobs
+              - generic [ref=e14]:
+                - generic [ref=e17]:
+                  - img [ref=e19]
+                  - img [ref=e22]
+                - text: Job Search
+            - link "Companies" [ref=e26] [cursor=pointer]:
+              - /url: https://www.dice.com/companies
+              - generic [ref=e27]: Companies
+            - button "Career Resources" [ref=e30] [cursor=pointer]:
+              - generic [ref=e31]: Career Resources
+              - img [ref=e32]
+          - generic [ref=e34]:
+            - navigation "Actions" [ref=e35]:
+              - link "Messages" [ref=e37] [cursor=pointer]:
+                - /url: https://www.dice.com/message-center
+                - generic [ref=e40]:
+                  - img [ref=e42]
+                  - img [ref=e46]
+              - link "Connect" [ref=e50] [cursor=pointer]:
+                - /url: https://www.dice.com/dashboard/connections/
+                - generic [ref=e53]:
+                  - img [ref=e55]
+                  - img [ref=e58]
+            - navigation "Account" [ref=e63]:
+              - button "Manish Shrestha" [ref=e66] [cursor=pointer]:
+                - generic [ref=e68]: MS
+                - img [ref=e69]
+      - generic [ref=e71]:
+        - navigation [ref=e73]:
+          - list [ref=e74]:
+            - listitem [ref=e75]:
+              - link "Search Jobs" [ref=e76] [cursor=pointer]:
+                - /url: /jobs
+                - generic [ref=e77]:
+                  - img [ref=e78]
+                  - text: Search Jobs
+            - listitem [ref=e80]:
+              - link "Recommended Jobs" [ref=e81] [cursor=pointer]:
+                - /url: /recommended-jobs
+                - generic [ref=e82]: Recommended Jobs
+        - generic [ref=e83]:
+          - region "Search bar" [ref=e88]:
+            - group [ref=e90]:
+              - combobox "Job title, skill, company, keyword" [ref=e91]: firmware embedded engineer
+            - separator [ref=e92]
+            - group [ref=e94]:
+              - combobox "Location Field" [ref=e95]
+            - button "Search" [ref=e96] [cursor=pointer]:
+              - img [ref=e98]
+          - generic [ref=e102]:
+            - generic [ref=e103]:
+              - generic [ref=e104]:
+                - button "All filters" [ref=e105] [cursor=pointer]:
+                  - generic [ref=e106]:
+                    - img [ref=e107]
+                    - text: All filters
+                - group "Active Search Filters" [ref=e112]:
+                  - button "Easy Apply" [ref=e114] [cursor=pointer]:
+                    - generic [ref=e115]:
+                      - text: Easy Apply
+                      - img [ref=e116]
+                  - button "Full Time" [ref=e119] [cursor=pointer]:
+                    - generic [ref=e120]:
+                      - text: Full Time
+                      - img [ref=e121]
+                - button "Clear filters" [ref=e123] [cursor=pointer]:
+                  - generic [ref=e124]: Clear filters
+              - button "Set Job Alert" [ref=e127] [cursor=pointer]:
+                - generic [ref=e128]:
+                  - text: Set Job Alert
+                  - img [ref=e129]
+            - generic:
+              - button "drawer-background"
+              - generic [ref=e132]:
+                - button "Close" [ref=e134] [cursor=pointer]:
+                  - img [ref=e135]
+                  - generic [ref=e137]: Close
+                - heading "Filter Results" [level=2] [ref=e139]
+                - region "Drawer content" [ref=e140]:
+                  - generic [ref=e141]:
+                    - generic [ref=e143]:
+                      - generic [ref=e144] [cursor=pointer]:
+                        - heading [level=3] [ref=e145]:
+                          - img [ref=e146]
+                          - text: Job post features
+                        - img [ref=e148]
+                      - generic [ref=e150]:
+                        - paragraph [ref=e151]: Selecting these options will only show you job post results that have these features.
+                        - generic [ref=e152]:
+                          - checkbox "Easy apply (40)" [checked] [ref=e154]
+                          - img [ref=e156] [cursor=pointer]
+                          - text: Easy apply (40)
+                    - generic [ref=e160]:
+                      - generic [ref=e161] [cursor=pointer]:
+                        - heading [level=3] [ref=e162]:
+                          - img [ref=e163]
+                          - text: Posted date
+                        - img [ref=e175]
+                      - generic [ref=e177]:
+                        - paragraph [ref=e178]: This is the date the job was posted by a recruiter or employer. Select one.
+                        - radiogroup "This is the date the job was posted by a recruiter or employer. Select one." [ref=e179]:
+                          - generic [ref=e180]:
+                            - generic [ref=e181]:
+                              - radio "No preference" [checked] [ref=e183]
+                              - img [ref=e185] [cursor=pointer]
+                              - text: No preference
+                            - generic [ref=e188]:
+                              - radio "Today (6)" [ref=e190]
+                              - img [ref=e192] [cursor=pointer]
+                              - text: Today (6)
+                            - generic [ref=e194]:
+                              - radio "Last 3 days (11)" [ref=e196]
+                              - img [ref=e198] [cursor=pointer]
+                              - text: Last 3 days (11)
+                            - generic [ref=e200]:
+                              - radio "Last 7 days (13)" [ref=e202]
+                              - img [ref=e204] [cursor=pointer]
+                              - text: Last 7 days (13)
+                    - generic [ref=e207]:
+                      - generic [ref=e208] [cursor=pointer]:
+                        - heading [level=3] [ref=e209]:
+                          - img [ref=e210]
+                          - text: Work settings
+                        - img [ref=e213]
+                      - generic [ref=e215]:
+                        - paragraph [ref=e216]: Are you thinking jammies or something more formal? You can select multiple options.
+                        - generic "Are you thinking jammies or something more formal? You can select multiple options." [ref=e217]:
+                          - generic [ref=e218]:
+                            - generic [ref=e219]:
+                              - checkbox "Remote" [ref=e221]
+                              - img [ref=e223] [cursor=pointer]
+                              - text: Remote
+                            - text: Work from anywhere (exceptions may apply)
+                          - generic [ref=e225]:
+                            - generic [ref=e226]:
+                              - checkbox "Hybrid" [ref=e228]
+                              - img [ref=e230] [cursor=pointer]
+                              - text: Hybrid
+                            - text: Divide your time between the office and home
+                          - generic [ref=e232]:
+                            - generic [ref=e233]:
+                              - checkbox "On-Site" [ref=e235]
+                              - img [ref=e237] [cursor=pointer]
+                              - text: On-Site
+                            - text: Work in person at an office
+                    - generic [ref=e240]:
+                      - generic [ref=e241] [cursor=pointer]:
+                        - heading [level=3] [ref=e242]:
+                          - img [ref=e243]
+                          - text: Employment type
+                        - img [ref=e246]
+                      - generic [ref=e248]:
+                        - paragraph [ref=e249]: Tell us the type of work you’re looking for. You can select multiple options.
+                        - generic [ref=e250]:
+                          - checkbox "Full time (40)" [checked] [ref=e252]
+                          - img [ref=e254] [cursor=pointer]
+                          - text: Full time (40)
+                        - generic [ref=e257]:
+                          - checkbox "Part time (1)" [ref=e259]
+                          - img [ref=e261] [cursor=pointer]
+                          - text: Part time (1)
+                        - generic [ref=e263]:
+                          - checkbox "Contract (36)" [ref=e265]
+                          - img [ref=e267] [cursor=pointer]
+                          - text: Contract (36)
+                        - generic [ref=e269]:
+                          - checkbox "Third Party (13)" [ref=e271]
+                          - img [ref=e273] [cursor=pointer]
+                          - text: Third Party (13)
+                        - generic [ref=e275]:
+                          - checkbox "Internship (0)" [disabled] [ref=e277]
+                          - img [ref=e279]
+                          - text: Internship (0)
+                    - generic [ref=e282]:
+                      - button "Distance" [ref=e283] [cursor=pointer]:
+                        - generic [ref=e284]:
+                          - heading "Distance" [level=3] [ref=e285]:
+                            - img [ref=e286]
+                            - text: Distance
+                          - img [ref=e289]
+                      - generic [ref=e291]:
+                        - paragraph [ref=e292]: How far are you willing to commute from the location specified in your search? Select one.
+                        - radiogroup "How far are you willing to commute from the location specified in your search? Select one." [ref=e294]:
+                          - generic [ref=e295]:
+                            - generic [ref=e296]:
+                              - radio "No Preference" [checked] [ref=e298]
+                              - img [ref=e300] [cursor=pointer]
+                              - text: No Preference
+                            - generic [ref=e303]:
+                              - radio "Up to 10 miles" [ref=e305]
+                              - img [ref=e307] [cursor=pointer]
+                              - text: Up to 10 miles
+                            - generic [ref=e309]:
+                              - radio "Up to 30 miles" [ref=e311]
+                              - img [ref=e313] [cursor=pointer]
+                              - text: Up to 30 miles
+                            - generic [ref=e315]:
+                              - radio "Up to 50 miles" [ref=e317]
+                              - img [ref=e319] [cursor=pointer]
+                              - text: Up to 50 miles
+                            - generic [ref=e321]:
+                              - radio "Up to 75 miles" [ref=e323]
+                              - img [ref=e325] [cursor=pointer]
+                              - text: Up to 75 miles
+                    - generic [ref=e328]:
+                      - generic [ref=e329] [cursor=pointer]:
+                        - heading [level=3] [ref=e330]:
+                          - img [ref=e331]
+                          - text: Employer type
+                        - img [ref=e336]
+                      - generic [ref=e338]:
+                        - paragraph [ref=e339]: This is the source of the job post. You can select multiple options.
+                        - generic [ref=e340]:
+                          - checkbox "Direct hire (20)" [ref=e342]
+                          - img [ref=e344] [cursor=pointer]
+                          - text: Direct hire (20)
+                        - generic [ref=e346]:
+                          - checkbox "Recruiter (20)" [ref=e348]
+                          - img [ref=e350] [cursor=pointer]
+                          - text: Recruiter (20)
+                        - generic [ref=e352]:
+                          - checkbox "Other (0)" [disabled] [ref=e354]
+                          - img [ref=e356]
+                          - text: Other (0)
+                    - generic [ref=e359]:
+                      - generic [ref=e360] [cursor=pointer]:
+                        - heading [level=3] [ref=e361]:
+                          - img [ref=e362]
+                          - text: Work authorization
+                        - img [ref=e365]
+                      - generic [ref=e367]:
+                        - paragraph [ref=e368]:
+                          - text: Are you looking for an employer who is willing to provide sponsorship?
+                          - link "What does this mean?" [ref=e369] [cursor=pointer]:
+                            - /url: https://www.dice.com/support/candidate-help/finding-a-job/what-does-willing-to-sponsor-mean-on-dice.html
+                        - generic [ref=e371]:
+                          - checkbox "Willing to sponsor (2)" [ref=e373]
+                          - img [ref=e375] [cursor=pointer]
+                          - text: Willing to sponsor (2)
+                - generic [ref=e377]:
+                  - button "Clear filters" [ref=e378] [cursor=pointer]:
+                    - generic [ref=e379]: Clear filters
+                  - button "Apply filters" [ref=e380] [cursor=pointer]:
+                    - generic [ref=e381]: Apply filters
+        - generic [ref=e382]:
+          - paragraph [ref=e383]: 40 results (6 new)
+          - list "Job search results" [ref=e385]:
+            - listitem [ref=e386]:
+              - article [ref=e389]:
+                - generic [ref=e390]:
+                  - link "View Details for Firmware/ Embedded Engineer (f1e7b8b894fce827fcd84755102cb34c)" [ref=e391] [cursor=pointer]:
+                    - /url: https://www.dice.com/job-detail/1526045c-6088-4eb8-a533-649cac0f6f8a
+                  - generic [ref=e392]:
+                    - generic [ref=e393]:
+                      - link "Company Logo" [ref=e394] [cursor=pointer]:
+                        - /url: /company-profile/6cf33265-e832-5daa-9e2c-27815496c63b?companyname=Tanisha%20Systems%2C%20Inc.
+                        - img "Tanisha Systems, Inc." [ref=e397]
+                      - link "Tanisha Systems, Inc." [ref=e398] [cursor=pointer]:
+                        - /url: /company-profile/6cf33265-e832-5daa-9e2c-27815496c63b?companyname=Tanisha%20Systems%2C%20Inc.
+                        - paragraph [ref=e399]: Tanisha Systems, Inc.
+                    - generic [ref=e400]:
+                      - button "Add" [ref=e402] [cursor=pointer]:
+                        - img [ref=e404]
+                      - link "Easy Apply" [ref=e407] [cursor=pointer]:
+                        - /url: https://www.dice.com/job-detail/1526045c-6088-4eb8-a533-649cac0f6f8a
+                        - generic [ref=e408]:
+                          - img [ref=e409]
+                          - text: Easy Apply
+                  - main "Details for Firmware/ Embedded Engineer position" [ref=e411]:
+                    - link "Firmware/ Embedded Engineer" [ref=e414] [cursor=pointer]:
+                      - /url: https://www.dice.com/job-detail/1526045c-6088-4eb8-a533-649cac0f6f8a
+                    - generic [ref=e416]:
+                      - paragraph [ref=e419]: Redmond, Washington
+                      - generic [ref=e420]:
+                        - paragraph [ref=e422]: •
+                        - paragraph [ref=e424]: 11d ago
+                    - paragraph [ref=e427]: "Job Title: Firmware/ Embedded Engineer Location: Redmond WA or Austin TX, *- 100% onsite Salary: Market Negotiable for right fit Experience Up to/ Max of 16 yrs of total exp. Key Responsibilities BS in computer science, computer engineering, electrical engineering, or equivalent experience. We need a hands-on Embedded/FW developer who can debug with CI/CD automation experience on ARM SoC, Need experience in developing test framework, test deployment and CI/CD related development. Key skills:"
+                    - generic [ref=e428]:
+                      - generic "Full-time" [ref=e429]:
+                        - paragraph [ref=e430]: Full-time
+                      - generic "Depends on Experience" [ref=e431]:
+                        - paragraph [ref=e432]: Depends on Experience
+            - listitem [ref=e433]:
+              - article [ref=e436]:
+                - generic [ref=e437]:
+                  - link "View Details for Lead Firmware Engineer- (Embedded firmware, C++) (41c7fdd117eb5413b08bb49d80422317)" [ref=e438] [cursor=pointer]:
+                    - /url: https://www.dice.com/job-detail/b5986610-c022-42f9-b38d-7f19ba4c08d3
+                  - generic [ref=e439]:
+                    - generic [ref=e440]:
+                      - link "Company Logo" [ref=e441] [cursor=pointer]:
+                        - /url: /company-profile/8b3be7a7-6233-4236-9fbc-5b50bd0d0663?companyname=Magicforce
+                        - img "Magicforce" [ref=e444]
+                      - link "Magicforce" [ref=e445] [cursor=pointer]:
+                        - /url: /company-profile/8b3be7a7-6233-4236-9fbc-5b50bd0d0663?companyname=Magicforce
+                        - paragraph [ref=e446]: Magicforce
+                    - generic [ref=e447]:
+                      - button "Add" [ref=e449] [cursor=pointer]:
+                        - img [ref=e451]
+                      - link "Easy Apply" [ref=e454] [cursor=pointer]:
+                        - /url: https://www.dice.com/job-detail/b5986610-c022-42f9-b38d-7f19ba4c08d3
+                        - generic [ref=e455]:
+                          - img [ref=e456]
+                          - text: Easy Apply
+                  - main "Details for Lead Firmware Engineer- (Embedded firmware, C++) position" [ref=e458]:
+                    - link "Lead Firmware Engineer- (Embedded firmware, C++)" [ref=e461] [cursor=pointer]:
+                      - /url: https://www.dice.com/job-detail/b5986610-c022-42f9-b38d-7f19ba4c08d3
+                    - generic [ref=e463]:
+                      - paragraph [ref=e466]: Dallas, Texas
+                      - generic [ref=e467]:
+                        - paragraph [ref=e469]: •
+                        - paragraph [ref=e471]: Yesterday
+                    - paragraph [ref=e474]: "Mandatory skills 10+ years of handson embedded firmware development experience Expert proficiency in C/C++ for MCUbased realtime systems Strong expertise in RTOS, concurrency, interrupts, timers, and state machines Advanced embedded debugging, rootcause analysis, and performance optimization Experience with device drivers, peripherals, communication stacks, and board/device bringup Proven ownership of firmware endtoend: requirements, design, implementation, testing, and verification Strong under"
+                    - generic [ref=e475]:
+                      - generic "Full-time" [ref=e476]:
+                        - paragraph [ref=e477]: Full-time, Third Party
+                      - generic "Depends on Experience" [ref=e478]:
+                        - paragraph [ref=e479]: Depends on Experience
+            - listitem [ref=e480]:
+              - article [ref=e483]:
+                - generic [ref=e484]:
+                  - link "View Details for Senior Embedded Firmware Engineer / C / RTOS / CAN & USB Protocols / Irvine (6fed281c2459b770ccea34aef100a891)" [ref=e485] [cursor=pointer]:
+                    - /url: https://www.dice.com/job-detail/64453aca-d70d-480b-9e6e-105fff93712d
+                  - generic [ref=e486]:
+                    - generic [ref=e487]:
+                      - link "Company Logo" [ref=e488] [cursor=pointer]:
+                        - /url: /company-profile/5b6108e0-524b-529d-bcce-768b5daefc01?companyname=Motion%20Recruitment%20Partners%2C%20LLC
+                        - img "Motion Recruitment Partners, LLC" [ref=e491]
+                      - link "Motion Recruitment Partners, LLC" [ref=e492] [cursor=pointer]:
+                        - /url: /company-profile/5b6108e0-524b-529d-bcce-768b5daefc01?companyname=Motion%20Recruitment%20Partners%2C%20LLC
+                        - paragraph [ref=e493]: Motion Recruitment Partners, LLC
+                    - generic [ref=e494]:
+                      - button "Add" [ref=e496] [cursor=pointer]:
+                        - img [ref=e498]
+                      - link "Easy Apply" [ref=e501] [cursor=pointer]:
+                        - /url: https://www.dice.com/job-detail/64453aca-d70d-480b-9e6e-105fff93712d
+                        - generic [ref=e502]:
+                          - img [ref=e503]
+                          - text: Easy Apply
+                  - main "Details for Senior Embedded Firmware Engineer / C / RTOS / CAN & USB Protocols / Irvine position" [ref=e505]:
+                    - link "Senior Embedded Firmware Engineer / C / RTOS / CAN & USB Protocols / Irvine" [ref=e508] [cursor=pointer]:
+                      - /url: https://www.dice.com/job-detail/64453aca-d70d-480b-9e6e-105fff93712d
+                    - generic [ref=e510]:
+                      - paragraph [ref=e513]: Irvine, California
+                      - generic [ref=e514]:
+                        - paragraph [ref=e516]: •
+                        - paragraph [ref=e518]: Today
+                    - paragraph [ref=e521]: Our client in the EV/AV space is urgently looking for a Sr. embedded firmware enngineer with strong experience with C, RTOS and communication protocols like CAN, USB or UART, SPI, I2C to add to thier growing team here in Irvine. The Firmware Designer is responsible for designing, implementing, testing, and maintaining firmware for embedded systems. This role requires a deep understanding of both hardware and software to ensure that the firmware effectively controls hardware components and perfor
+                    - generic [ref=e522]:
+                      - generic "Full-time" [ref=e523]:
+                        - paragraph [ref=e524]: Full-time
+                      - generic "Depends on Experience" [ref=e525]:
+                        - paragraph [ref=e526]: USD 11.00 per hour
+            - listitem [ref=e527]:
+              - article [ref=e530]:
+                - generic [ref=e531]:
+                  - link "View Details for Sr. Embedded Firmware Engineer / C / IPsec / MAC / wireless Protocols / Onsite / SoCal (27464f838bc1691ad016bc19a29f6a28)" [ref=e532] [cursor=pointer]:
+                    - /url: https://www.dice.com/job-detail/768c95f4-c29d-4dad-8818-cb76e674e20a
+                  - generic [ref=e533]:
+                    - generic [ref=e534]:
+                      - link "Company Logo" [ref=e535] [cursor=pointer]:
+                        - /url: /company-profile/5b6108e0-524b-529d-bcce-768b5daefc01?companyname=Motion%20Recruitment%20Partners%2C%20LLC
+                        - img "Motion Recruitment Partners, LLC" [ref=e538]
+                      - link "Motion Recruitment Partners, LLC" [ref=e539] [cursor=pointer]:
+                        - /url: /company-profile/5b6108e0-524b-529d-bcce-768b5daefc01?companyname=Motion%20Recruitment%20Partners%2C%20LLC
+                        - paragraph [ref=e540]: Motion Recruitment Partners, LLC
+                    - generic [ref=e541]:
+                      - button "Add" [ref=e543] [cursor=pointer]:
+                        - img [ref=e545]
+                      - link "Easy Apply" [ref=e548] [cursor=pointer]:
+                        - /url: https://www.dice.com/job-detail/768c95f4-c29d-4dad-8818-cb76e674e20a
+                        - generic [ref=e549]:
+                          - img [ref=e550]
+                          - text: Easy Apply
+                  - main "Details for Sr. Embedded Firmware Engineer / C / IPsec / MAC / wireless Protocols / Onsite / SoCal position" [ref=e552]:
+                    - link "Sr. Embedded Firmware Engineer / C / IPsec / MAC / wireless Protocols / Onsite / SoCal" [ref=e555] [cursor=pointer]:
+                      - /url: https://www.dice.com/job-detail/768c95f4-c29d-4dad-8818-cb76e674e20a
+                    - generic [ref=e557]:
+                      - paragraph [ref=e560]: San Francisco, California
+                      - generic [ref=e561]:
+                        - paragraph [ref=e563]: •
+                        - paragraph [ref=e565]: Today
+                    - paragraph [ref=e568]: A well-established security company that helps build technology to help protect our communities. Their technology is pivotal to creating software that helps create safer schools, hospitals and ultimately a safer nation. They are currently looking for various seniority of Embedded SoftwareEngineers. While this role is onsite in their Orange County office or possibly they're LA office there is flexibility on schedule. Great opportunity for someone looking to build something they are proud of and t
+                    - generic [ref=e569]:
+                      - generic "Full-time" [ref=e570]:
+                        - paragraph [ref=e571]: Full-time
+                      - generic "Depends on Experience" [ref=e572]:
+                        - paragraph [ref=e573]: USD 160,000.00 - 220,000.00 per year
+            - listitem [ref=e574]:
+              - article [ref=e577]:
+                - generic [ref=e578]:
+                  - link "View Details for Embedded Firmware Software Engineer on W2 Only (ffb72d4e7170ea7cc35944678214a48a)" [ref=e579] [cursor=pointer]:
+                    - /url: https://www.dice.com/job-detail/08938c72-de9e-498b-84dc-8c9ae0ffa1c4
+                  - generic [ref=e580]:
+                    - generic [ref=e581]:
+                      - link "Company Logo" [ref=e582] [cursor=pointer]:
+                        - /url: /company-profile/fab4d02a-fbf3-5ba7-a7bd-4286fafea4e1?companyname=Sovereign%20Technologies
+                        - img "Sovereign Technologies" [ref=e585]
+                      - link "Sovereign Technologies" [ref=e586] [cursor=pointer]:
+                        - /url: /company-profile/fab4d02a-fbf3-5ba7-a7bd-4286fafea4e1?companyname=Sovereign%20Technologies
+                        - paragraph [ref=e587]: Sovereign Technologies
+                    - generic [ref=e588]:
+                      - button "Add" [ref=e590] [cursor=pointer]:
+                        - img [ref=e592]
+                      - link "Easy Apply" [ref=e595] [cursor=pointer]:
+                        - /url: https://www.dice.com/job-detail/08938c72-de9e-498b-84dc-8c9ae0ffa1c4
+                        - generic [ref=e596]:
+                          - img [ref=e597]
+                          - text: Easy Apply
+                  - main "Details for Embedded Firmware Software Engineer on W2 Only position" [ref=e599]:
+                    - link "Embedded Firmware Software Engineer on W2 Only" [ref=e602] [cursor=pointer]:
+                      - /url: https://www.dice.com/job-detail/08938c72-de9e-498b-84dc-8c9ae0ffa1c4
+                    - generic [ref=e604]:
+                      - paragraph [ref=e607]: Eagan, Minnesota
+                      - generic [ref=e608]:
+                        - paragraph [ref=e610]: •
+                        - paragraph [ref=e612]: Yesterday
+                    - paragraph [ref=e615]: "Title : Embedded Firmware Software EngineerLocation : Eagan, MN Duration : 6 MonthsRate : OpenRelevant Experience: 5+ Years Top Skills: C/C++ pure embedded environmentFirmware Free RTOS ModBus SensorsCustom board bring up - stand up diagnose firmware from the ground up BLE-Bluetooth Job Description This role focuses on developing embedded firmware and software for new sensor products used in laundry systems that monitor water and energy usage. You will work 100% onsite in Eagan, MN, collaboratin"
+                    - generic [ref=e616]:
+                      - generic "Full-time" [ref=e617]:
+                        - paragraph [ref=e618]: Full-time
+                      - generic "Depends on Experience" [ref=e619]:
+                        - paragraph [ref=e620]: Depends on Experience
+            - listitem [ref=e621]:
+              - article [ref=e624]:
+                - generic [ref=e625]:
+                  - link "View Details for Principal Embedded Firmware Engineer (7d9798b87e5bae6426308fa196ee41fb)" [ref=e626] [cursor=pointer]:
+                    - /url: https://www.dice.com/job-detail/cd605c0d-690d-43e3-897c-f441a336e3b5
+                  - generic [ref=e627]:
+                    - generic [ref=e628]:
+                      - link "Company Logo" [ref=e629] [cursor=pointer]:
+                        - /url: /company-profile/04b06f9a-4cc1-53b4-84d0-1c0fe35c5e90?companyname=Market%20Street%20Talent
+                        - img "Market Street Talent" [ref=e632]
+                      - link "Market Street Talent" [ref=e633] [cursor=pointer]:
+                        - /url: /company-profile/04b06f9a-4cc1-53b4-84d0-1c0fe35c5e90?companyname=Market%20Street%20Talent
+                        - paragraph [ref=e634]: Market Street Talent
+                    - generic [ref=e635]:
+                      - button "Add" [ref=e637] [cursor=pointer]:
+                        - img [ref=e639]
+                      - link "Easy Apply" [ref=e642] [cursor=pointer]:
+                        - /url: https://www.dice.com/job-detail/cd605c0d-690d-43e3-897c-f441a336e3b5
+                        - generic [ref=e643]:
+                          - img [ref=e644]
+                          - text: Easy Apply
+                  - main "Details for Principal Embedded Firmware Engineer position" [ref=e646]:
+                    - link "Principal Embedded Firmware Engineer" [ref=e649] [cursor=pointer]:
+                      - /url: https://www.dice.com/job-detail/cd605c0d-690d-43e3-897c-f441a336e3b5
+                    - generic [ref=e651]:
+                      - paragraph [ref=e654]: Hybrid in Portland, Maine
+                      - generic [ref=e655]:
+                        - paragraph [ref=e657]: •
+                        - paragraph [ref=e659]: 28d ago
+                    - paragraph [ref=e662]: Could you be a good fit? We are looking for the best, highly skilled Principal Embedded Firmware Engineer to join the team of our exceptional client. This role focuses on the design and development of highly integrated embedded processing systems used in advanced electronic products and custom solutions. This position requires deep embedded firmware expertise, strong technical leadership capabilities, and hands-on experience developing software for complex hardware platforms in real-time and emb
+                    - generic [ref=e663]:
+                      - generic "Full-time" [ref=e664]:
+                        - paragraph [ref=e665]: Full-time
+                      - generic "Depends on Experience" [ref=e666]:
+                        - paragraph [ref=e667]: $130,000 - $160,000
+            - listitem [ref=e668]:
+              - article [ref=e671]:
+                - generic [ref=e672]:
+                  - link "View Details for TWO Embedded Software and Firmware Engineers (7f32db46290f4fcb206f056813efa1cd)" [ref=e673] [cursor=pointer]:
+                    - /url: https://www.dice.com/job-detail/7320c288-4de5-4d69-b626-e0c39fab7e0a
+                  - generic [ref=e674]:
+                    - generic [ref=e675]:
+                      - link "Company Logo" [ref=e676] [cursor=pointer]:
+                        - /url: /company-profile/da132086-be1e-5f57-91d4-3e287284e3dd?companyname=DBA%20Web%20Technologies
+                        - img "DBA Web Technologies" [ref=e679]
+                      - link "DBA Web Technologies" [ref=e680] [cursor=pointer]:
+                        - /url: /company-profile/da132086-be1e-5f57-91d4-3e287284e3dd?companyname=DBA%20Web%20Technologies
+                        - paragraph [ref=e681]: DBA Web Technologies
+                    - generic [ref=e682]:
+                      - button "Add" [ref=e684] [cursor=pointer]:
+                        - img [ref=e686]
+                      - link "Easy Apply" [ref=e689] [cursor=pointer]:
+                        - /url: https://www.dice.com/job-detail/7320c288-4de5-4d69-b626-e0c39fab7e0a
+                        - generic [ref=e690]:
+                          - img [ref=e691]
+                          - text: Easy Apply
+                  - main "Details for TWO Embedded Software and Firmware Engineers position" [ref=e693]:
+                    - link "TWO Embedded Software and Firmware Engineers" [ref=e696] [cursor=pointer]:
+                      - /url: https://www.dice.com/job-detail/7320c288-4de5-4d69-b626-e0c39fab7e0a
+                    - generic [ref=e698]:
+                      - paragraph [ref=e701]: Atlanta, Georgia
+                      - generic [ref=e702]:
+                        - paragraph [ref=e704]: •
+                        - paragraph [ref=e706]: Today
+                    - paragraph [ref=e709]: "TWO Embedded Software and Firmware EngineersPOSITION: TWO Embedded Software and Firmware Engineers (C, C++, Python, Git, Confluence) in Atlanta, GA LOCATION: Atlanta, GA SALARY: Excellent Compensation with benefits + interview Travel DURATION: Onsite Full-Time Position TRAVEL: 10 % to 25% REQUIRED: Active Secret Clearance SKILLS: Embedded Software Development, Firmware Engineer, C, C++, Python, Git, Confluence, C++11, C++20 Introduction:The Embedded Software/Firmware Engineer is responsible for"
+                    - generic [ref=e710]:
+                      - generic "Full-time" [ref=e711]:
+                        - paragraph [ref=e712]: Full-time
+                      - generic "Depends on Experience" [ref=e713]:
+                        - paragraph [ref=e714]: Depends on Experience
+            - listitem [ref=e715]:
+              - article [ref=e718]:
+                - generic [ref=e719]:
+                  - link "View Details for Embedded C++ Developer/Engineer (01f70e1ab928d77c7f5dd7a58bbd0593)" [ref=e720] [cursor=pointer]:
+                    - /url: https://www.dice.com/job-detail/8a7fb5b3-4a5f-47d7-a58f-90749bcf6eaf
+                  - generic [ref=e721]:
+                    - generic [ref=e722]:
+                      - link "Company Logo" [ref=e723] [cursor=pointer]:
+                        - /url: /company-profile/6cf33265-e832-5daa-9e2c-27815496c63b?companyname=Tanisha%20Systems%2C%20Inc.
+                        - img "Tanisha Systems, Inc." [ref=e726]
+                      - link "Tanisha Systems, Inc." [ref=e727] [cursor=pointer]:
+                        - /url: /company-profile/6cf33265-e832-5daa-9e2c-27815496c63b?companyname=Tanisha%20Systems%2C%20Inc.
+                        - paragraph [ref=e728]: Tanisha Systems, Inc.
+                    - generic [ref=e729]:
+                      - button "Add" [ref=e731] [cursor=pointer]:
+                        - img [ref=e733]
+                      - link "Easy Apply" [ref=e736] [cursor=pointer]:
+                        - /url: https://www.dice.com/job-detail/8a7fb5b3-4a5f-47d7-a58f-90749bcf6eaf
+                        - generic [ref=e737]:
+                          - img [ref=e738]
+                          - text: Easy Apply
+                  - main "Details for Embedded C++ Developer/Engineer position" [ref=e740]:
+                    - link "Embedded C++ Developer/Engineer" [ref=e743] [cursor=pointer]:
+                      - /url: https://www.dice.com/job-detail/8a7fb5b3-4a5f-47d7-a58f-90749bcf6eaf
+                    - generic [ref=e745]:
+                      - paragraph [ref=e748]: Redmond, Washington
+                      - generic [ref=e749]:
+                        - paragraph [ref=e751]: •
+                        - paragraph [ref=e753]: 11d ago
+                    - paragraph [ref=e756]: "Embedded C++ Developer/Engineer Location: Remond, WA- 100% onsite Salary: Market- Market- DOE Fulltime/FTE Key Responsibilities Design and develop embedded software in Rust, C, C++ Write device drivers and system software to interact with micro-controllers Participate in architecture, design, and code reviews Build and optimize CI/CD pipelines (build, validation, image generation) Develop and integrate RF testing pipelines with CI/CD Collaborate with hardware and firmware teams for syst"
+                    - generic [ref=e757]:
+                      - generic "Full-time" [ref=e758]:
+                        - paragraph [ref=e759]: Full-time, Third Party
+                      - generic "Depends on Experience" [ref=e760]:
+                        - paragraph [ref=e761]: Depends on Experience
+            - listitem [ref=e762]:
+              - article [ref=e765]:
+                - generic [ref=e766]:
+                  - link "View Details for Embedded Software/Firmware Engineer (1c0a409435d7866b7fd272e5f421a4c4)" [ref=e767] [cursor=pointer]:
+                    - /url: https://www.dice.com/job-detail/8bbd3505-1779-48d3-b9d2-8a548856ac38
+                  - generic [ref=e768]:
+                    - generic [ref=e769]:
+                      - link "Company Logo" [ref=e770] [cursor=pointer]:
+                        - /url: /company-profile/a1d7df75-e170-5701-a217-dd7e780f4b48?companyname=Apex%20Systems
+                        - img "Apex Systems" [ref=e773]
+                      - link "Apex Systems" [ref=e774] [cursor=pointer]:
+                        - /url: /company-profile/a1d7df75-e170-5701-a217-dd7e780f4b48?companyname=Apex%20Systems
+                        - paragraph [ref=e775]: Apex Systems
+                    - generic [ref=e776]:
+                      - button "Add" [ref=e778] [cursor=pointer]:
+                        - img [ref=e780]
+                      - link "Easy Apply" [ref=e783] [cursor=pointer]:
+                        - /url: https://www.dice.com/job-detail/8bbd3505-1779-48d3-b9d2-8a548856ac38
+                        - generic [ref=e784]:
+                          - img [ref=e785]
+                          - text: Easy Apply
+                  - main "Details for Embedded Software/Firmware Engineer position" [ref=e787]:
+                    - link "Embedded Software/Firmware Engineer" [ref=e790] [cursor=pointer]:
+                      - /url: https://www.dice.com/job-detail/8bbd3505-1779-48d3-b9d2-8a548856ac38
+                    - generic [ref=e792]:
+                      - paragraph [ref=e795]: Atlanta, Georgia
+                      - generic [ref=e796]:
+                        - paragraph [ref=e798]: •
+                        - paragraph [ref=e800]: Today
+                    - paragraph [ref=e803]: "Job#: 3034880 Job Description: Embedded Software/Firmware Engineer Location: Atlanta, Georgia Employment Type: Contract to Perm Job Location Requirement: Onsite Security & Citizenship Requirements Candidates must be able to obtain and maintain an active Secret security clearance. Role Overview We are seeking an Embedded Software/Firmware Engineer to support the research and development of innovative solutions for communications and spectrum sensing systems. The ideal candidate will be an i"
+                    - generic [ref=e804]:
+                      - generic "Full-time" [ref=e805]:
+                        - paragraph [ref=e806]: Full-time
+                      - generic "Depends on Experience" [ref=e807]:
+                        - paragraph [ref=e808]: USD 86,000.00 - 150,000.00 per year
+            - listitem [ref=e809]:
+              - article [ref=e812]:
+                - generic [ref=e813]:
+                  - link "View Details for Senior Firmware Principal Engineer (91670d4797d654a77d43bf845dd8cad6)" [ref=e814] [cursor=pointer]:
+                    - /url: https://www.dice.com/job-detail/6f8362eb-9fcd-442a-a6b9-7da963bc7ade
+                  - generic [ref=e815]:
+                    - generic [ref=e816]:
+                      - link "Company Logo" [ref=e817] [cursor=pointer]:
+                        - /url: /company-profile/a51442e6-717a-57d3-b7d3-fba32c2bcf2d?companyname=Data%20Wave%20Technologies%20Inc
+                        - img "Data Wave Technologies Inc" [ref=e820]
+                      - link "Data Wave Technologies Inc" [ref=e821] [cursor=pointer]:
+                        - /url: /company-profile/a51442e6-717a-57d3-b7d3-fba32c2bcf2d?companyname=Data%20Wave%20Technologies%20Inc
+                        - paragraph [ref=e822]: Data Wave Technologies Inc
+                    - generic [ref=e823]:
+                      - button "Add" [ref=e825] [cursor=pointer]:
+                        - img [ref=e827]
+                      - link "Easy Apply" [ref=e830] [cursor=pointer]:
+                        - /url: https://www.dice.com/job-detail/6f8362eb-9fcd-442a-a6b9-7da963bc7ade
+                        - generic [ref=e831]:
+                          - img [ref=e832]
+                          - text: Easy Apply
+                  - main "Details for Senior Firmware Principal Engineer position" [ref=e834]:
+                    - link "Senior Firmware Principal Engineer" [ref=e837] [cursor=pointer]:
+                      - /url: https://www.dice.com/job-detail/6f8362eb-9fcd-442a-a6b9-7da963bc7ade
+                    - generic [ref=e839]:
+                      - paragraph [ref=e842]: Santa Clara, California
+                      - generic [ref=e843]:
+                        - paragraph [ref=e845]: •
+                        - paragraph [ref=e847]: Today
+                    - paragraph [ref=e850]: "Job Title: Senior Principal Engineer, Software/Firmware Location: Santa Clara, CA (Onsite) Duration: Full Time Job description -Senior Principal Engineer, Software/Firmware - coherent optical module firmware/SoC-based embedded platforms/CPO Required15+ Years of experience in embedded software/firmware architecture, design, and implementation. -Deep expertise in coherent optical module firmware (400ZR, 800ZR, or equivalent) and associated standards (OIF-400ZR, C-CMIS, CMIS 4.x/5.x). -Strong"
+                    - generic "Full-time" [ref=e852]:
+                      - paragraph [ref=e853]: Full-time
+            - listitem [ref=e854]:
+              - article [ref=e857]:
+                - generic [ref=e858]:
+                  - link "View Details for Senior Principal Engineer, Software/Firmware (9fd270794ace95930d36261306c23d80)" [ref=e859] [cursor=pointer]:
+                    - /url: https://www.dice.com/job-detail/e2ec9a83-1425-491d-991e-1784887a9ffe
+                  - generic [ref=e860]:
+                    - generic [ref=e861]:
+                      - link "Company Logo" [ref=e862] [cursor=pointer]:
+                        - /url: /company-profile/334b311d-1cba-44b3-aa62-e9958989da1b?companyname=CXI%20Staffing
+                        - img "CXI Staffing" [ref=e865]
+                      - link "CXI Staffing" [ref=e866] [cursor=pointer]:
+                        - /url: /company-profile/334b311d-1cba-44b3-aa62-e9958989da1b?companyname=CXI%20Staffing
+                        - paragraph [ref=e867]: CXI Staffing
+                    - generic [ref=e868]:
+                      - button "Add" [ref=e870] [cursor=pointer]:
+                        - img [ref=e872]
+                      - link "Easy Apply" [ref=e875] [cursor=pointer]:
+                        - /url: https://www.dice.com/job-detail/e2ec9a83-1425-491d-991e-1784887a9ffe
+                        - generic [ref=e876]:
+                          - img [ref=e877]
+                          - text: Easy Apply
+                  - main "Details for Senior Principal Engineer, Software/Firmware position" [ref=e879]:
+                    - link "Senior Principal Engineer, Software/Firmware" [ref=e882] [cursor=pointer]:
+                      - /url: https://www.dice.com/job-detail/e2ec9a83-1425-491d-991e-1784887a9ffe
+                    - generic [ref=e884]:
+                      - paragraph [ref=e887]: Santa Clara, California
+                      - generic [ref=e888]:
+                        - paragraph [ref=e890]: •
+                        - paragraph [ref=e892]: Today
+                    - paragraph [ref=e895]: "Now Hiring: USC Title: Senior Principal Engineer, Software/Firmware Location: Santa Clara, CA We''re seeking a highly experienced Senior Principal Firmware Engineer to lead the development of next-generation firmware solutions for coherent optical connectivity platforms. Key Responsibilities: Own firmware development for coherent optical module programs from architecture through production release Lead bring-up, calibration, validation, and customer delivery milestones Design advanced firmware"
+                    - generic [ref=e896]:
+                      - generic "Full-time" [ref=e897]:
+                        - paragraph [ref=e898]: Full-time
+                      - generic "Depends on Experience" [ref=e899]:
+                        - paragraph [ref=e900]: Depends on Experience
+            - listitem [ref=e901]:
+              - article [ref=e904]:
+                - generic [ref=e905]:
+                  - link "View Details for Firmware Engineer/Onsite/PA (26d364ee545b51d0681f40a8e2efc26f)" [ref=e906] [cursor=pointer]:
+                    - /url: https://www.dice.com/job-detail/891cb307-5cf1-4405-8240-037fb4101ee5
+                  - generic [ref=e907]:
+                    - generic [ref=e908]:
+                      - link "Company Logo" [ref=e909] [cursor=pointer]:
+                        - /url: /company-profile/5b6108e0-524b-529d-bcce-768b5daefc01?companyname=Motion%20Recruitment%20Partners%2C%20LLC
+                        - img "Motion Recruitment Partners, LLC" [ref=e912]
+                      - link "Motion Recruitment Partners, LLC" [ref=e913] [cursor=pointer]:
+                        - /url: /company-profile/5b6108e0-524b-529d-bcce-768b5daefc01?companyname=Motion%20Recruitment%20Partners%2C%20LLC
+                        - paragraph [ref=e914]: Motion Recruitment Partners, LLC
+                    - generic [ref=e915]:
+                      - button "Add" [ref=e917] [cursor=pointer]:
+                        - img [ref=e919]
+                      - link "Easy Apply" [ref=e922] [cursor=pointer]:
+                        - /url: https://www.dice.com/job-detail/891cb307-5cf1-4405-8240-037fb4101ee5
+                        - generic [ref=e923]:
+                          - img [ref=e924]
+                          - text: Easy Apply
+                  - main "Details for Firmware Engineer/Onsite/PA position" [ref=e926]:
+                    - link "Firmware Engineer/Onsite/PA" [ref=e929] [cursor=pointer]:
+                      - /url: https://www.dice.com/job-detail/891cb307-5cf1-4405-8240-037fb4101ee5
+                    - generic [ref=e931]:
+                      - paragraph [ref=e934]: Audubon, Pennsylvania
+                      - generic [ref=e935]:
+                        - paragraph [ref=e937]: •
+                        - paragraph [ref=e939]: Today
+                    - paragraph [ref=e942]: This is an opportunity to join a leading technology organization in the med-device industry as a Firmware Engineer. This role supports software development across embedded systems and connected applications, contributing to products from early concept through release and manufacturing. This is an opportunity to work on complex, high-impact systems, partnering across engineering teams to deliver reliable, high-quality solutions in a structured development environment. Required Skills & Experience
+                    - generic [ref=e943]:
+                      - generic "Full-time" [ref=e944]:
+                        - paragraph [ref=e945]: Full-time
+                      - generic "Depends on Experience" [ref=e946]:
+                        - paragraph [ref=e947]: $110000 - $120000
+            - listitem [ref=e948]:
+              - article [ref=e951]:
+                - generic [ref=e952]:
+                  - link "View Details for Sr. Embedded Systems Engineer / C / Bare Metals / RTOS / BLE / Onsite (f34c57f104d0f72d7d873dcc4481eda4)" [ref=e953] [cursor=pointer]:
+                    - /url: https://www.dice.com/job-detail/39942482-5f01-4d10-a29a-be0c3e265d52
+                  - generic [ref=e954]:
+                    - generic [ref=e955]:
+                      - link "Company Logo" [ref=e956] [cursor=pointer]:
+                        - /url: /company-profile/5b6108e0-524b-529d-bcce-768b5daefc01?companyname=Motion%20Recruitment%20Partners%2C%20LLC
+                        - img "Motion Recruitment Partners, LLC" [ref=e959]
+                      - link "Motion Recruitment Partners, LLC" [ref=e960] [cursor=pointer]:
+                        - /url: /company-profile/5b6108e0-524b-529d-bcce-768b5daefc01?companyname=Motion%20Recruitment%20Partners%2C%20LLC
+                        - paragraph [ref=e961]: Motion Recruitment Partners, LLC
+                    - generic [ref=e962]:
+                      - button "Add" [ref=e964] [cursor=pointer]:
+                        - img [ref=e966]
+                      - generic [ref=e968]:
+                        - img [ref=e969]
+                        - generic [ref=e972]: Applied
+                  - main "Details for Sr. Embedded Systems Engineer / C / Bare Metals / RTOS / BLE / Onsite position" [ref=e973]:
+                    - link "Sr. Embedded Systems Engineer / C / Bare Metals / RTOS / BLE / Onsite" [ref=e976] [cursor=pointer]:
+                      - /url: https://www.dice.com/job-detail/39942482-5f01-4d10-a29a-be0c3e265d52
+                    - generic [ref=e978]:
+                      - paragraph [ref=e981]: Lake Forest, California
+                      - generic [ref=e982]:
+                        - paragraph [ref=e984]: •
+                        - paragraph [ref=e986]: Today
+                    - paragraph [ref=e989]: Our client is a global leader in the iOT space for retail loss prevention, operations management, and analytics, with our headquarters based in South OC, California. They maintain a strong presence across the globe, with offices in the UK, Australia, China, Hong Kong, Germany, France, and Canad They are urgently seeking an Sr.Embedded Software Engineer with strong exposure using C, BareMetals, Linux, CICD, and exposure to RF is a huge plus. The ideal candidate can contribute as a software develo
+                    - generic [ref=e990]:
+                      - generic "Full-time" [ref=e991]:
+                        - paragraph [ref=e992]: Full-time
+                      - generic "Depends on Experience" [ref=e993]:
+                        - paragraph [ref=e994]: USD 150,000.00 - 180,000.00 per year
+            - listitem [ref=e995]:
+              - article [ref=e998]:
+                - generic [ref=e999]:
+                  - link "View Details for Senior Embedded Engineer / Linux, IOT (c7134c0215fc16b3f96af4082ebbdf9c)" [ref=e1000] [cursor=pointer]:
+                    - /url: https://www.dice.com/job-detail/63beeb5e-03ca-4e28-86b1-5b2361d37d16
+                  - generic [ref=e1001]:
+                    - generic [ref=e1002]:
+                      - link "Company Logo" [ref=e1003] [cursor=pointer]:
+                        - /url: /company-profile/5b6108e0-524b-529d-bcce-768b5daefc01?companyname=Motion%20Recruitment%20Partners%2C%20LLC
+                        - img "Motion Recruitment Partners, LLC" [ref=e1006]
+                      - link "Motion Recruitment Partners, LLC" [ref=e1007] [cursor=pointer]:
+                        - /url: /company-profile/5b6108e0-524b-529d-bcce-768b5daefc01?companyname=Motion%20Recruitment%20Partners%2C%20LLC
+                        - paragraph [ref=e1008]: Motion Recruitment Partners, LLC
+                    - generic [ref=e1009]:
+                      - button "Add" [ref=e1011] [cursor=pointer]:
+                        - img [ref=e1013]
+                      - link "Easy Apply" [ref=e1016] [cursor=pointer]:
+                        - /url: https://www.dice.com/job-detail/63beeb5e-03ca-4e28-86b1-5b2361d37d16
+                        - generic [ref=e1017]:
+                          - img [ref=e1018]
+                          - text: Easy Apply
+                  - main "Details for Senior Embedded Engineer / Linux, IOT position" [ref=e1020]:
+                    - link "Senior Embedded Engineer / Linux, IOT" [ref=e1023] [cursor=pointer]:
+                      - /url: https://www.dice.com/job-detail/63beeb5e-03ca-4e28-86b1-5b2361d37d16
+                    - generic [ref=e1025]:
+                      - paragraph [ref=e1028]: Irvine, California
+                      - generic [ref=e1029]:
+                        - paragraph [ref=e1031]: •
+                        - paragraph [ref=e1033]: Today
+                    - paragraph [ref=e1036]: Our client is a global leader in the IoT space, specializing in retail loss prevention, operations management, and analytics solutions. Headquartered in South Orange County, California, they have an established international footprint with offices across the UK, Australia, China, Hong Kong, Germany, France, and Canada. They are actively seeking a Senior Embedded Software Engineer with strong expertise in C, Bare Metal development, Embedded Linux, and CI/CD environments. Experience with RF techno
+                    - generic [ref=e1037]:
+                      - generic "Full-time" [ref=e1038]:
+                        - paragraph [ref=e1039]: Full-time
+                      - generic "Depends on Experience" [ref=e1040]:
+                        - paragraph [ref=e1041]: USD 150,000.00 - 180,000.00 per year
+            - listitem [ref=e1042]:
+              - article [ref=e1045]:
+                - generic [ref=e1046]:
+                  - link "View Details for Embedded Exploitation Engineer / AI / Startup (be71ee6b9b4818d1340f4e0cf3f7899c)" [ref=e1047] [cursor=pointer]:
+                    - /url: https://www.dice.com/job-detail/d7017567-662c-43b2-af21-4393c47cccff
+                  - generic [ref=e1048]:
+                    - generic [ref=e1049]:
+                      - link "Company Logo" [ref=e1050] [cursor=pointer]:
+                        - /url: /company-profile/5b6108e0-524b-529d-bcce-768b5daefc01?companyname=Motion%20Recruitment%20Partners%2C%20LLC
+                        - img "Motion Recruitment Partners, LLC" [ref=e1053]
+                      - link "Motion Recruitment Partners, LLC" [ref=e1054] [cursor=pointer]:
+                        - /url: /company-profile/5b6108e0-524b-529d-bcce-768b5daefc01?companyname=Motion%20Recruitment%20Partners%2C%20LLC
+                        - paragraph [ref=e1055]: Motion Recruitment Partners, LLC
+                    - generic [ref=e1056]:
+                      - button "Add" [ref=e1058] [cursor=pointer]:
+                        - img [ref=e1060]
+                      - link "Easy Apply" [ref=e1063] [cursor=pointer]:
+                        - /url: https://www.dice.com/job-detail/d7017567-662c-43b2-af21-4393c47cccff
+                        - generic [ref=e1064]:
+                          - img [ref=e1065]
+                          - text: Easy Apply
+                  - main "Details for Embedded Exploitation Engineer / AI / Startup position" [ref=e1067]:
+                    - link "Embedded Exploitation Engineer / AI / Startup" [ref=e1070] [cursor=pointer]:
+                      - /url: https://www.dice.com/job-detail/d7017567-662c-43b2-af21-4393c47cccff
+                    - generic [ref=e1072]:
+                      - paragraph [ref=e1075]: Washington, District of Columbia
+                      - generic [ref=e1076]:
+                        - paragraph [ref=e1078]: •
+                        - paragraph [ref=e1080]: Today
+                    - paragraph [ref=e1083]: A startup backed by tier-1 US VCs and industry leaders is looking for exceptional Embedded Exploitation Engineers with a strong background in reverse engineering with embedded firmware and bare-metal systems. You'll identify and exploit vulnerabilities in embedded systems, IoT devices, and real-time operating systems. While also reverse engineering firmware to map attack surfaces, discover bugs, and develop reliable exploits. You'll step away from purely manual research and move towards developi
+                    - generic [ref=e1084]:
+                      - generic "Full-time" [ref=e1085]:
+                        - paragraph [ref=e1086]: Full-time
+                      - generic "Depends on Experience" [ref=e1087]:
+                        - paragraph [ref=e1088]: $1450000 - $300000
+            - listitem [ref=e1089]:
+              - article [ref=e1092]:
+                - generic [ref=e1093]:
+                  - link "View Details for Need Embedded Software Test Engineer (feb122629032352bf9ac603ce4cc22a1)" [ref=e1094] [cursor=pointer]:
+                    - /url: https://www.dice.com/job-detail/d379c749-12d7-46ba-bf25-c0b85cfb67cd
+                  - generic [ref=e1095]:
+                    - generic [ref=e1096]:
+                      - link "Company Logo" [ref=e1097] [cursor=pointer]:
+                        - /url: /company-profile/c380c099-e70b-561e-965e-adcc5f821198?companyname=SRS%20Consulting%20Inc
+                        - img "SRS Consulting Inc" [ref=e1100]
+                      - link "SRS Consulting Inc" [ref=e1101] [cursor=pointer]:
+                        - /url: /company-profile/c380c099-e70b-561e-965e-adcc5f821198?companyname=SRS%20Consulting%20Inc
+                        - paragraph [ref=e1102]: SRS Consulting Inc
+                    - generic [ref=e1103]:
+                      - button "Add" [ref=e1105] [cursor=pointer]:
+                        - img [ref=e1107]
+                      - link "Easy Apply" [ref=e1110] [cursor=pointer]:
+                        - /url: https://www.dice.com/job-detail/d379c749-12d7-46ba-bf25-c0b85cfb67cd
+                        - generic [ref=e1111]:
+                          - img [ref=e1112]
+                          - text: Easy Apply
+                  - main "Details for Need Embedded Software Test Engineer position" [ref=e1114]:
+                    - link "Need Embedded Software Test Engineer" [ref=e1117] [cursor=pointer]:
+                      - /url: https://www.dice.com/job-detail/d379c749-12d7-46ba-bf25-c0b85cfb67cd
+                    - generic [ref=e1119]:
+                      - paragraph [ref=e1122]: Redmond, Washington
+                      - generic [ref=e1123]:
+                        - paragraph [ref=e1125]: •
+                        - paragraph [ref=e1127]: Today
+                    - paragraph [ref=e1130]: "Job Title: Embedded Software test Engineer Location: Redmond WA Onsite/ Remote: Day 1 Onsite at customer location Key Responsibilities Experience in firmware development, testing and debugging on SoCs for embedded applications. Proficient in embedded C/C++, with ability to write modular and portable code Experience with custom hardware bring-up, using schematics and layout files Exposure to wireless protocols like BLE, Wi-Fi Familiar with power profiling tools and optimizing for battery life Und"
+                    - generic [ref=e1131]:
+                      - generic "Full-time" [ref=e1132]:
+                        - paragraph [ref=e1133]: Full-time
+                      - generic "Depends on Experience" [ref=e1134]:
+                        - paragraph [ref=e1135]: Depends on Experience
+            - listitem [ref=e1136]:
+              - article [ref=e1139]:
+                - generic [ref=e1140]:
+                  - link "View Details for Firmware Engineer (a2681d8c42ec83a05310ee7c9c1b6836)" [ref=e1141] [cursor=pointer]:
+                    - /url: https://www.dice.com/job-detail/f02dc539-356f-40bc-b120-c56cd519455a
+                  - generic [ref=e1142]:
+                    - generic [ref=e1143]:
+                      - link "Company Logo" [ref=e1144] [cursor=pointer]:
+                        - /url: /company-profile/0e4f50eb-2f4e-5f8b-a2a0-684a0b874e09?companyname=Toyota%20Material%20Handling%20North%20America
+                        - img "Toyota Material Handling North America" [ref=e1147]
+                      - link "Toyota Material Handling North America" [ref=e1148] [cursor=pointer]:
+                        - /url: /company-profile/0e4f50eb-2f4e-5f8b-a2a0-684a0b874e09?companyname=Toyota%20Material%20Handling%20North%20America
+                        - paragraph [ref=e1149]: Toyota Material Handling North America
+                    - generic [ref=e1150]:
+                      - button "Add" [ref=e1152] [cursor=pointer]:
+                        - img [ref=e1154]
+                      - link "Easy Apply" [ref=e1157] [cursor=pointer]:
+                        - /url: https://www.dice.com/job-detail/f02dc539-356f-40bc-b120-c56cd519455a
+                        - generic [ref=e1158]:
+                          - img [ref=e1159]
+                          - text: Easy Apply
+                  - main "Details for Firmware Engineer position" [ref=e1161]:
+                    - link "Firmware Engineer" [ref=e1164] [cursor=pointer]:
+                      - /url: https://www.dice.com/job-detail/f02dc539-356f-40bc-b120-c56cd519455a
+                    - generic [ref=e1166]:
+                      - paragraph [ref=e1169]: Columbus, Indiana
+                      - generic [ref=e1170]:
+                        - paragraph [ref=e1172]: •
+                        - paragraph [ref=e1174]: Today
+                    - paragraph [ref=e1177]: "Job Description Join our Team as a FIRMWARE ENGINEER! The Role: We're seeking a passionate and dedicated Firmware Engineer to join our team. You will be responsible for directly contributing to software and firmware development projects. This contribution will consist of creating system designs, making architectural decisions, and implementing code. This position is partly responsible for the technical growth of the group and requires mentorship, guidance on best practices, and design reviews t"
+                    - generic [ref=e1178]:
+                      - generic "Full-time" [ref=e1179]:
+                        - paragraph [ref=e1180]: Full-time
+                      - generic "Depends on Experience" [ref=e1181]:
+                        - paragraph [ref=e1182]: USD 133,605.00 - 171,290.00 per year
+            - listitem [ref=e1183]:
+              - article [ref=e1186]:
+                - generic [ref=e1187]:
+                  - link "View Details for Senior Embedded Systems & Controls Engineer (b9c0edabfc233117ed1557f80a7ba0d3)" [ref=e1188] [cursor=pointer]:
+                    - /url: https://www.dice.com/job-detail/fe0aa07d-9048-461d-b45c-7ae67dc614c5
+                  - generic [ref=e1189]:
+                    - generic [ref=e1190]:
+                      - link "Company Logo" [ref=e1191] [cursor=pointer]:
+                        - /url: /company-profile/a46be14d-0eb6-44a7-aef2-5cb618ff6879?companyname=LMK%20Recruiting%20Solutions
+                        - img "LMK Recruiting Solutions" [ref=e1194]
+                      - link "LMK Recruiting Solutions" [ref=e1195] [cursor=pointer]:
+                        - /url: /company-profile/a46be14d-0eb6-44a7-aef2-5cb618ff6879?companyname=LMK%20Recruiting%20Solutions
+                        - paragraph [ref=e1196]: LMK Recruiting Solutions
+                    - generic [ref=e1197]:
+                      - button "Add" [ref=e1199] [cursor=pointer]:
+                        - img [ref=e1201]
+                      - generic [ref=e1203]:
+                        - img [ref=e1204]
+                        - generic [ref=e1207]: Applied
+                  - main "Details for Senior Embedded Systems & Controls Engineer position" [ref=e1208]:
+                    - link "Senior Embedded Systems & Controls Engineer" [ref=e1211] [cursor=pointer]:
+                      - /url: https://www.dice.com/job-detail/fe0aa07d-9048-461d-b45c-7ae67dc614c5
+                    - generic [ref=e1213]:
+                      - paragraph [ref=e1216]: Irvine, California
+                      - generic [ref=e1217]:
+                        - paragraph [ref=e1219]: •
+                        - paragraph [ref=e1221]: 2d ago
+                    - paragraph [ref=e1224]: About us Aerospace is at a turning point costs are rising, supply chains are strained, and old ways of building cant keep up. At our company, were breaking that mold. We move fast, think big, and combine start-up agility with aerospace expertise to design, build, and scale aircraft in ways the industry has never seen. Position Summary We are seeking a high-caliber technical leader to architect the brain of safety-critical aerospace systems. This role is for a versatile engineer who thrives at t
+                    - generic [ref=e1225]:
+                      - generic "Full-time" [ref=e1226]:
+                        - paragraph [ref=e1227]: Full-time
+                      - generic "Depends on Experience" [ref=e1228]:
+                        - paragraph [ref=e1229]: 150,000 - 220000
+            - listitem [ref=e1230]:
+              - article [ref=e1233]:
+                - generic [ref=e1234]:
+                  - link "View Details for Senior Embedded Motor Control Engineer (c811099820c12a9f359e8781413d5b2b)" [ref=e1235] [cursor=pointer]:
+                    - /url: https://www.dice.com/job-detail/7f7521b3-ab25-4db9-b948-e4edcf38fb11
+                  - generic [ref=e1236]:
+                    - generic [ref=e1237]:
+                      - link "Company Logo" [ref=e1238] [cursor=pointer]:
+                        - /url: /company-profile/a46be14d-0eb6-44a7-aef2-5cb618ff6879?companyname=LMK%20Recruiting%20Solutions
+                        - img "LMK Recruiting Solutions" [ref=e1241]
+                      - link "LMK Recruiting Solutions" [ref=e1242] [cursor=pointer]:
+                        - /url: /company-profile/a46be14d-0eb6-44a7-aef2-5cb618ff6879?companyname=LMK%20Recruiting%20Solutions
+                        - paragraph [ref=e1243]: LMK Recruiting Solutions
+                    - generic [ref=e1244]:
+                      - button "Add" [ref=e1246] [cursor=pointer]:
+                        - img [ref=e1248]
+                      - link "Easy Apply" [ref=e1251] [cursor=pointer]:
+                        - /url: https://www.dice.com/job-detail/7f7521b3-ab25-4db9-b948-e4edcf38fb11
+                        - generic [ref=e1252]:
+                          - img [ref=e1253]
+                          - text: Easy Apply
+                  - main "Details for Senior Embedded Motor Control Engineer position" [ref=e1255]:
+                    - link "Senior Embedded Motor Control Engineer" [ref=e1258] [cursor=pointer]:
+                      - /url: https://www.dice.com/job-detail/7f7521b3-ab25-4db9-b948-e4edcf38fb11
+                    - generic [ref=e1260]:
+                      - paragraph [ref=e1263]: Irvine, California
+                      - generic [ref=e1264]:
+                        - paragraph [ref=e1266]: •
+                        - paragraph [ref=e1268]: 2d ago
+                    - paragraph [ref=e1271]: About us Aerospace is at a turning point costs are rising, supply chains are strained, and old ways of building cant keep up. At our company, were breaking that mold. We move fast, think big, and combine start-up agility with aerospace expertise to design, build, and scale aircraft in ways the industry has never seen. Build the Systems That Actually Move We are seeking a Senior Embedded Motor Control Software Engineer to own the control system architecture and lead the implementation of high-pe
+                    - generic [ref=e1272]:
+                      - generic "Full-time" [ref=e1273]:
+                        - paragraph [ref=e1274]: Full-time
+                      - generic "Depends on Experience" [ref=e1275]:
+                        - paragraph [ref=e1276]: 150000 - 220000
+            - listitem [ref=e1277]:
+              - article [ref=e1280]:
+                - generic [ref=e1281]:
+                  - link "View Details for Principal Engineer, Software/Firmware (05abb961dfd9861f0522ebf88f8968db)" [ref=e1282] [cursor=pointer]:
+                    - /url: https://www.dice.com/job-detail/fd58fe1b-cfcb-4317-82ad-139e085f6e65
+                  - generic [ref=e1283]:
+                    - generic [ref=e1284]:
+                      - link "Company Logo" [ref=e1285] [cursor=pointer]:
+                        - /url: /company-profile/0d294df1-2a32-552b-a43d-0034aa52bff0?companyname=Vastika%20Inc.
+                        - img "Vastika Inc." [ref=e1288]
+                      - link "Vastika Inc." [ref=e1289] [cursor=pointer]:
+                        - /url: /company-profile/0d294df1-2a32-552b-a43d-0034aa52bff0?companyname=Vastika%20Inc.
+                        - paragraph [ref=e1290]: Vastika Inc.
+                    - generic [ref=e1291]:
+                      - button "Add" [ref=e1293] [cursor=pointer]:
+                        - img [ref=e1295]
+                      - link "Easy Apply" [ref=e1298] [cursor=pointer]:
+                        - /url: https://www.dice.com/job-detail/fd58fe1b-cfcb-4317-82ad-139e085f6e65
+                        - generic [ref=e1299]:
+                          - img [ref=e1300]
+                          - text: Easy Apply
+                  - main "Details for Principal Engineer, Software/Firmware position" [ref=e1302]:
+                    - link "Principal Engineer, Software/Firmware" [ref=e1305] [cursor=pointer]:
+                      - /url: https://www.dice.com/job-detail/fd58fe1b-cfcb-4317-82ad-139e085f6e65
+                    - generic [ref=e1307]:
+                      - paragraph [ref=e1310]: Santa Clara, California
+                      - generic [ref=e1311]:
+                        - paragraph [ref=e1313]: •
+                        - paragraph [ref=e1315]: Yesterday
+                    - paragraph [ref=e1318]: "Senior Principal Engineer, Software/Firmware - coherent optical module firmware/SoC-based embedded platforms/CPO Santa Clara, CA, US (Onsite) Engineering / Architecture Salary: USD $200,000 $260,000 / yr Job description Your Team, Your Impact Client''s Optics firmware team develops the software that powers the next generation of optical interconnects from high-volume Data Center Interconnect (DCI) coherent modules (400ZR, 800ZR/ZR+) deployed at hyperscale cloud providers, to emerging Co-Packa"
+                    - generic [ref=e1319]:
+                      - generic "Full-time" [ref=e1320]:
+                        - paragraph [ref=e1321]: Full-time
+                      - generic "Depends on Experience" [ref=e1322]:
+                        - paragraph [ref=e1323]: 200000 - 260000
+          - navigation "Pagination" [ref=e1324]:
+            - link "First" [disabled] [ref=e1325] [cursor=pointer]:
+              - generic [ref=e1326]: First
+              - img [ref=e1327]
+            - link "Back" [disabled] [ref=e1330] [cursor=pointer]:
+              - generic [ref=e1331]: Back
+              - img [ref=e1332]
+            - region "Page 1 of 2" [ref=e1334]:
+              - generic [ref=e1336]: "1"
+              - generic [ref=e1337]: of
+              - generic [ref=e1338]: "2"
+            - link "Next" [ref=e1339] [cursor=pointer]:
+              - generic [ref=e1340]: Next
+              - img [ref=e1341]
+            - link "Last" [ref=e1343] [cursor=pointer]:
+              - generic [ref=e1344]: Last
+              - img [ref=e1345]
+    - contentinfo [ref=e1348]:
+      - generic [ref=e1350]:
+        - link "Dice Home" [ref=e1351] [cursor=pointer]:
+          - /url: https://www.dice.com
+          - img "Dice Logo" [ref=e1353]
+        - navigation "Social media" [ref=e1356]:
+          - list [ref=e1357]:
+            - listitem [ref=e1358]:
+              - link "LinkedIn" [ref=e1359] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/dice
+                - img [ref=e1360]
+            - listitem [ref=e1362]:
+              - link "YouTube" [ref=e1363] [cursor=pointer]:
+                - /url: https://www.youtube.com/Dice
+                - img [ref=e1364]
+            - listitem [ref=e1366]:
+              - link "Instagram" [ref=e1367] [cursor=pointer]:
+                - /url: https://www.instagram.com/dicedotcom
+                - img [ref=e1368]
+            - listitem [ref=e1371]:
+              - link "TikTok" [ref=e1372] [cursor=pointer]:
+                - /url: https://www.tiktok.com/@dicetechjobs
+                - img [ref=e1373]
+      - generic [ref=e1376]:
+        - navigation "Technology Professionals" [ref=e1378]:
+          - heading "Technology Professionals" [level=2] [ref=e1379]
+          - list [ref=e1380]:
+            - listitem [ref=e1381]:
+              - link "Search for Jobs" [ref=e1382] [cursor=pointer]:
+                - /url: https://www.dice.com/jobs
+            - listitem [ref=e1383]:
+              - link "Jobs Directory" [ref=e1384] [cursor=pointer]:
+                - /url: https://www.dice.com/jobs/browse-jobs
+            - listitem [ref=e1385]:
+              - link "Search for Companies" [ref=e1386] [cursor=pointer]:
+                - /url: https://www.dice.com/companies
+            - listitem [ref=e1387]:
+              - link "Company Directory" [ref=e1388] [cursor=pointer]:
+                - /url: https://www.dice.com/company-profile/browse
+            - listitem [ref=e1389]:
+              - link "Career Advice" [ref=e1390] [cursor=pointer]:
+                - /url: https://www.dice.com/career-advice
+        - navigation "Employers and Recruiters" [ref=e1392]:
+          - heading "Employers and Recruiters" [level=2] [ref=e1393]
+          - list [ref=e1394]:
+            - listitem [ref=e1395]:
+              - link "Post Jobs" [ref=e1396] [cursor=pointer]:
+                - /url: https://www.dice.com/hiring/post-jobs
+            - listitem [ref=e1397]:
+              - link "Find Candidates" [ref=e1398] [cursor=pointer]:
+                - /url: https://www.dice.com/hiring/find-candidates
+            - listitem [ref=e1399]:
+              - link "Build Employer Brand" [ref=e1400] [cursor=pointer]:
+                - /url: https://www.dice.com/hiring/employer-brand
+            - listitem [ref=e1401]:
+              - link "Explore Talent Solutions" [ref=e1402] [cursor=pointer]:
+                - /url: https://www.dice.com/hiring/talent-solutions
+            - listitem [ref=e1403]:
+              - link "View Integrations" [ref=e1404] [cursor=pointer]:
+                - /url: https://www.dice.com/hiring/integrations
+            - listitem [ref=e1405]:
+              - link "Recruiting Advice" [ref=e1406] [cursor=pointer]:
+                - /url: https://www.dice.com/hiring/recruitment
+            - listitem [ref=e1407]:
+              - link "Hiring Resources" [ref=e1408] [cursor=pointer]:
+                - /url: https://www.dice.com/hiring/employer-resources
+        - navigation "Company Information" [ref=e1410]:
+          - heading "Company Information" [level=2] [ref=e1411]
+          - list [ref=e1412]:
+            - listitem [ref=e1413]:
+              - link "About Us" [ref=e1414] [cursor=pointer]:
+                - /url: https://dhigroupinc.com
+            - listitem [ref=e1415]:
+              - link "Media" [ref=e1416] [cursor=pointer]:
+                - /url: https://www.dice.com/media
+            - listitem [ref=e1417]:
+              - link "Work at Dice" [ref=e1418] [cursor=pointer]:
+                - /url: https://dhigroupinc.com/careers/default.aspx
+        - generic [ref=e1419]:
+          - navigation "Contact Us" [ref=e1420]:
+            - heading "Contact Us" [level=2] [ref=e1421]
+            - list [ref=e1422]:
+              - listitem [ref=e1423]:
+                - link "Request a Demo" [ref=e1424] [cursor=pointer]:
+                  - /url: https://www.dice.com/hiring/demo
+          - navigation "Support" [ref=e1425]:
+            - heading "Support" [level=2] [ref=e1426]
+            - list [ref=e1427]:
+              - listitem [ref=e1428]:
+                - link "Knowledge Center" [ref=e1429] [cursor=pointer]:
+                  - /url: https://www.dice.com/support
+              - listitem [ref=e1430]:
+                - link "Privacy & Trust Center" [ref=e1431] [cursor=pointer]:
+                  - /url: https://www.dice.com/privacy-center
+              - listitem [ref=e1432]:
+                - link "Contact Support" [ref=e1433] [cursor=pointer]:
+                  - /url: https://www.dice.com/about/contact-us
+      - generic [ref=e1436]:
+        - heading "Get the Dice app." [level=2] [ref=e1437]
+        - paragraph [ref=e1438]: Unlock your tech potential.
+        - list [ref=e1439]:
+          - listitem [ref=e1440]:
+            - link "Download on the Apple App Store" [ref=e1441] [cursor=pointer]:
+              - /url: https://apps.apple.com/app/id794201100
+              - img "Apple App Store" [ref=e1442]
+          - listitem [ref=e1453]:
+            - link "Get it on Google Play" [ref=e1454] [cursor=pointer]:
+              - /url: https://play.google.com/store/apps/details?id=com.dice.app.jobs&referrer=trackingcode%3DDI_OS_UN_MA_UP&utm_campaign%3DDice%2520Universal%2520Header%2520and%2520Footer&utm_source%3DDice&utm_medium%3DOnsite&utm_content%3DUniversal&utm_term%3DUnpaid
+              - img "Google Play" [ref=e1455]
+      - generic [ref=e1468]:
+        - paragraph [ref=e1470]:
+          - text: Copyright © 1990 - 2026 Dice. All Rights Reserved.
+          - link "Dice" [ref=e1471] [cursor=pointer]:
+            - /url: https://www.dice.com
+          - text: is a
+          - link "DHI" [ref=e1472] [cursor=pointer]:
+            - /url: https://dhigroupinc.com
+          - text: service.
+        - navigation "Legal and policies" [ref=e1473]:
+          - list [ref=e1474]:
+            - listitem [ref=e1475]:
+              - link "Terms & Conditions" [ref=e1476] [cursor=pointer]:
+                - /url: https://www.dice.com/about/terms-and-conditions
+              - text: "|"
+            - listitem [ref=e1477]:
+              - link "Privacy Policy" [ref=e1478] [cursor=pointer]:
+                - /url: https://www.dice.com/about/privacy-policy
+              - text: "|"
+            - listitem [ref=e1479]:
+              - link "End User License Agreement" [ref=e1480] [cursor=pointer]:
+                - /url: https://www.dice.com/about/eula
+              - text: "|"
+            - listitem [ref=e1481]:
+              - link "Do Not Sell or Share My Personal Information" [ref=e1482] [cursor=pointer]:
+                - /url: https://www.dice.com/about/ccpa#ccpa-form-anchor
+  - alert [ref=e1483]

@@ -1,0 +1,7 @@
+{
+  "name": "dice-easy-apply-root",
+  "private": true,
+  "scripts": {
+    "start:azure": "npm --prefix dice-easy-apply-angular ci && npm --prefix dice-easy-apply-angular run start:azure"
+  }
+}

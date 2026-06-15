@@ -1,0 +1,13 @@
+June 13, 2026
+
+Dear RAVIN IT SOLUTIONS Hiring Team,
+
+I am writing to express my enthusiastic interest in the Senior Firmware Engineer position at RAVIN IT SOLUTIONS, Inc. in Atlanta, GA. With over 15 years of dedicated experience in firmware and embedded systems development, coupled with a strong background in IoT, I am confident that my skill set and proven track record align perfectly with the requirements of this role and your team's innovative goals.
+
+Throughout my career, I have honed my expertise in critical areas detailed in your job description, including robust **Embedded C/C++ development** and extensive hands-on experience with **board bring-up, OS bring-up, and device driver development**. My proficiency extends to integrating various hardware interfaces such as UART, SPI, I2C, and RS-485, alongside communication protocols like CAN and TCP/IP, ensuring seamless system functionality. I am adept at the full SDLC and bring a strong focus on optimizing embedded software for performance and reliability, backed by a solid understanding of security standards essential for today's embedded platforms.
+
+My commitment to developing high-quality, secure, and compliant embedded solutions, combined with my collaborative approach to working with cross-functional teams, makes me an ideal candidate. I am eager to leverage my deep technical knowledge and contribute to RAVIN IT SOLUTIONS' cutting-edge projects. I am open to relocation to Atlanta and am available for an interview at your earliest convenience to discuss how my qualifications can directly benefit your team.
+
+Sincerely,
+
+MANISH MAN SHRESTHA

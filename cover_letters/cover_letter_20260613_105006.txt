@@ -1,0 +1,13 @@
+June 13, 2026
+
+Dear TECH Tammina Hiring Team,
+
+I am writing to express my strong interest in the Product Developer LTE Devices & Utility Systems position in Birmingham, AL. With 15 years of dedicated experience as a Firmware & Embedded Systems Engineer and IoT Developer, my expertise aligns perfectly with the demands of developing cutting-edge solutions for LTE-enabled devices and critical utility infrastructure. I am prepared to relocate to Birmingham to contribute my skills to your innovative team.
+
+My background includes extensive hands-on experience in board bring-up, device drivers, and implementing robust communication protocols such as UART, SPI, I2C, RS-485, and Modbus—all essential for advanced utility systems. I am proficient in C/C++ development for ARM Cortex-M, ESP32, PIC, and 8051 architectures, coupled with expertise in FreeRTOS and other RTOS environments. My advanced knowledge in IOT & Future Networks, including security protocols like TLS and post-quantum cryptography, ensures the development of resilient and secure products and solutions. My ongoing Ph.D. research further hones my problem-solving and innovation capabilities, directly applicable to advancing digital experiences in this sector.
+
+I am confident that my comprehensive skill set in embedded systems and IoT development, combined with a proven track record in delivering high-performance firmware, makes me an ideal candidate to drive the next generation of LTE devices and utility systems at TECH Tammina. I am eager to leverage my expertise to develop innovative products and contribute to your commitment to digital transformation and advanced technology. Thank you for your time and consideration; I look forward to discussing how I can bring significant value to your team.
+
+Sincerely,
+
+MANISH MAN SHRESTHA
