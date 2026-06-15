@@ -31,7 +31,7 @@ export class AuthService {
   }
 
   getAuthHeaders(): HttpHeaders {
-    return new HttpHeaders({ 'Authorization': `Bearer ${this.token}` });
+    return new HttpHeaders({ 'x-auth-token': this.token });
   }
 
   login(email: string, password: string): Observable<{ token: string; email: string }> {

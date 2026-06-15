@@ -2,8 +2,7 @@ const { getUserByToken, getUserResume, updateUserResume } = require('../shared/s
 
 module.exports = async function (context, req) {
   try {
-    const authHeader = req.headers['authorization'] || '';
-    const token = authHeader.replace(/^Bearer\s+/i, '');
+    const token = req.headers['x-auth-token'] || '';
 
     if (!token) {
       context.res = { status: 401, headers: { 'Content-Type': 'application/json' }, body: { error: 'No token provided' } };
