@@ -10,6 +10,7 @@ export interface Job {
   summary?: string;
   jobDescription?: string;
   jobDescriptionFile?: string;
+  coverLetter?: string;
   status?: 'To Apply' | 'Applied' | 'Skipped' | 'Pending';
   dateAdded?: string;
   dateUpdated?: string;

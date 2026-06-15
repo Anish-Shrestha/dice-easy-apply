@@ -120,6 +120,18 @@ export class DiceApiService {
       );
   }
 
+  updateJobFields(link: string, fields: { jobDescription?: string; coverLetter?: string; role?: string }): Observable<boolean> {
+    return this.http
+      .post<{ updated: boolean }>(`${environment.apiUrl}/tracker/update-fields`, { link, ...fields })
+      .pipe(
+        map(r => r?.updated || false),
+        catchError(err => {
+          console.error('Failed to update job fields:', err);
+          return of(false);
+        })
+      );
+  }
+
   enrichRoleForLink(link: string): Observable<{ updated: boolean; role: string; reason?: string }> {
     return this.http
       .post<{ updated: boolean; role: string; reason?: string }>(

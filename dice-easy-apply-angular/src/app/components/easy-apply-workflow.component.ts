@@ -537,14 +537,35 @@ export class EasyApplyWorkflowComponent implements OnInit, OnDestroy {
   }
 
   private fetchJobDescription(job: Job): void {
+    // Use saved job description from tracker if available
+    if (job.jobDescription && job.jobDescription.length > 50) {
+      this.jobDescription = job.jobDescription;
+      if (job.coverLetter) {
+        this.generatedCoverLetter = job.coverLetter;
+      }
+      this.maybePromptAutoSkip(this.jobDescription);
+      return;
+    }
+
     this.isLoading = true;
     this.diceApi.getJobDescription(job)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (result) => {
           this.jobDescription = result.description || 'Job description not available';
+          const fieldsToSave: { jobDescription?: string; role?: string } = {};
+          if (result.description && result.description.length > 50) {
+            fieldsToSave.jobDescription = result.description;
+          }
           if (result.role && this.currentJob && !this.currentJob.role) {
             this.currentJob = { ...this.currentJob, role: result.role };
+            fieldsToSave.role = result.role;
+          }
+          // Auto-save scraped data to tracker
+          if (Object.keys(fieldsToSave).length > 0 && job.link) {
+            this.diceApi.updateJobFields(job.link, fieldsToSave)
+              .pipe(takeUntil(this.destroy$))
+              .subscribe();
           }
           this.maybePromptAutoSkip(this.jobDescription);
           this.isLoading = false;
@@ -576,8 +597,19 @@ export class EasyApplyWorkflowComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (result) => {
           this.jobDescription = result.description || 'Job description not available';
+          const fieldsToSave: { jobDescription?: string; role?: string } = {};
+          if (result.description && result.description.length > 50) {
+            fieldsToSave.jobDescription = result.description;
+          }
           if (result.role && this.currentJob && !this.currentJob.role) {
             this.currentJob = { ...this.currentJob, role: result.role };
+            fieldsToSave.role = result.role;
+          }
+          // Auto-save scraped data to tracker
+          if (Object.keys(fieldsToSave).length > 0 && this.currentJob?.link) {
+            this.diceApi.updateJobFields(this.currentJob.link, fieldsToSave)
+              .pipe(takeUntil(this.destroy$))
+              .subscribe();
           }
           this.isLoading = false;
           callback();
@@ -610,6 +642,12 @@ export class EasyApplyWorkflowComponent implements OnInit, OnDestroy {
 
     const saveAfterGenerate = (letter: string) => {
       this.generatedCoverLetter = letter;
+      // Save cover letter to tracker table
+      if (this.currentJob?.link && letter) {
+        this.diceApi.updateJobFields(this.currentJob.link, { coverLetter: letter })
+          .pipe(takeUntil(this.destroy$))
+          .subscribe();
+      }
       this.coverLetterService
         .saveCoverLetterAsTxt(this.currentJob!, letter, mode)
         .pipe(takeUntil(this.destroy$))
