@@ -33,19 +33,19 @@ export class DiceApiService {
   /**
    * Fetch job description from Dice job link
    */
-  getJobDescription(job: Job): Observable<string> {
+  getJobDescription(job: Job): Observable<{ description: string; role: string }> {
     const encodedLink = encodeURIComponent(job.link || '');
     const encodedCompany = encodeURIComponent(job.company || '');
     const encodedRole = encodeURIComponent(job.role || '');
     return this.http
-      .get<{ description: string }>(
+      .get<{ description: string; role?: string }>(
         `${environment.apiUrl}/tracker/description?link=${encodedLink}&company=${encodedCompany}&role=${encodedRole}`
       )
       .pipe(
-        map(response => response.description || ''),
+        map(response => ({ description: response.description || '', role: response.role || '' })),
         catchError(() => {
           console.warn(`Could not fetch job description for ${job.link}`);
-          return of('');
+          return of({ description: '', role: '' });
         })
       );
   }

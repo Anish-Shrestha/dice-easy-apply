@@ -541,8 +541,11 @@ export class EasyApplyWorkflowComponent implements OnInit, OnDestroy {
     this.diceApi.getJobDescription(job)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
-        next: (desc) => {
-          this.jobDescription = desc || 'Job description not available';
+        next: (result) => {
+          this.jobDescription = result.description || 'Job description not available';
+          if (result.role && this.currentJob && !this.currentJob.role) {
+            this.currentJob = { ...this.currentJob, role: result.role };
+          }
           this.maybePromptAutoSkip(this.jobDescription);
           this.isLoading = false;
         },
@@ -571,8 +574,11 @@ export class EasyApplyWorkflowComponent implements OnInit, OnDestroy {
     this.diceApi.getJobDescription(this.currentJob)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
-        next: (desc) => {
-          this.jobDescription = desc || 'Job description not available';
+        next: (result) => {
+          this.jobDescription = result.description || 'Job description not available';
+          if (result.role && this.currentJob && !this.currentJob.role) {
+            this.currentJob = { ...this.currentJob, role: result.role };
+          }
           this.isLoading = false;
           callback();
         },
