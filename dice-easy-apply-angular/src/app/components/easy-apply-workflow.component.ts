@@ -644,6 +644,48 @@ export class EasyApplyWorkflowComponent implements OnInit, OnDestroy {
     return template;
   }
 
+  downloadCoverLetterPdf(): void {
+    if (!this.generatedCoverLetter || !this.currentJob) return;
+
+    const role = this.currentJob.role || 'Role';
+    const company = this.currentJob.company || 'Company';
+    const now = new Date();
+    const timestamp = now.toISOString().slice(0, 10).replace(/-/g, '');
+    const filename = `cover_letter_${company.replace(/[^a-zA-Z0-9]/g, '_')}_${timestamp}.pdf`;
+
+    // Create a printable HTML document and use browser print-to-PDF
+    const printWindow = window.open('', '_blank');
+    if (!printWindow) {
+      // Fallback: download as txt if popup blocked
+      const blob = new Blob([this.generatedCoverLetter], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename.replace('.pdf', '.txt');
+      a.click();
+      URL.revokeObjectURL(url);
+      return;
+    }
+
+    const content = this.generatedCoverLetter.replace(/\n/g, '<br>');
+    printWindow.document.write(`
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>${role} @ ${company} - Cover Letter</title>
+        <style>
+          body { font-family: 'Georgia', serif; font-size: 12pt; line-height: 1.6; margin: 1in; color: #333; }
+          @media print { body { margin: 0.75in; } }
+        </style>
+      </head>
+      <body>${content}</body>
+      </html>
+    `);
+    printWindow.document.close();
+    printWindow.focus();
+    setTimeout(() => { printWindow.print(); }, 500);
+  }
+
   proceedToDecision(): void {
     this.currentStep = 'decision';
   }

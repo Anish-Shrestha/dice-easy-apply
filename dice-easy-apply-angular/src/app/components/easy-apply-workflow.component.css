@@ -1093,6 +1093,60 @@
   color: #333;
 }
 
+.cover-letter-preview.editable {
+  width: 100%;
+  resize: vertical;
+  font-family: inherit;
+  border: 1px solid #d1d5db;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.cover-letter-preview.editable:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.15);
+}
+
+.cover-letter-actions {
+  display: flex;
+  gap: 8px;
+  margin: 4px 0 8px;
+}
+
+.btn-sm {
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 4px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-download {
+  background: #667eea;
+  color: #fff;
+  border-color: #667eea;
+}
+
+.btn-download:hover {
+  background: #5a6fd6;
+}
+
+.meta-file-btn {
+  background: none;
+  border: none;
+  color: #667eea;
+  cursor: pointer;
+  font-size: 12px;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.meta-file-btn:hover {
+  color: #5a6fd6;
+}
+
 .decision-step {
   margin-top: auto;
   display: flex;

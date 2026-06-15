@@ -183,10 +183,17 @@
           <div *ngIf="isLoading" class="loading">⏳ Generating cover letter...</div>
 
           <div class="cover-letter-preview-box">
-            <div
-              class="cover-letter-preview"
-              [textContent]="generatedCoverLetter || 'No cover letter generated yet.'"
-            ></div>
+            <textarea
+              class="cover-letter-preview editable"
+              [(ngModel)]="generatedCoverLetter"
+              placeholder="No cover letter generated yet."
+              rows="12"
+            ></textarea>
+          </div>
+          <div class="cover-letter-actions" *ngIf="generatedCoverLetter">
+            <button class="btn-sm btn-download" (click)="downloadCoverLetterPdf()" title="Download as PDF">
+              📥 Download PDF
+            </button>
           </div>
         </div>
 
@@ -206,7 +213,7 @@
             </div>
             <div class="meta-item" *ngIf="savedCoverLetterPath">
                 <span class="meta-label">Letter:</span>
-                <span class="meta-file" [title]="savedCoverLetterPath">{{ getCoverLetterDisplayName(savedCoverLetterPath) }}</span>
+                <button class="meta-file-btn" [title]="savedCoverLetterPath" (click)="downloadCoverLetterPdf()">{{ getCoverLetterDisplayName(savedCoverLetterPath) }}</button>
             </div>
             <div class="meta-item" *ngIf="generatedCoverLetter && !savedCoverLetterPath">
               <span class="meta-label">Letter:</span>
