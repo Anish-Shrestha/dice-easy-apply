@@ -8,7 +8,7 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Dice Easy Apply Workflow';
+  title = 'Easy Apply';
   showUserMenu = false;
 
   constructor(public auth: AuthService, private router: Router) { }

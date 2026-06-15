@@ -22,6 +22,22 @@ export class JobService {
   public currentJob$ = this.currentJobSubject.asObservable();
   public tracker$ = this.trackerSubject.asObservable();
 
+  private get userEmail(): string {
+    return localStorage.getItem('dice_auth_user') || '';
+  }
+
+  private get jobsKey(): string {
+    return this.userEmail ? `dice_jobs_${this.userEmail}` : 'dice_jobs';
+  }
+
+  private get trackerKey(): string {
+    return this.userEmail ? `dice_tracker_${this.userEmail}` : 'dice_tracker';
+  }
+
+  private get notesKey(): string {
+    return this.userEmail ? `dice_job_notes_${this.userEmail}` : 'dice_job_notes';
+  }
+
   constructor() {
     this.loadJobsFromLocalStorage();
     this.loadTrackerFromLocalStorage();
@@ -29,7 +45,7 @@ export class JobService {
   }
 
   private loadJobsFromLocalStorage(): void {
-    const stored = localStorage.getItem('dice_jobs');
+    const stored = localStorage.getItem(this.jobsKey);
     if (stored) {
       this.jobs = JSON.parse(stored);
       this.jobsSubject.next(this.jobs);
@@ -37,31 +53,31 @@ export class JobService {
   }
 
   private loadTrackerFromLocalStorage(): void {
-    const stored = localStorage.getItem('dice_tracker');
+    const stored = localStorage.getItem(this.trackerKey);
     if (stored) {
       this.trackerSubject.next(JSON.parse(stored));
     }
   }
 
   private loadJobNotesFromLocalStorage(): void {
-    const stored = localStorage.getItem('dice_job_notes');
+    const stored = localStorage.getItem(this.notesKey);
     if (stored) {
       this.jobNotes = JSON.parse(stored);
     }
   }
 
   private saveJobsToLocalStorage(): void {
-    localStorage.setItem('dice_jobs', JSON.stringify(this.jobs));
+    localStorage.setItem(this.jobsKey, JSON.stringify(this.jobs));
     this.jobsSubject.next(this.jobs);
   }
 
   private saveTrackerToLocalStorage(): void {
     const tracker = this.trackerSubject.getValue();
-    localStorage.setItem('dice_tracker', JSON.stringify(tracker));
+    localStorage.setItem(this.trackerKey, JSON.stringify(tracker));
   }
 
   private saveJobNotesToLocalStorage(): void {
-    localStorage.setItem('dice_job_notes', JSON.stringify(this.jobNotes));
+    localStorage.setItem(this.notesKey, JSON.stringify(this.jobNotes));
   }
 
   setJobNote(link: string, note: string): void {
@@ -181,8 +197,8 @@ export class JobService {
       pendingCount: 0,
       decisions: []
     });
-    localStorage.removeItem('dice_jobs');
-    localStorage.removeItem('dice_tracker');
-    localStorage.removeItem('dice_job_notes');
+    localStorage.removeItem(this.jobsKey);
+    localStorage.removeItem(this.trackerKey);
+    localStorage.removeItem(this.notesKey);
   }
 }
