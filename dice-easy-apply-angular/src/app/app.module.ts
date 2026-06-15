@@ -9,11 +9,13 @@ import { EasyApplyWorkflowComponent } from './components/easy-apply-workflow.com
 import { JobsGridComponent } from './components/jobs-grid.component';
 import { LoginComponent } from './components/login.component';
 import { SettingsComponent } from './components/settings.component';
+import { AdminComponent } from './components/admin.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
   { path: 'workflow', component: EasyApplyWorkflowComponent, canActivate: [AuthGuard] },
   { path: 'jobs', component: JobsGridComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/workflow', pathMatch: 'full' },
@@ -26,7 +28,8 @@ const routes: Routes = [
     EasyApplyWorkflowComponent,
     JobsGridComponent,
     LoginComponent,
-    SettingsComponent
+    SettingsComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

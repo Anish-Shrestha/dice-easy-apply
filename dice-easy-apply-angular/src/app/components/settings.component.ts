@@ -58,11 +58,45 @@ export class SettingsComponent implements OnInit {
     if (!input.files?.length) return;
 
     const file = input.files[0];
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.resume = reader.result as string;
-    };
-    reader.readAsText(file);
+    const ext = file.name.split('.').pop()?.toLowerCase() || '';
+
+    if (['pdf', 'docx', 'doc'].includes(ext)) {
+      // Send binary to server for extraction
+      this.isSaving = true;
+      this.message = 'Uploading and extracting text...';
+      this.messageType = 'success';
+      const reader = new FileReader();
+      reader.onload = () => {
+        const base64 = (reader.result as string).split(',')[1]; // strip data:...;base64,
+        const fileType = ext === 'doc' ? 'docx' : ext;
+        this.auth.uploadResumeFile(base64, fileType).subscribe({
+          next: (success) => {
+            this.isSaving = false;
+            if (success) {
+              this.message = 'Resume uploaded and extracted!';
+              this.loadResume(); // reload the extracted text
+            } else {
+              this.message = 'Failed to extract resume text';
+              this.messageType = 'error';
+            }
+            setTimeout(() => this.message = '', 3000);
+          },
+          error: () => {
+            this.isSaving = false;
+            this.message = 'Failed to upload file';
+            this.messageType = 'error';
+          }
+        });
+      };
+      reader.readAsDataURL(file);
+    } else {
+      // Plain text files (.txt, .md)
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.resume = reader.result as string;
+      };
+      reader.readAsText(file);
+    }
   }
 
   logout(): void {

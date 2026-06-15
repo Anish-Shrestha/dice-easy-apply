@@ -1,4 +1,4 @@
-const { updateJobFields } = require('../shared/storage');
+const { updateJobFields, logAudit, getUserByToken } = require('../shared/storage');
 
 module.exports = async function (context, req) {
   try {
@@ -32,7 +32,10 @@ module.exports = async function (context, req) {
       return;
     }
 
+    const token = req.headers['x-auth-token'] || '';
+    const user = token ? await getUserByToken(token) : null;
     const result = await updateJobFields(link, fields);
+    await logAudit(user?.email || 'anonymous', 'job_fields_update', `Fields: ${Object.keys(fields).join(',')} | Link: ${link.slice(0, 80)}`);
     context.res = {
       status: 200,
       headers: { 'Content-Type': 'application/json' },

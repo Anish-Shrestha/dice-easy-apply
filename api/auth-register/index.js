@@ -1,4 +1,4 @@
-const { registerUser } = require('../shared/storage');
+const { registerUser, logAudit } = require('../shared/storage');
 
 module.exports = async function (context, req) {
   try {
@@ -15,6 +15,7 @@ module.exports = async function (context, req) {
     }
 
     const result = await registerUser(email, password);
+    await logAudit(email, 'register', 'New account created');
     context.res = { status: 200, headers: { 'Content-Type': 'application/json' }, body: result };
   } catch (error) {
     const status = error.message === 'User already exists' ? 409 : 500;

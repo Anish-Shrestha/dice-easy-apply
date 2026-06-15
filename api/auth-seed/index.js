@@ -1,15 +1,23 @@
 const { registerUser } = require('../shared/storage');
 
 module.exports = async function (context, req) {
+  const results = [];
+
+  // Seed default user
   try {
-    // Seed default user
-    const result = await registerUser('mshrestha789@gmail.com', 'Nepal@123');
-    context.res = { status: 200, headers: { 'Content-Type': 'application/json' }, body: { seeded: true, ...result } };
+    await registerUser('mshrestha789@gmail.com', 'Nepal@123', 'user');
+    results.push({ email: 'mshrestha789@gmail.com', status: 'created' });
   } catch (error) {
-    if (error.message === 'User already exists') {
-      context.res = { status: 200, headers: { 'Content-Type': 'application/json' }, body: { seeded: false, message: 'User already exists' } };
-      return;
-    }
-    context.res = { status: 500, headers: { 'Content-Type': 'application/json' }, body: { error: error.message } };
+    results.push({ email: 'mshrestha789@gmail.com', status: error.message });
   }
+
+  // Seed admin user
+  try {
+    await registerUser('anish.shrestha237@gmail.com', 'Nepal@321', 'admin');
+    results.push({ email: 'anish.shrestha237@gmail.com', status: 'created' });
+  } catch (error) {
+    results.push({ email: 'anish.shrestha237@gmail.com', status: error.message });
+  }
+
+  context.res = { status: 200, headers: { 'Content-Type': 'application/json' }, body: { seeded: true, results } };
 };

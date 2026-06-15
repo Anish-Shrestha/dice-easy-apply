@@ -10,6 +10,7 @@ import { environment } from '../../environments/environment';
 export class AuthService {
   private tokenKey = 'dice_auth_token';
   private userKey = 'dice_auth_user';
+  private roleKey = 'dice_auth_role';
   private isLoggedIn$ = new BehaviorSubject<boolean>(this.hasToken());
 
   constructor(private http: HttpClient) { }
@@ -30,18 +31,27 @@ export class AuthService {
     return localStorage.getItem(this.userKey) || '';
   }
 
+  get userRole(): string {
+    return localStorage.getItem(this.roleKey) || 'user';
+  }
+
+  get isAdmin(): boolean {
+    return this.userRole === 'admin';
+  }
+
   getAuthHeaders(): HttpHeaders {
     return new HttpHeaders({ 'x-auth-token': this.token });
   }
 
-  login(email: string, password: string): Observable<{ token: string; email: string }> {
-    return this.http.post<{ token: string; email: string }>(
+  login(email: string, password: string): Observable<{ token: string; email: string; role?: string }> {
+    return this.http.post<{ token: string; email: string; role?: string }>(
       `${environment.apiUrl}/auth/login`,
       { email, password }
     ).pipe(
       tap(result => {
         localStorage.setItem(this.tokenKey, result.token);
         localStorage.setItem(this.userKey, result.email);
+        localStorage.setItem(this.roleKey, result.role || 'user');
         this.isLoggedIn$.next(true);
       })
     );
@@ -55,6 +65,7 @@ export class AuthService {
       tap(result => {
         localStorage.setItem(this.tokenKey, result.token);
         localStorage.setItem(this.userKey, result.email);
+        localStorage.setItem(this.roleKey, 'user');
         this.isLoggedIn$.next(true);
       })
     );
@@ -63,6 +74,7 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem(this.tokenKey);
     localStorage.removeItem(this.userKey);
+    localStorage.removeItem(this.roleKey);
     this.isLoggedIn$.next(false);
   }
 
@@ -84,6 +96,38 @@ export class AuthService {
     ).pipe(
       map(r => r?.updated || false),
       catchError(() => of(false))
+    );
+  }
+
+  uploadResumeFile(fileContent: string, fileType: string): Observable<boolean> {
+    return this.http.post<{ updated: boolean }>(
+      `${environment.apiUrl}/user/resume`,
+      { fileContent, fileType },
+      { headers: this.getAuthHeaders() }
+    ).pipe(
+      map(r => r?.updated || false),
+      catchError(() => of(false))
+    );
+  }
+
+  // Admin endpoints
+  getUsers(): Observable<Array<{ email: string; role: string; dateCreated: string }>> {
+    return this.http.get<{ users: Array<{ email: string; role: string; dateCreated: string }> }>(
+      `${environment.apiUrl}/admin/users`,
+      { headers: this.getAuthHeaders() }
+    ).pipe(
+      map(r => r.users || []),
+      catchError(() => of([]))
+    );
+  }
+
+  getAuditLogs(): Observable<Array<{ email: string; action: string; details: string; timestamp: string }>> {
+    return this.http.get<{ logs: Array<{ email: string; action: string; details: string; timestamp: string }> }>(
+      `${environment.apiUrl}/admin/audit`,
+      { headers: this.getAuthHeaders() }
+    ).pipe(
+      map(r => r.logs || []),
+      catchError(() => of([]))
     );
   }
 

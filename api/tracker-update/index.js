@@ -1,7 +1,9 @@
-const { updateJobStatus } = require('../shared/storage');
+const { updateJobStatus, logAudit, getUserByToken } = require('../shared/storage');
 
 module.exports = async function (context, req) {
   try {
+    const token = req.headers['x-auth-token'] || '';
+    const user = token ? await getUserByToken(token) : null;
     const body = req.body || {};
     const link = (body.link || '').trim();
     const status = (body.status || '').trim();
@@ -26,6 +28,7 @@ module.exports = async function (context, req) {
     }
 
     const result = await updateJobStatus(link, status);
+    await logAudit(user?.email || 'anonymous', 'job_status_update', `Status: ${status} | Link: ${link.slice(0, 80)}`);
     context.res = {
       status: 200,
       headers: { 'Content-Type': 'application/json' },

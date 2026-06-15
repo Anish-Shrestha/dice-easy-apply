@@ -8,6 +8,7 @@
     <nav class="nav-links" aria-label="Primary">
       <a routerLink="/workflow" routerLinkActive="active-link">Workflow</a>
       <a routerLink="/jobs" routerLinkActive="active-link">Jobs Grid</a>
+      <a routerLink="/admin" routerLinkActive="active-link" *ngIf="auth.isAdmin">🛡️ Admin</a>
       <a routerLink="/settings" routerLinkActive="active-link">⚙️ Settings</a>
     </nav>
   </header>

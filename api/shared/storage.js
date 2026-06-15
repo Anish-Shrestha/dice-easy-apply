@@ -4,14 +4,17 @@ const crypto = require('crypto');
 let tableClient = null;
 let searchTableClient = null;
 let usersTableClient = null;
+let auditTableClient = null;
 let inMemoryStore = [];
 let inMemorySearchTerms = [];
 let inMemoryUsers = [];
+let inMemoryAuditLogs = [];
 let useInMemory = false;
 
 const TABLE_NAME = 'jobtracker';
 const SEARCH_TABLE_NAME = 'searchterms';
 const USERS_TABLE_NAME = 'users';
+const AUDIT_TABLE_NAME = 'auditlogs';
 const AUTH_SECRET = process.env.AUTH_SECRET || 'dice-app-secret-key-2026';
 
 function getTableClient() {
@@ -367,7 +370,7 @@ function verifyToken(token) {
   } catch { return null; }
 }
 
-async function registerUser(email, password) {
+async function registerUser(email, password, role) {
   const client = getUsersTableClient();
   const emailKey = email.toLowerCase().trim();
   const hashedPw = hashPassword(password);
@@ -378,6 +381,7 @@ async function registerUser(email, password) {
     rowKey: Buffer.from(emailKey).toString('base64url').slice(0, 100),
     email: emailKey,
     password: hashedPw,
+    role: role || 'user',
     resume: '',
     dateCreated: now
   };
@@ -414,7 +418,7 @@ async function loginUser(email, password) {
       throw new Error('Invalid email or password');
     }
     const token = generateToken(emailKey);
-    return { token, email: emailKey };
+    return { token, email: emailKey, role: user.role || 'user' };
   }
 
   await ensureUsersTable();
@@ -424,7 +428,7 @@ async function loginUser(email, password) {
       throw new Error('Invalid email or password');
     }
     const token = generateToken(emailKey);
-    return { token, email: emailKey };
+    return { token, email: emailKey, role: entity.role || 'user' };
   } catch (err) {
     if (err.message === 'Invalid email or password') throw err;
     throw new Error('Invalid email or password');
@@ -478,6 +482,135 @@ async function updateUserResume(email, resume) {
   }
 }
 
+// --- Admin / User Management ---
+
+async function getAllUsers() {
+  const client = getUsersTableClient();
+  if (!client) {
+    return inMemoryUsers.map(u => ({
+      email: u.email,
+      role: u.role || 'user',
+      dateCreated: u.dateCreated || ''
+    }));
+  }
+
+  await ensureUsersTable();
+  const users = [];
+  const entities = client.listEntities({ queryOptions: { filter: "PartitionKey eq 'users'" } });
+  for await (const entity of entities) {
+    users.push({
+      email: entity.email || '',
+      role: entity.role || 'user',
+      dateCreated: entity.dateCreated || ''
+    });
+  }
+  return users;
+}
+
+async function getUserRole(email) {
+  const client = getUsersTableClient();
+  const emailKey = email.toLowerCase().trim();
+  const rowKey = Buffer.from(emailKey).toString('base64url').slice(0, 100);
+
+  if (!client) {
+    const user = inMemoryUsers.find(u => u.email === emailKey);
+    return user?.role || 'user';
+  }
+
+  await ensureUsersTable();
+  try {
+    const entity = await client.getEntity('users', rowKey);
+    return entity.role || 'user';
+  } catch {
+    return 'user';
+  }
+}
+
+// --- Audit Log Table ---
+
+function getAuditTableClient() {
+  if (auditTableClient) return auditTableClient;
+
+  const connStr = process.env.AzureWebJobsStorage || process.env.AZURE_STORAGE_CONNECTION_STRING;
+  if (!connStr || connStr === 'UseDevelopmentStorage=true' || connStr === '') {
+    return null;
+  }
+
+  try {
+    auditTableClient = TableClient.fromConnectionString(connStr, AUDIT_TABLE_NAME, {
+      allowInsecureConnection: false
+    });
+    return auditTableClient;
+  } catch (err) {
+    return null;
+  }
+}
+
+async function ensureAuditTable() {
+  const client = getAuditTableClient();
+  if (!client) return;
+  try {
+    await client.createTable();
+  } catch (err) {
+    if (err.statusCode !== 409) {
+      console.error('Failed to create audit table:', err.message);
+    }
+  }
+}
+
+async function logAudit(email, action, details) {
+  const client = getAuditTableClient();
+  const now = new Date();
+  const timestamp = now.toISOString();
+  const rowKey = `${now.getTime()}_${crypto.randomBytes(4).toString('hex')}`;
+
+  const entity = {
+    partitionKey: 'audit',
+    rowKey,
+    email: email || 'anonymous',
+    action: action || '',
+    details: (details || '').slice(0, 2000),
+    timestamp
+  };
+
+  if (!client) {
+    inMemoryAuditLogs.push(entity);
+    return;
+  }
+
+  await ensureAuditTable();
+  try {
+    await client.upsertEntity(entity, 'Replace');
+  } catch (err) {
+    console.error('Failed to log audit:', err.message);
+  }
+}
+
+async function getAuditLogs(limit) {
+  const client = getAuditTableClient();
+  const maxItems = limit || 100;
+
+  if (!client) {
+    return inMemoryAuditLogs.slice(-maxItems).reverse();
+  }
+
+  await ensureAuditTable();
+  const logs = [];
+  const entities = client.listEntities({ queryOptions: { filter: "PartitionKey eq 'audit'" } });
+  for await (const entity of entities) {
+    logs.push({
+      email: entity.email || '',
+      action: entity.action || '',
+      details: entity.details || '',
+      timestamp: entity.timestamp || ''
+    });
+  }
+
+  // Sort newest first and limit
+  logs.sort((a, b) => (b.timestamp || '').localeCompare(a.timestamp || ''));
+  return logs.slice(0, maxItems);
+}
+
 module.exports = {
   getAllJobs,
   updateJobStatus,
@@ -496,5 +629,11 @@ module.exports = {
   updateUserResume,
   hashPassword,
   verifyPassword,
-  generateToken
+  generateToken,
+  // Admin
+  getAllUsers,
+  getUserRole,
+  // Audit
+  logAudit,
+  getAuditLogs
 };
