@@ -1,0 +1,152 @@
+.settings-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 0 16px;
+}
+
+.settings-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 16px;
+}
+
+.settings-header h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.btn-logout {
+  background: #ef4444;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn-logout:hover {
+  background: #dc2626;
+}
+
+.section {
+  margin-bottom: 24px;
+}
+
+.section h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  color: #333;
+}
+
+.section-desc {
+  font-size: 13px;
+  color: #666;
+  margin: 0 0 12px;
+}
+
+.info-row {
+  font-size: 14px;
+}
+
+.info-label {
+  font-weight: 600;
+  color: #555;
+}
+
+.info-value {
+  margin-left: 8px;
+  color: #333;
+}
+
+.upload-row {
+  margin-bottom: 12px;
+}
+
+.file-upload-btn {
+  display: inline-block;
+  padding: 8px 14px;
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.file-upload-btn:hover {
+  background: #e5e7eb;
+}
+
+.loading {
+  padding: 12px;
+  color: #667eea;
+  font-size: 13px;
+}
+
+.resume-textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.resume-textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.15);
+}
+
+.save-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.btn-save {
+  padding: 10px 20px;
+  background: #667eea;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-save:hover {
+  background: #5a6fd6;
+}
+
+.btn-save:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.save-message {
+  font-size: 13px;
+}
+
+.save-message.success {
+  color: #16a34a;
+}
+
+.save-message.error {
+  color: #dc2626;
+}

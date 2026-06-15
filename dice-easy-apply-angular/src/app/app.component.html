@@ -1,5 +1,5 @@
 <div class="app-shell">
-  <header class="top-nav">
+  <header class="top-nav" *ngIf="auth.isAuthenticated">
     <div class="brand">
       <h1>Dice Easy Apply</h1>
       <p>Workflow + tracker grid</p>
@@ -8,6 +8,7 @@
     <nav class="nav-links" aria-label="Primary">
       <a routerLink="/workflow" routerLinkActive="active-link">Workflow</a>
       <a routerLink="/jobs" routerLinkActive="active-link">Jobs Grid</a>
+      <a routerLink="/settings" routerLinkActive="active-link">⚙️ Settings</a>
     </nav>
   </header>
 

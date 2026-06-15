@@ -7,10 +7,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { EasyApplyWorkflowComponent } from './components/easy-apply-workflow.component';
 import { JobsGridComponent } from './components/jobs-grid.component';
+import { LoginComponent } from './components/login.component';
+import { SettingsComponent } from './components/settings.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: 'workflow', component: EasyApplyWorkflowComponent },
-  { path: 'jobs', component: JobsGridComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
+  { path: 'workflow', component: EasyApplyWorkflowComponent, canActivate: [AuthGuard] },
+  { path: 'jobs', component: JobsGridComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/workflow', pathMatch: 'full' },
   { path: '**', redirectTo: '/workflow' }
 ];
@@ -19,7 +24,9 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     EasyApplyWorkflowComponent,
-    JobsGridComponent
+    JobsGridComponent,
+    LoginComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

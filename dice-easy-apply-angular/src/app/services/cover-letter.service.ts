@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import { CoverLetter, Job } from '../models/job.model';
 import { environment } from '../../environments/environment';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoverLetterService {
   private geminiProxyUrl = `${environment.apiUrl}/gemini/generate`;
-  private resumeContext = `Resume Summary:
+  private defaultResumeContext = `Resume Summary:
 - Name: MANISH MAN SHRESTHA
 - Title: Firmware & Embedded Systems Engineer | IoT Developer
 - Contact: mshrestha789@gmail.com | +1-605-592-4473 | Brookings, SD | Open to Relocation
@@ -20,7 +21,13 @@ export class CoverLetterService {
 - Education: Ph.D. Agricultural & Biosystems Engineering (May 2026, SDSU)
 - LinkedIn: https://www.linkedin.com/in/manish-shrestha-14502835/`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private auth: AuthService) { }
+
+  private getResumeContext(): Observable<string> {
+    return this.auth.getResume().pipe(
+      map(resume => resume && resume.length > 50 ? resume : this.defaultResumeContext)
+    );
+  }
 
   saveCoverLetterAsTxt(job: Job, content: string, type: 'AI' | 'Template'): Observable<string> {
     const payload = {
@@ -47,12 +54,14 @@ export class CoverLetterService {
   }
 
   chatWithGeminiAboutJob(job: Job, jobDescription: string, userMessage: string, history: Array<{ role: 'user' | 'assistant'; text: string }>): Observable<string> {
-    const historyText = history
-      .slice(-8)
-      .map(msg => `${msg.role === 'user' ? 'User' : 'Assistant'}: ${msg.text}`)
-      .join('\n');
+    return this.getResumeContext().pipe(
+      switchMap(resumeContext => {
+        const historyText = history
+          .slice(-8)
+          .map(msg => `${msg.role === 'user' ? 'User' : 'Assistant'}: ${msg.text}`)
+          .join('\n');
 
-    const prompt = `You are a job application assistant helping MANISH MAN SHRESTHA.
+        const prompt = `You are a job application assistant.
 Answer only about this current job and resume fit.
 
 Current Job:
@@ -64,7 +73,7 @@ Current Job:
 Job Description:
 ${jobDescription || 'Not available'}
 
-${this.resumeContext}
+${resumeContext}
 
 Conversation so far:
 ${historyText || 'No prior conversation.'}
@@ -78,31 +87,19 @@ Instructions:
 - Use bullet points when helpful.
 - If information is missing, say what is missing and suggest next step.`;
 
-    const body = {
-      contents: [
-        {
-          parts: [
-            {
-              text: prompt
-            }
-          ]
-        }
-      ]
-    };
+        const body = {
+          contents: [{ parts: [{ text: prompt }] }]
+        };
 
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    return this.http.post<any>(
-      this.geminiProxyUrl,
-      body,
-      { headers }
-    ).pipe(
-      map(response => this.parseAIResponse(response) || 'I could not generate a response for that question.'),
-      catchError(error => {
-        console.error('Error chatting with Gemini:', error);
-        return of('Gemini request failed. Please try again.');
+        return this.http.post<any>(this.geminiProxyUrl, body, { headers }).pipe(
+          map(response => this.parseAIResponse(response) || 'I could not generate a response for that question.'),
+          catchError(error => {
+            console.error('Error chatting with Gemini:', error);
+            return of('Gemini request failed. Please try again.');
+          })
+        );
       })
     );
   }
@@ -111,14 +108,15 @@ Instructions:
    * Generate AI-powered cover letter using Google Gemini API
    */
   generateAICoverLetter(job: Job, jobDescription: string): Observable<string> {
+    return this.getResumeContext().pipe(
+      switchMap(resumeContext => {
+        const todayLong = new Date().toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        });
 
-    const todayLong = new Date().toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-
-    const prompt = `You are an expert technical recruiter writing a professional cover letter. Create a compelling, concise cover letter (3-4 paragraphs, ~200 words) for the following position:
+        const prompt = `You are an expert technical recruiter writing a professional cover letter. Create a compelling, concise cover letter (3-4 paragraphs, ~200 words) for the following position:
 
 Company: ${job.company}
 Position: ${job.role}
@@ -128,46 +126,34 @@ Job Link: ${job.link}
 Job Description:
 ${jobDescription}
 
-${this.resumeContext}
+${resumeContext}
 
 Requirements:
 1. Start with date: ${todayLong}
 2. Use professional but personable tone
 3. Highlight specific technical expertise relevant to the job description
 4. Mention 2-3 specific keywords/technologies from the job description
-5. End with signature line: MANISH MAN SHRESTHA
+5. End with appropriate signature
 6. Format as markdown-style plain text with sections separated by blank lines
 
 Generate the cover letter:`;
 
-    const body = {
-      contents: [
-        {
-          parts: [
-            {
-              text: prompt
-            }
-          ]
-        }
-      ]
-    };
+        const body = {
+          contents: [{ parts: [{ text: prompt }] }]
+        };
 
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    return this.http.post<any>(
-      this.geminiProxyUrl,
-      body,
-      { headers }
-    ).pipe(
-      map(response => {
-        const parsed = this.parseAIResponse(response);
-        return parsed || this.getTemplateCoverLetter(job);
-      }),
-      catchError(error => {
-        console.error('Error generating AI cover letter:', error);
-        return of(this.getTemplateCoverLetter(job));
+        return this.http.post<any>(this.geminiProxyUrl, body, { headers }).pipe(
+          map(response => {
+            const parsed = this.parseAIResponse(response);
+            return parsed || this.getTemplateCoverLetter(job);
+          }),
+          catchError(error => {
+            console.error('Error generating AI cover letter:', error);
+            return of(this.getTemplateCoverLetter(job));
+          })
+        );
       })
     );
   }

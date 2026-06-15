@@ -1,0 +1,45 @@
+<div class="login-container">
+  <div class="login-card">
+    <h1>🎯 Dice Easy Apply</h1>
+    <h2>{{ isRegister ? 'Create Account' : 'Sign In' }}</h2>
+
+    <div class="error-msg" *ngIf="error">{{ error }}</div>
+
+    <form (ngSubmit)="submit()">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          [(ngModel)]="email"
+          name="email"
+          placeholder="your@email.com"
+          autocomplete="email"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          [(ngModel)]="password"
+          name="password"
+          placeholder="••••••••"
+          autocomplete="current-password"
+          required
+        />
+      </div>
+
+      <button type="submit" class="btn-primary" [disabled]="isLoading">
+        {{ isLoading ? 'Please wait...' : (isRegister ? 'Create Account' : 'Sign In') }}
+      </button>
+    </form>
+
+    <p class="toggle-link">
+      {{ isRegister ? 'Already have an account?' : "Don't have an account?" }}
+      <a (click)="toggleMode()">{{ isRegister ? 'Sign In' : 'Create Account' }}</a>
+    </p>
+  </div>
+</div>
