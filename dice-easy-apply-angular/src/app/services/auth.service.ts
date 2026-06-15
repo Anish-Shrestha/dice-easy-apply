@@ -110,10 +110,10 @@ export class AuthService {
     );
   }
 
-  // Admin endpoints
+  // Admin endpoints (consolidated into auth/me with action query param)
   getUsers(): Observable<Array<{ email: string; role: string; dateCreated: string }>> {
     return this.http.get<{ users: Array<{ email: string; role: string; dateCreated: string }> }>(
-      `${environment.apiUrl}/admin-users`,
+      `${environment.apiUrl}/auth/me?action=users`,
       { headers: this.getAuthHeaders() }
     ).pipe(
       map(r => r.users || []),
@@ -123,7 +123,7 @@ export class AuthService {
 
   getAuditLogs(): Observable<Array<{ email: string; action: string; details: string; timestamp: string }>> {
     return this.http.get<{ logs: Array<{ email: string; action: string; details: string; timestamp: string }> }>(
-      `${environment.apiUrl}/admin-audit`,
+      `${environment.apiUrl}/auth/me?action=audit`,
       { headers: this.getAuthHeaders() }
     ).pipe(
       map(r => r.logs || []),

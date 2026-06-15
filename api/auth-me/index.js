@@ -1,4 +1,4 @@
-const { getUserByToken } = require('../shared/storage');
+const { getUserByToken, getUserRole, getAllUsers, getAuditLogs } = require('../shared/storage');
 
 module.exports = async function (context, req) {
   try {
@@ -15,7 +15,32 @@ module.exports = async function (context, req) {
       return;
     }
 
-    context.res = { status: 200, headers: { 'Content-Type': 'application/json' }, body: { email: user.email } };
+    const action = req.query.action || 'me';
+
+    // Admin actions
+    if (action === 'users' || action === 'audit') {
+      const role = await getUserRole(user.email);
+      if (role !== 'admin') {
+        context.res = { status: 403, headers: { 'Content-Type': 'application/json' }, body: { error: 'Admin access required' } };
+        return;
+      }
+
+      if (action === 'users') {
+        const users = await getAllUsers();
+        context.res = { status: 200, headers: { 'Content-Type': 'application/json' }, body: { users } };
+        return;
+      }
+
+      if (action === 'audit') {
+        const limit = parseInt(req.query.limit) || 200;
+        const logs = await getAuditLogs(limit);
+        context.res = { status: 200, headers: { 'Content-Type': 'application/json' }, body: { logs } };
+        return;
+      }
+    }
+
+    // Default: return user info
+    context.res = { status: 200, headers: { 'Content-Type': 'application/json' }, body: { email: user.email, role: user.role || 'user' } };
   } catch (error) {
     context.res = { status: 500, headers: { 'Content-Type': 'application/json' }, body: { error: error.message } };
   }
