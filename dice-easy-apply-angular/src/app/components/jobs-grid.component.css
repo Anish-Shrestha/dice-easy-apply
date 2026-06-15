@@ -214,6 +214,7 @@ tbody tr:hover {
   padding: 4px 10px;
   font-size: 12px;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .status-to-apply {

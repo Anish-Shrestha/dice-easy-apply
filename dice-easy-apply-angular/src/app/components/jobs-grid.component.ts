@@ -53,9 +53,7 @@ export class JobsGridComponent implements OnInit, OnDestroy {
         this.calculateStats();
       });
 
-    if (!this.jobs.length) {
-      this.refreshFromTracker();
-    }
+    this.refreshFromTracker();
   }
 
   ngOnDestroy(): void {
