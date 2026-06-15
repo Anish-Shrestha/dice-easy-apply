@@ -459,7 +459,7 @@ export class EasyApplyWorkflowComponent implements OnInit, OnDestroy {
 
   askResumeMatch(): void {
     const prompt = 'Does this job description match my resume? Give a match score (0-100), top overlaps, gaps, and clear recommendation.';
-    this.sendMessageToGemini(prompt);
+    this.ensureJobDescriptionThen(() => this.sendMessageToGemini(prompt));
   }
 
   private detectAutoSkipReason(description: string): 'clearance' | 'citizenship' | null {
@@ -553,11 +553,44 @@ export class EasyApplyWorkflowComponent implements OnInit, OnDestroy {
       });
   }
 
+  private ensureJobDescriptionThen(callback: () => void): void {
+    if (!this.currentJob) return;
+
+    const hasDescription = this.jobDescription
+      && this.jobDescription !== 'Job description not available'
+      && this.jobDescription !== 'Could not fetch job description'
+      && this.jobDescription.length > 50;
+
+    if (hasDescription) {
+      callback();
+      return;
+    }
+
+    // Fetch job description first, then proceed
+    this.isLoading = true;
+    this.diceApi.getJobDescription(this.currentJob)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (desc) => {
+          this.jobDescription = desc || 'Job description not available';
+          this.isLoading = false;
+          callback();
+        },
+        error: () => {
+          this.jobDescription = 'Could not fetch job description';
+          this.isLoading = false;
+          callback();
+        }
+      });
+  }
+
   selectCoverLetterMode(mode: 'AI' | 'Template' | null): void {
     this.coverLetterMode = mode;
     if (mode === null) {
       this.currentStep = 'review';
       this.generatedCoverLetter = '';
+    } else if (mode === 'AI') {
+      this.ensureJobDescriptionThen(() => this.generateCoverLetter(mode));
     } else {
       this.generateCoverLetter(mode);
     }
