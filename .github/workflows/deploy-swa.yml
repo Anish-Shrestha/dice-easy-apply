@@ -30,6 +30,9 @@ jobs:
           npm install
           npm run build
 
+      - name: Copy SWA config to output
+        run: cp staticwebapp.config.json dice-easy-apply-angular/dist/dice-easy-apply-angular/
+
       - name: Install API dependencies
         run: |
           cd api
