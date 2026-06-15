@@ -101,6 +101,6 @@ export class SettingsComponent implements OnInit {
 
   logout(): void {
     this.auth.logout();
-    this.router.navigate(['/login']);
+    window.location.href = '/login';
   }
 }

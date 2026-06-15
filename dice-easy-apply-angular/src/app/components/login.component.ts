@@ -36,7 +36,7 @@ export class LoginComponent {
     action$.subscribe({
       next: () => {
         this.isLoading = false;
-        this.router.navigate(['/workflow']);
+        window.location.href = '/workflow';
       },
       error: (err) => {
         this.isLoading = false;

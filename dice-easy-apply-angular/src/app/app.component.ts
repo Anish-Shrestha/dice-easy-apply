@@ -32,6 +32,6 @@ export class AppComponent {
   onLogout(): void {
     this.showUserMenu = false;
     this.auth.logout();
-    this.router.navigate(['/login']);
+    window.location.href = '/login';
   }
 }
