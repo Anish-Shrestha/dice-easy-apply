@@ -256,13 +256,17 @@ async function ensureSearchTable() {
   }
 }
 
-async function getSearchTerms() {
+async function getSearchTerms(userEmail) {
   const client = getSearchTableClient();
-  if (!client) return [...inMemorySearchTerms];
+  const partition = userEmail ? `user_${userEmail.toLowerCase().trim()}` : 'terms';
+
+  if (!client) {
+    return inMemorySearchTerms.filter(t => (t.partitionKey || 'terms') === partition);
+  }
 
   await ensureSearchTable();
   const terms = [];
-  const entities = client.listEntities({ queryOptions: { filter: "PartitionKey eq 'terms'" } });
+  const entities = client.listEntities({ queryOptions: { filter: `PartitionKey eq '${partition}'` } });
   for await (const entity of entities) {
     terms.push({
       id: entity.rowKey,
@@ -275,12 +279,13 @@ async function getSearchTerms() {
   return terms;
 }
 
-async function addSearchTerm(text, employmentTypes) {
+async function addSearchTerm(text, employmentTypes, userEmail) {
   const client = getSearchTableClient();
   const id = Buffer.from(text.toLowerCase().trim()).toString('base64url').slice(0, 100);
   const now = new Date().toISOString().split('T')[0];
+  const partition = userEmail ? `user_${userEmail.toLowerCase().trim()}` : 'terms';
   const entity = {
-    partitionKey: 'terms',
+    partitionKey: partition,
     rowKey: id,
     text: text.trim(),
     employmentTypes: employmentTypes || 'FULLTIME,CONTRACT,THIRD_PARTY',
@@ -289,8 +294,8 @@ async function addSearchTerm(text, employmentTypes) {
   };
 
   if (!client) {
-    const existing = inMemorySearchTerms.find(t => t.id === id);
-    if (!existing) inMemorySearchTerms.push({ id, text: text.trim(), employmentTypes: entity.employmentTypes, enabled: true, dateAdded: now });
+    const existing = inMemorySearchTerms.find(t => t.id === id && (t.partitionKey || 'terms') === partition);
+    if (!existing) inMemorySearchTerms.push({ ...entity, id });
     return { added: true, id };
   }
 
@@ -299,17 +304,18 @@ async function addSearchTerm(text, employmentTypes) {
   return { added: true, id };
 }
 
-async function removeSearchTerm(id) {
+async function removeSearchTerm(id, userEmail) {
   const client = getSearchTableClient();
+  const partition = userEmail ? `user_${userEmail.toLowerCase().trim()}` : 'terms';
 
   if (!client) {
-    inMemorySearchTerms = inMemorySearchTerms.filter(t => t.id !== id);
+    inMemorySearchTerms = inMemorySearchTerms.filter(t => !(t.id === id && (t.partitionKey || 'terms') === partition));
     return { removed: true };
   }
 
   await ensureSearchTable();
   try {
-    await client.deleteEntity('terms', id);
+    await client.deleteEntity(partition, id);
     return { removed: true };
   } catch (err) {
     throw new Error(`Search term not found: ${id}`);

@@ -1,9 +1,13 @@
-const { getSearchTerms, addSearchTerm, removeSearchTerm } = require('../shared/storage');
+const { getSearchTerms, addSearchTerm, removeSearchTerm, getUserByToken } = require('../shared/storage');
 
 module.exports = async function (context, req) {
   try {
+    const token = req.headers['x-auth-token'] || '';
+    const user = token ? await getUserByToken(token) : null;
+    const userEmail = user?.email;
+
     if (req.method === 'GET') {
-      const terms = await getSearchTerms();
+      const terms = await getSearchTerms(userEmail);
       context.res = {
         status: 200,
         headers: { 'Content-Type': 'application/json' },
@@ -18,7 +22,7 @@ module.exports = async function (context, req) {
         context.res = { status: 400, body: { error: 'text is required' } };
         return;
       }
-      const result = await addSearchTerm(text, employmentTypes);
+      const result = await addSearchTerm(text, employmentTypes, userEmail);
       context.res = {
         status: 200,
         headers: { 'Content-Type': 'application/json' },
@@ -33,7 +37,7 @@ module.exports = async function (context, req) {
         context.res = { status: 400, body: { error: 'id is required' } };
         return;
       }
-      const result = await removeSearchTerm(id);
+      const result = await removeSearchTerm(id, userEmail);
       context.res = {
         status: 200,
         headers: { 'Content-Type': 'application/json' },

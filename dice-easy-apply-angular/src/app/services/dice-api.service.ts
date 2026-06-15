@@ -9,31 +9,43 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class DiceApiService {
-  private readonly diceSearchTermsBaseKey = 'dice_search_terms';
 
-  constructor(private http: HttpClient) {
-    // One-time migration: move old shared search terms to user-specific key
-    this.migrateSearchTermsToUserKey();
+  constructor(private http: HttpClient) { }
+
+  /**
+   * Fetch search terms from server (user-specific via auth interceptor)
+   */
+  fetchDiceSearchTerms(): Observable<string[]> {
+    return this.http.get<{ terms: Array<{ id: string; text: string; enabled: boolean }> }>(
+      `${environment.apiUrl}/tracker/search-terms`
+    ).pipe(
+      map(r => (r.terms || []).filter(t => t.enabled).map(t => t.text)),
+      catchError(() => of([]))
+    );
   }
 
-  private migrateSearchTermsToUserKey(): void {
-    const oldKey = this.diceSearchTermsBaseKey;
-    const oldData = localStorage.getItem(oldKey);
-    if (!oldData) return;
-
-    const email = localStorage.getItem('dice_auth_user') || '';
-    if (!email) return;
-
-    const userKey = `${oldKey}_${email}`;
-    if (!localStorage.getItem(userKey)) {
-      localStorage.setItem(userKey, oldData);
-    }
-    localStorage.removeItem(oldKey);
+  /**
+   * Add a search term on the server
+   */
+  addDiceSearchTerm(text: string): Observable<{ added: boolean; id: string }> {
+    return this.http.post<{ added: boolean; id: string }>(
+      `${environment.apiUrl}/tracker/search-terms`,
+      { text }
+    ).pipe(
+      catchError(() => of({ added: false, id: '' }))
+    );
   }
 
-  private get diceSearchTermsStorageKey(): string {
-    const email = localStorage.getItem('dice_auth_user') || '';
-    return email ? `${this.diceSearchTermsBaseKey}_${email}` : this.diceSearchTermsBaseKey;
+  /**
+   * Remove a search term from the server
+   */
+  removeDiceSearchTermApi(text: string): Observable<{ removed: boolean }> {
+    const id = btoa(text.toLowerCase().trim()).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '').slice(0, 100);
+    return this.http.delete<{ removed: boolean }>(
+      `${environment.apiUrl}/tracker/search-terms/${id}`
+    ).pipe(
+      catchError(() => of({ removed: false }))
+    );
   }
 
   /**
@@ -98,37 +110,6 @@ export class DiceApiService {
           throw err;
         })
       );
-  }
-
-  getDiceSearchTerms(): string[] {
-    const raw = localStorage.getItem(this.diceSearchTermsStorageKey);
-    if (!raw) {
-      return [];
-    }
-
-    try {
-      const parsed = JSON.parse(raw);
-      if (!Array.isArray(parsed)) {
-        return [];
-      }
-
-      const normalized = parsed
-        .map(item => String(item || '').trim())
-        .filter(item => !!item);
-
-      return normalized.length ? Array.from(new Set(normalized)) : [];
-    } catch {
-      return [];
-    }
-  }
-
-  setDiceSearchTerms(searchTerms: string[]): void {
-    const normalized = (searchTerms || [])
-      .map(item => (item || '').trim())
-      .filter(item => !!item);
-
-    const uniqueTerms = Array.from(new Set(normalized));
-    localStorage.setItem(this.diceSearchTermsStorageKey, JSON.stringify(uniqueTerms));
   }
 
   updateJobStatus(link: string, status: string): Observable<boolean> {

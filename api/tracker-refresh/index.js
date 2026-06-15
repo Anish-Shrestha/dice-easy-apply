@@ -138,7 +138,7 @@ module.exports = async function (context, req) {
     // If no explicit terms provided, load from storage table
     let resolvedTerms = searchTerms;
     if (!resolvedTerms) {
-      const storedTerms = await getSearchTerms();
+      const storedTerms = await getSearchTerms(user?.email);
       const enabledTerms = storedTerms.filter(t => t.enabled).map(t => t.text);
       resolvedTerms = enabledTerms.length > 0 ? enabledTerms : DEFAULT_SEARCH_TERMS;
     }

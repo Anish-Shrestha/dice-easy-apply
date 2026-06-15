@@ -1,19 +1,12 @@
 <div class="grid-page-container">
-  <div class="grid-header">
-    <div>
-      <h2>Jobs Grid View</h2>
-      <p>Complete tracker status table with sorting and filters</p>
-    </div>
-    <button class="refresh-btn" (click)="refreshFromTracker()" [disabled]="isLoading">
-      {{ isLoading ? 'Refreshing...' : 'Refresh from Tracker' }}
-    </button>
-  </div>
-
   <div class="stats-row">
     <div class="stat-card total">
       <div class="label">Total</div>
       <div class="value">{{ stats.total }}</div>
     </div>
+    <button class="refresh-btn" (click)="refreshFromTracker()" [disabled]="isLoading">
+      {{ isLoading ? 'Refreshing...' : 'Refresh' }}
+    </button>
     <div class="stat-card to-apply">
       <div class="label">To Apply</div>
       <div class="value">{{ stats.toApply }}</div>

@@ -224,7 +224,9 @@ export class EasyApplyWorkflowComponent implements OnInit, OnDestroy {
   }
 
   private loadDiceSearchText(): void {
-    this.diceSearchTerms = this.diceApi.getDiceSearchTerms();
+    this.diceApi.fetchDiceSearchTerms().subscribe(terms => {
+      this.diceSearchTerms = terms;
+    });
   }
 
   addDiceSearchTerm(): void {
@@ -235,14 +237,18 @@ export class EasyApplyWorkflowComponent implements OnInit, OnDestroy {
 
     const existing = new Set(this.diceSearchTerms.map(item => item.toLowerCase()));
     if (!existing.has(value.toLowerCase())) {
-      this.diceSearchTerms = [...this.diceSearchTerms, value];
+      this.diceApi.addDiceSearchTerm(value).subscribe(() => {
+        this.diceSearchTerms = [...this.diceSearchTerms, value];
+      });
     }
 
     this.diceSearchTermInput = '';
   }
 
   removeDiceSearchTerm(term: string): void {
-    this.diceSearchTerms = this.diceSearchTerms.filter(item => item !== term);
+    this.diceApi.removeDiceSearchTermApi(term).subscribe(() => {
+      this.diceSearchTerms = this.diceSearchTerms.filter(item => item !== term);
+    });
   }
 
   onDiceSearchTermKeydown(event: KeyboardEvent): void {
@@ -797,7 +803,6 @@ export class EasyApplyWorkflowComponent implements OnInit, OnDestroy {
   }
 
   saveSettings(): void {
-    this.diceApi.setDiceSearchTerms(this.diceSearchTerms);
     this.showSettings = false;
     alert('Settings saved successfully!');
   }
