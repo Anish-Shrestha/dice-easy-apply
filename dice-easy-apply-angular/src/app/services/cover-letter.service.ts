@@ -57,9 +57,13 @@ export class CoverLetterService {
     return this.getResumeContext().pipe(
       switchMap(resumeContext => {
         const historyText = history
-          .slice(-8)
+          .slice(-6)
           .map(msg => `${msg.role === 'user' ? 'User' : 'Assistant'}: ${msg.text}`)
           .join('\n');
+
+        // Truncate to keep total prompt under ~8000 chars
+        const truncatedResume = resumeContext.length > 3000 ? resumeContext.substring(0, 3000) + '\n[...truncated]' : resumeContext;
+        const truncatedJD = (jobDescription || '').length > 3000 ? (jobDescription || '').substring(0, 3000) + '\n[...truncated]' : (jobDescription || 'Not available');
 
         const prompt = `You are a job application assistant.
 Answer only about this current job and resume fit.
@@ -68,12 +72,11 @@ Current Job:
 - Company: ${job.company || 'N/A'}
 - Role: ${job.role || 'N/A'}
 - Location: ${job.location || 'N/A'}
-- Link: ${job.link || 'N/A'}
 
 Job Description:
-${jobDescription || 'Not available'}
+${truncatedJD}
 
-${resumeContext}
+${truncatedResume}
 
 Conversation so far:
 ${historyText || 'No prior conversation.'}
@@ -84,8 +87,7 @@ ${userMessage}
 Instructions:
 - Keep responses concise and practical.
 - Give job-specific guidance with direct references to job/resume overlap.
-- Use bullet points when helpful.
-- If information is missing, say what is missing and suggest next step.`;
+- Use bullet points when helpful.`;
 
         const body = {
           contents: [{ parts: [{ text: prompt }] }]

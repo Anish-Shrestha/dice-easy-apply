@@ -241,7 +241,7 @@
         <div class="chat-header">
           <h3>Gemini Job Chat</h3>
           <p>Uses this job description + your resume context</p>
-          <button class="btn-secondary btn-small match-resume-btn" (click)="askResumeMatch()" [disabled]="isChatLoading || isLoading || !currentJob">
+          <button class="btn-secondary btn-small match-resume-btn" (click)="askResumeMatch()" [disabled]="isChatLoading || isLoading || !currentJob || !hasResume" [title]="!hasResume ? 'Upload your resume in Settings first' : ''">
             Match Resume
           </button>
         </div>

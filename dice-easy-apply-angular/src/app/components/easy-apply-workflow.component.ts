@@ -49,6 +49,7 @@ export class EasyApplyWorkflowComponent implements OnInit, OnDestroy {
   chatMessages: Array<{ role: 'assistant' | 'user'; text: string; timestamp: string }> = [];
   chatInput = '';
   isChatLoading = false;
+  hasResume = false;
   private toastTimer: ReturnType<typeof setTimeout> | null = null;
   private refreshPillTimer: ReturnType<typeof setInterval> | null = null;
 
@@ -68,6 +69,7 @@ export class EasyApplyWorkflowComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscribeToJobUpdates();
     this.loadDiceSearchText();
+    this.checkResumeStatus();
 
     // If a job was pre-selected (e.g. from grid row click), use it directly
     const preSelected = this.jobService.getCurrentJob();
@@ -221,6 +223,12 @@ export class EasyApplyWorkflowComponent implements OnInit, OnDestroy {
 
   private updateStats(): void {
     this.jobStats = this.jobService.getJobStats();
+  }
+
+  private checkResumeStatus(): void {
+    this.authService.getResume().pipe(takeUntil(this.destroy$)).subscribe(resume => {
+      this.hasResume = !!(resume && resume.length > 50);
+    });
   }
 
   private loadDiceSearchText(): void {
