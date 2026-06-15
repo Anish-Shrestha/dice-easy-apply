@@ -30,6 +30,11 @@ jobs:
           npm install
           npm run build
 
+      - name: Install API dependencies
+        run: |
+          cd api
+          npm install
+
       - name: Deploy to Static Web App
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
@@ -38,8 +43,10 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           app_location: "dice-easy-apply-angular/dist/dice-easy-apply-angular"
+          api_location: "api"
           output_location: ""
           skip_app_build: true
+          skip_api_build: true
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
