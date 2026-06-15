@@ -1,4 +1,4 @@
-const { registerUser } = require('../shared/storage');
+const { registerUser, migrateJobsToUser } = require('../shared/storage');
 
 module.exports = async function (context, req) {
   const results = [];
@@ -19,5 +19,13 @@ module.exports = async function (context, req) {
     results.push({ email: 'anish.shrestha237@gmail.com', status: error.message });
   }
 
-  context.res = { status: 200, headers: { 'Content-Type': 'application/json' }, body: { seeded: true, results } };
+  // Migrate existing jobs from old 'jobs' partition to mshrestha789@gmail.com
+  let migration = { migrated: 0 };
+  try {
+    migration = await migrateJobsToUser('mshrestha789@gmail.com');
+  } catch (error) {
+    migration = { migrated: 0, error: error.message };
+  }
+
+  context.res = { status: 200, headers: { 'Content-Type': 'application/json' }, body: { seeded: true, results, migration } };
 };

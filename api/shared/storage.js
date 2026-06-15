@@ -620,6 +620,39 @@ async function getAuditLogs(limit) {
   return logs.slice(0, maxItems);
 }
 
+// --- Migration: move jobs from old 'jobs' partition to user partition ---
+
+async function migrateJobsToUser(targetEmail) {
+  const client = getTableClient();
+  const newPartition = `user_${targetEmail.toLowerCase().trim()}`;
+
+  if (!client) {
+    // In-memory: reassign partitionKey
+    const oldJobs = inMemoryStore.filter(j => (j.partitionKey || 'jobs') === 'jobs');
+    oldJobs.forEach(j => { j.partitionKey = newPartition; });
+    return { migrated: oldJobs.length };
+  }
+
+  await ensureTable();
+  let migrated = 0;
+  const entities = client.listEntities({ queryOptions: { filter: "PartitionKey eq 'jobs'" } });
+  for await (const entity of entities) {
+    // Create in new partition
+    const newEntity = { ...entity, partitionKey: newPartition };
+    delete newEntity.etag;
+    delete newEntity.timestamp;
+    try {
+      await client.upsertEntity(newEntity, 'Merge');
+      // Delete from old partition
+      await client.deleteEntity('jobs', entity.rowKey);
+      migrated++;
+    } catch (err) {
+      console.error('Migration error for:', entity.rowKey, err.message);
+    }
+  }
+  return { migrated };
+}
+
 module.exports = {
   getAllJobs,
   updateJobStatus,
@@ -644,5 +677,7 @@ module.exports = {
   getUserRole,
   // Audit
   logAudit,
-  getAuditLogs
+  getAuditLogs,
+  // Migration
+  migrateJobsToUser
 };

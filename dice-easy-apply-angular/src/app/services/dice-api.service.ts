@@ -9,9 +9,32 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class DiceApiService {
-  private readonly diceSearchTermsStorageKey = 'dice_search_terms';
+  private readonly diceSearchTermsBaseKey = 'dice_search_terms';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    // One-time migration: move old shared search terms to user-specific key
+    this.migrateSearchTermsToUserKey();
+  }
+
+  private migrateSearchTermsToUserKey(): void {
+    const oldKey = this.diceSearchTermsBaseKey;
+    const oldData = localStorage.getItem(oldKey);
+    if (!oldData) return;
+
+    const email = localStorage.getItem('dice_auth_user') || '';
+    if (!email) return;
+
+    const userKey = `${oldKey}_${email}`;
+    if (!localStorage.getItem(userKey)) {
+      localStorage.setItem(userKey, oldData);
+    }
+    localStorage.removeItem(oldKey);
+  }
+
+  private get diceSearchTermsStorageKey(): string {
+    const email = localStorage.getItem('dice_auth_user') || '';
+    return email ? `${this.diceSearchTermsBaseKey}_${email}` : this.diceSearchTermsBaseKey;
+  }
 
   /**
    * Search for jobs on Dice with Easy Apply filter
