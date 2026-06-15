@@ -1,4 +1,4 @@
-const { getAllJobs, importJobs } = require('../shared/storage');
+const { getAllJobs, importJobs, getSearchTerms } = require('../shared/storage');
 
 const DEFAULT_SEARCH_TERMS = [
   'firmware embedded engineer',
@@ -131,7 +131,15 @@ module.exports = async function (context, req) {
     const maxPages = Math.min(Math.max(body.maxSearchPages || 3, 1), 10);
     const searchTerms = Array.isArray(body.searchTexts) && body.searchTexts.length > 0
       ? body.searchTexts.filter(t => t && t.trim())
-      : (body.searchText ? [body.searchText.trim()] : DEFAULT_SEARCH_TERMS);
+      : (body.searchText ? [body.searchText.trim()] : null);
+
+    // If no explicit terms provided, load from storage table
+    let resolvedTerms = searchTerms;
+    if (!resolvedTerms) {
+      const storedTerms = await getSearchTerms();
+      const enabledTerms = storedTerms.filter(t => t.enabled).map(t => t.text);
+      resolvedTerms = enabledTerms.length > 0 ? enabledTerms : DEFAULT_SEARCH_TERMS;
+    }
 
     // Get existing job links to deduplicate
     const existingJobs = await getAllJobs();
@@ -143,7 +151,7 @@ module.exports = async function (context, req) {
     let scannedPages = 0;
     let scannedCards = 0;
 
-    for (const term of searchTerms) {
+    for (const term of resolvedTerms) {
       for (const empType of employmentTypes) {
         for (let page = 1; page <= maxPages; page++) {
           const url = buildSearchUrl(term, empType, page);
@@ -184,7 +192,7 @@ module.exports = async function (context, req) {
         total: existingJobs.length + imported,
         scannedPages,
         scannedCards,
-        searchTerms
+        searchTerms: resolvedTerms
       }
     };
   } catch (error) {

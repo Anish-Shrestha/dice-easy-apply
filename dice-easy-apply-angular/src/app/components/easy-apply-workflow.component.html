@@ -37,15 +37,6 @@
   <div *ngIf="showSettings" class="settings-panel">
     <h3>Settings</h3>
     <div class="settings-form">
-      <label for="gemini-key">Google Gemini API Key:</label>
-      <input
-        id="gemini-key"
-        type="password"
-        [(ngModel)]="geminiApiKey"
-        placeholder="Enter your Gemini API key"
-        class="input-field"
-      />
-
       <label for="dice-search-term-input">Dice Search Text (Pills):</label>
       <div class="dice-search-pills-wrap">
         <div class="dice-search-pill-list">
@@ -68,7 +59,7 @@
         <p class="settings-hint">Refresh Tracker builds Dice URLs for each pill and scans all pages for Easy Apply jobs.</p>
       </div>
       <div class="button-group">
-        <button (click)="saveGeminiApiKey()" class="btn-primary">Save Settings</button>
+        <button (click)="saveSettings()" class="btn-primary">Save Settings</button>
         <button (click)="toggleSettings()" class="btn-secondary">Cancel</button>
         <button (click)="clearAllData()" class="btn-danger">Clear All Data</button>
       </div>

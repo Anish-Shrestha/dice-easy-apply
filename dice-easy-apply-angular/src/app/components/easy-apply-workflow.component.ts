@@ -5,7 +5,6 @@ import { JobService } from '../services/job.service';
 import { DiceApiService } from '../services/dice-api.service';
 import { CoverLetterService } from '../services/cover-letter.service';
 import { Job, JobDecision } from '../models/job.model';
-import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-easy-apply-workflow',
@@ -40,7 +39,6 @@ export class EasyApplyWorkflowComponent implements OnInit, OnDestroy {
   refreshTrackerCurrentPillIndex = -1;
   jobListSearch = '';
   jobListStatusFilter: 'all' | 'pending' | 'applied' | 'skipped' = 'all';
-  geminiApiKey = '';
   diceSearchTerms: string[] = [];
   diceSearchTermInput = '';
   isSavingDecision = false;
@@ -63,7 +61,6 @@ export class EasyApplyWorkflowComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscribeToJobUpdates();
-    this.loadGeminiApiKey();
     this.loadDiceSearchText();
 
     // If a job was pre-selected (e.g. from grid row click), use it directly
@@ -218,10 +215,6 @@ export class EasyApplyWorkflowComponent implements OnInit, OnDestroy {
 
   private updateStats(): void {
     this.jobStats = this.jobService.getJobStats();
-  }
-
-  private loadGeminiApiKey(): void {
-    this.geminiApiKey = environment.geminiApiKey || '';
   }
 
   private loadDiceSearchText(): void {
@@ -678,8 +671,7 @@ export class EasyApplyWorkflowComponent implements OnInit, OnDestroy {
       });
   }
 
-  saveGeminiApiKey(): void {
-    this.coverLetterService.setGeminiApiKey(this.geminiApiKey);
+  saveSettings(): void {
     this.diceApi.setDiceSearchTerms(this.diceSearchTerms);
     this.showSettings = false;
     alert('Settings saved successfully!');

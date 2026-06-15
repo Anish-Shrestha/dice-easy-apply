@@ -9,8 +9,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class CoverLetterService {
-  private geminiApiKey = this.getGeminiApiKey();
-  private geminiApiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent';
+  private geminiProxyUrl = `${environment.apiUrl}/gemini/generate`;
   private resumeContext = `Resume Summary:
 - Name: MANISH MAN SHRESTHA
 - Title: Firmware & Embedded Systems Engineer | IoT Developer
@@ -22,10 +21,6 @@ export class CoverLetterService {
 - LinkedIn: https://www.linkedin.com/in/manish-shrestha-14502835/`;
 
   constructor(private http: HttpClient) { }
-
-  private getGeminiApiKey(): string {
-    return environment.geminiApiKey || '';
-  }
 
   saveCoverLetterAsTxt(job: Job, content: string, type: 'AI' | 'Template'): Observable<string> {
     const payload = {
@@ -48,14 +43,10 @@ export class CoverLetterService {
   }
 
   setGeminiApiKey(key: string): void {
-    this.geminiApiKey = key;
+    // No-op: key is now server-side
   }
 
   chatWithGeminiAboutJob(job: Job, jobDescription: string, userMessage: string, history: Array<{ role: 'user' | 'assistant'; text: string }>): Observable<string> {
-    if (!this.geminiApiKey) {
-      return of('Please add your Gemini API key in Settings first.');
-    }
-
     const historyText = history
       .slice(-8)
       .map(msg => `${msg.role === 'user' ? 'User' : 'Assistant'}: ${msg.text}`)
@@ -104,7 +95,7 @@ Instructions:
     });
 
     return this.http.post<any>(
-      `${this.geminiApiUrl}?key=${this.geminiApiKey}`,
+      this.geminiProxyUrl,
       body,
       { headers }
     ).pipe(
@@ -120,9 +111,6 @@ Instructions:
    * Generate AI-powered cover letter using Google Gemini API
    */
   generateAICoverLetter(job: Job, jobDescription: string): Observable<string> {
-    if (!this.geminiApiKey) {
-      return of('');
-    }
 
     const todayLong = new Date().toLocaleDateString('en-US', {
       year: 'numeric',
@@ -169,7 +157,7 @@ Generate the cover letter:`;
     });
 
     return this.http.post<any>(
-      `${this.geminiApiUrl}?key=${this.geminiApiKey}`,
+      this.geminiProxyUrl,
       body,
       { headers }
     ).pipe(
