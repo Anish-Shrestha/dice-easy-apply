@@ -15,19 +15,19 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: true
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: Install and build
         run: |
           cd dice-easy-apply-angular
-          npm ci
+          npm install
           npm run build
 
       - name: Deploy to Static Web App
